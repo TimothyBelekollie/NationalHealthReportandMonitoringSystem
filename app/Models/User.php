@@ -10,6 +10,7 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Jetstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Role;
 
 class User extends Authenticatable
 {
@@ -28,6 +29,23 @@ class User extends Authenticatable
     protected $fillable = [
         'name', 'email', 'password',
     ];
+
+
+
+
+    public function hasAnyRole($roles)
+{
+    if (is_array($roles)) {
+        return $this->roles->whereIn('name', $roles)->count() > 0;
+    }
+    return $this->roles->contains('name', $roles);
+}
+
+
+    public function roles()
+{
+    return $this->belongsTo(Role::class, 'role_id');
+}
 
     /**
      * The attributes that should be hidden for serialization.

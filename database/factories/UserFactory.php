@@ -18,11 +18,31 @@ class UserFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    public function definition(): array
+    protected $model = User::class;
+    // public function definition(): array
+    // {
+    //     return [
+    //         'name' => $this->faker->name(),
+    //         'email' => $this->faker->unique()->safeEmail(),
+    //         'role_id'=>$this->faker->roles->role_id,
+    //         'email_verified_at' => now(),
+    //         'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+    //         'two_factor_secret' => null,
+    //         'two_factor_recovery_codes' => null,
+    //         'remember_token' => Str::random(10),
+    //         'profile_photo_path' => null,
+    //         'current_team_id' => null,
+    //         'image'=>null,
+    //         'address'=>$this->faker->address,
+    //     ];
+    // }
+
+    public function definition()
     {
         return [
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
+            'role_id' => \App\Models\Role::inRandomOrder()->first()->id, // Assuming your Role model is in the 'App\Models' namespace
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'two_factor_secret' => null,
@@ -30,6 +50,12 @@ class UserFactory extends Factory
             'remember_token' => Str::random(10),
             'profile_photo_path' => null,
             'current_team_id' => null,
+            'image' => null,
+            'address' => $this->faker->address,
+            'division_id'=>null,
+            'subdivision_id'=>null,
+            "title"=>null
+
         ];
     }
 
