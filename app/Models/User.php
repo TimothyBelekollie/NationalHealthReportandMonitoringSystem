@@ -27,26 +27,33 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','role_id','address','title','division_id','subdivision_id','image'
     ];
 
 
 
 
     public function hasAnyRole($roles)
-{
-    if (is_array($roles)) {
-        return $this->roles->whereIn('name', $roles)->count() > 0;
+    {
+        $userRole = $this->role; // Assuming "role" is the name of the relationship
+    
+        if (is_array($roles)) {
+            return $userRole->whereIn('name', $roles)->count() > 0;
+        }
+        return $userRole->name === $roles;
     }
-    return $this->roles->contains('name', $roles);
-}
-
-
-    public function roles()
-{
-    return $this->belongsTo(Role::class, 'role_id');
-}
-
+    
+    public function role()
+    {
+        return $this->belongsTo(Role::class, 'role_id'); // Adjust column name as needed
+    }
+    
+    
+    
+    
+    
+    
+    
     /**
      * The attributes that should be hidden for serialization.
      *
