@@ -13,10 +13,9 @@ return new class extends Migration
     {
         Schema::create('diagnoses', function (Blueprint $table) {
             $table->id();
-            $table->string("name");
-            $table->string("gender");
-            $table->string("dob");
-            $table->string("address");
+            //$table->string("name");
+            $table->json('name');
+           
             $table->unsignedBigInteger('patient_id');
             $table->foreign('patient_id')->references('id')->on('patients');
             $table->timestamps();

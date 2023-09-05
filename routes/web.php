@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Clerk\ProfileController as ClerkProfile;
 
 /*
 |--------------------------------------------------------------------------
@@ -96,3 +97,15 @@ Route::middleware([
 //         })->name('clerk.dashboard');
 //     });
 // });
+
+
+
+Route::middleware(['auth:sanctum', 'verified','role:data_clerk'])->group(function () {
+    // Route::get('/', function () {
+    //     // Uses first & second middleware...
+    // });
+ 
+    Route::get('/data-clerk/profile',[ClerkProfile::class,'index'])->name('clerk.profile.index');
+    Route::get('/data-clerk/profile/edit',[ClerkProfile::class,'edit'])->name('clerk.profile.edit');
+    Route::get('/data-clerk/profile/update/{id}',[ClerkProfile::class,'update'])->name('clerk.profile.update');
+});
