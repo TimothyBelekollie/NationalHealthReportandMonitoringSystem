@@ -7,11 +7,11 @@
       <div class="content-header">
           <div class="d-flex align-items-center">
               <div class="me-auto">
-                  <h3 class="page-title">General Form Elements</h3>
+                  <h3 class="page-title">Data Clerk</h3>
                   <div class="d-inline-block align-items-center">
                       <nav>
                           <ol class="breadcrumb">
-                              <li class="breadcrumb-item"><a href="#"><i class="mdi mdi-home-outline"></i></a></li>
+                              <li class="breadcrumb-item"><a href="{{route('dashboard')}}"><i class="mdi mdi-home-outline"></i></a></li>
                               <li class="breadcrumb-item" aria-current="page">Forms</li>
                               <li class="breadcrumb-item active" aria-current="page">General Form Elements</li>
                           </ol>
@@ -63,16 +63,22 @@
                               <hr class="my-15">
                               <div class="form-group">
                                 <label class="form-label">Assigned Hospital</label>
-                                <input type="text" name="hospitalName" class="form-control" placeholder="Company Name">
+                                <input type="text" name="health_center_id" class="form-control" placeholder="" value="{{Auth::user()->healthCenter->name}}" disabled>
                               </div>
                             
-
-                              <div class="form-group">
-                                <label class="form-label">Update Profile Image</label>
-                                <label class="file">
-                                  <input type="file" id="file">
-                                </label>
+                              <div class="row">
+                                <div class="form-group col-md-6">
+                                  <label class="form-label">Update Profile Image</label>
+                                  <label class="file">
+                                    <input type="file" id="file">
+                                  </label>
+                                </div>
+                                <div class="form-group col-md-6">
+                                  <label class="form-label">Current Profile Image</label> <br>
+                                  <img src="{{asset('images/avatar/avatar-11.png')}}" alt="" style="height:100px;">
+                                </div>
                               </div>
+                            
                               <div class="form-group">
                                 <label class="form-label">About About Me</label>
                                 <textarea rows="5" name="about" class="form-control" placeholder="About Project" value="{{Auth::user()->name}}">

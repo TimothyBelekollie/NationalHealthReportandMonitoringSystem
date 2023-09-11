@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('subdivisions', function (Blueprint $table) {
             $table->id();
             $table->string("name")->unique();
-            $table->unsignedBigInteger('division_id');
+            $table->unsignedBigInteger('division_id')->nullable();
             $table->foreign('division_id')->references('id')->on('divisions');
             $table->timestamps();
         });

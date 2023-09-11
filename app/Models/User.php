@@ -10,6 +10,7 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Jetstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\HealthCenter;
 use App\Models\Role;
 
 class User extends Authenticatable
@@ -27,7 +28,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name', 'email', 'password','role_id','address','title','division_id','subdivision_id','image'
+        'name', 'email', 'password','role_id','address','title','division_id','subdivision_id','image','health_center_id'
     ];
 
 
@@ -48,6 +49,10 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class, 'role_id'); // Adjust column name as needed
     }
     
+    public function healthCenter()
+    {
+        return $this->belongsTo(HealthCenter::class, 'health_center_id'); // Adjust column name as needed
+    }
     
     
     

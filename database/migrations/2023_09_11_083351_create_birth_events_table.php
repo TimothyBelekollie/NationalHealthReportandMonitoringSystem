@@ -11,14 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('deaths', function (Blueprint $table) {
+        Schema::create('birth_events', function (Blueprint $table) {
             $table->id();
-            $table->string("name");
-            $table->string("gender");
-            $table->string("dob");
-            $table->string("address");
+            $table->dateTime('event_date');
+            $table->json("baby_gender");
+            $table->string("baby_number")->nullable();
+            $table->string("mother_dob_at_delivery")->nullable();
+            
             $table->unsignedBigInteger('health_center_id');
+            $table->unsignedBigInteger('patient_id');
             $table->foreign('health_center_id')->references('id')->on('health_centers');
+            $table->foreign('patient_id')->references('id')->on('patients');
+            
             $table->timestamps();
         });
     }
@@ -28,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('deaths');
+        Schema::dropIfExists('birth_events');
     }
 };

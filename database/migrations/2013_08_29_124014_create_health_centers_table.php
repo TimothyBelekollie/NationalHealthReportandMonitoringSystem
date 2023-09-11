@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string("name")->unique();
             $table->string("description")->nullable();
-            $table->unsignedBigInteger('subdivision_id');
+            $table->unsignedBigInteger('subdivision_id')->nullable();
             $table->foreign('subdivision_id')->references('id')->on('subdivisions')->onDelete('cascade');
-            $table->unsignedBigInteger('health_center_type_id');
+            $table->unsignedBigInteger('health_center_type_id')->nullable();
             $table->foreign('health_center_type_id')->references('id')->on('health_center_types');
             $table->timestamps();
         });

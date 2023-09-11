@@ -21,18 +21,18 @@ return new class extends Migration
             $table->string("image")->nullable();
             $table->string("title")->nullable();
             
-            $table->unsignedBigInteger('role_id');
+            $table->unsignedBigInteger('role_id')->nullable();
             $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
             
             
-            $table->unsignedBigInteger('division_id');
+            $table->unsignedBigInteger('division_id')->nullable();
             $table->foreign('division_id')->references('id')->on('divisions')->onDelete('cascade');
 
            
-            $table->unsignedBigInteger('subdivision_id');
+            $table->unsignedBigInteger('subdivision_id')->nullable();
             $table->foreign('subdivision_id')->references('id')->on('subdivisions')->onDelete('cascade');
 
-            $table->unsignedBigInteger('health_center_id');
+            $table->unsignedBigInteger('health_center_id')->nullable();
 
             $table->foreign('health_center_id')->references('id')->on('health_centers')->onDelete('cascade');
 

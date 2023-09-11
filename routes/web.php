@@ -24,7 +24,7 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('redirects-dashboard',[AuthController::class,'index']);
+    Route::get('redirects-dashboard',[AuthController::class,'index'])->name("dashboard");
     Route::get('/logout',[AuthController::class,'userlogout'])->name('user.logout');
 
 });
