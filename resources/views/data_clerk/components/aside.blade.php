@@ -42,7 +42,7 @@
 					</span>
 				  </a>
 				  <ul class="treeview-menu">
-					<li><a href=""><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Add Patient Record</a></li>
+					<li><a href="{{route('clerk.patient.index')}}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Add Patient Record</a></li>
 					<li><a href=""><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Patient Dignostic</a></li>
 				</li>
 							

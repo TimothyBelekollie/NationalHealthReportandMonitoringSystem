@@ -10,3 +10,5 @@
 	<script src="{{asset('js/template.js')}}"></script>
 	<script src="{{asset('js/pages/dashboard3.js')}}"></script>
 	<script src="{{asset('js/pages/calendar.js')}}"></script>
+	<script src="{{asset('js/pages/data-table.js')}}"></script>
+    <script src="{{asset('assets/vendor_components/datatable/datatables.min.js')}}"></script>

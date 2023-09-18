@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Clerk\ProfileController as ClerkProfile;
+use App\Http\Controllers\Clerk\ClerkPatientController;
 
 /*
 |--------------------------------------------------------------------------
@@ -107,5 +108,20 @@ Route::middleware(['auth:sanctum', 'verified','role:data_clerk'])->group(functio
  
     Route::get('/data-clerk/profile',[ClerkProfile::class,'index'])->name('clerk.profile.index');
     Route::get('/data-clerk/profile/edit',[ClerkProfile::class,'edit'])->name('clerk.profile.edit');
-    Route::get('/data-clerk/profile/update/{id}',[ClerkProfile::class,'update'])->name('clerk.profile.update');
+    Route::post('/data-clerk/profile/update',[ClerkProfile::class,'update'])->name('clerk.profile.update');
+
+     // Clerk Change of Password
+     Route::get('/password/change',[ClerkProfile::class,'ClerkChangePassword'])->name('clerk.change.password');
+     Route::post('/password/update',[ClerkProfile::class,'ClerkUpdatePassword'])->name('clerk.update.password');
+
+     //Patients
+     Route::get('/clerk/patients',[ClerkPatientController::class,'index'])->name('clerk.patient.index');
+     Route::get('/clerk/patients/add',[ClerkPatientController::class,'add'])->name('clerk.patient.add');
+     Route::post('/clerk/patients/store',[ClerkPatientController::class,'store'])->name('clerk.patient.store');
+     Route::get('/clerk/patients/edit/{id}',[ClerkPatientController::class,'edit'])->name('clerk.patient.edit');
+     Route::post('/clerk/patients/edit/{id}',[ClerkPatientController::class,'edit'])->name('clerk.patient.edit');
+     Route::get('/clerk/patients/destroy/{id}',[ClerkPatientController::class,'destroy'])->name('clerk.patient.destroy');
+
 });
+
+

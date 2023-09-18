@@ -11,9 +11,9 @@
                   <div class="d-inline-block align-items-center">
                       <nav>
                           <ol class="breadcrumb">
-                              <li class="breadcrumb-item"><a href="{{route('dashboard')}}"><i class="mdi mdi-home-outline"></i></a></li>
-                              <li class="breadcrumb-item" aria-current="page">Forms</li>
-                              <li class="breadcrumb-item active" aria-current="page">General Form Elements</li>
+                           <li class="breadcrumb-item"> <a href="{{route('dashboard')}}"><i class="mdi mdi-home-outline"></i>Dashboard</a></li>
+                              
+                            <li class="breadcrumb-item active" aria-current="page"><a href="{{route('clerk.profile.index')}}">Profile</a></li> 
                           </ol>
                       </nav>
                   </div>
@@ -31,7 +31,8 @@
                         <h4 class="box-title">Update Profile</h4>
                     </div>
                       <!-- /.box-header -->
-                      <form class="form">
+                      <form class="form" action="{{route('clerk.profile.update')}}" method="POST" enctype="multipart/form-data">
+                        @csrf
                           <div class="box-body">
                               <h4 class="box-title text-info mb-0"><i class="ti-user me-15"></i> Personal Info</h4>
                               <hr class="my-15">
@@ -39,7 +40,7 @@
                                 <div class="col-md-12">
                                   <div class="form-group">
                                     <label class="form-label">Full Name</label>
-                                    <input type="text" class="form-control" placeholder="Full Name" value="{{Auth::user()->name}}">
+                                    <input type="text" class="form-control" name="name" placeholder="Full Name" value="{{Auth::user()->name}}">
                                   </div>
                                 </div>
 
@@ -55,7 +56,7 @@
                                 <div class="col-md-6">
                                   <div class="form-group">
                                     <label class="form-label">Contact Number</label>
-                                    <input type="text" name="phone" class="form-control" placeholder="Phone" value="{{Auth::user()->contact}}">
+                                    <input type="text" name="contact" class="form-control" placeholder="Phone" value="{{Auth::user()->contact}}">
                                   </div>
                                 </div>
                               </div>
@@ -70,20 +71,20 @@
                                 <div class="form-group col-md-6">
                                   <label class="form-label">Update Profile Image</label>
                                   <label class="file">
-                                    <input type="file" id="file">
+                                    <input type="file" name="image" id="file">
                                   </label>
                                 </div>
                                 <div class="form-group col-md-6">
                                   <label class="form-label">Current Profile Image</label> <br>
-                                  <img src="{{asset('images/avatar/avatar-11.png')}}" alt="" style="height:100px;">
+                                  <img src="{{asset('Upload/data_clerk/'.Auth::user()->image)}}" alt="" style="height:100px;">
                                 </div>
                               </div>
                             
                               <div class="form-group">
                                 <label class="form-label">About About Me</label>
-                                <textarea rows="5" name="about" class="form-control" placeholder="About Project" value="{{Auth::user()->name}}">
+                                <textarea rows="5" name="about" class="form-control" placeholder="About Project">{!!Auth::user()->about!!} </textarea>
 
-                                </textarea>
+                               
                               </div>
                           </div>
                           <!-- /.box-body -->

@@ -11,6 +11,7 @@ use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Jetstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\HealthCenter;
+use App\Models\Divison;
 use App\Models\Role;
 
 class User extends Authenticatable
@@ -52,6 +53,10 @@ class User extends Authenticatable
     public function healthCenter()
     {
         return $this->belongsTo(HealthCenter::class, 'health_center_id'); // Adjust column name as needed
+    }
+    public function division()
+    {
+        return $this->belongsTo(Division::class, 'division_id'); // Adjust column name as needed
     }
     
     

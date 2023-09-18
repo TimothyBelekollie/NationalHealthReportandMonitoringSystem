@@ -136,7 +136,7 @@
               <li class="user-body">
 				 <a class="dropdown-item" href="{{route('clerk.profile.index')}}"><i class="ti-user text-muted me-2"></i> Profile</a>
 				 
-				 <a class="dropdown-item" href="#"><i class="ti-settings text-muted me-2"></i> Settings</a>
+				 <a class="dropdown-item" href="{{route('clerk.change.password')}}"><i class="ti-settings text-muted me-2"></i> Change Password</a>
 				 <div class="dropdown-divider"></div>
 				 <a class="dropdown-item" href="{{route('logout')}}"><i class="ti-lock text-muted me-2"></i> Logout</a>
               </li>
