@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Patient;
 use App\Models\Address;
+use App\Models\HealthCenter;
 use App\Models\Subdivision;
+use App\Models\Country;
 use App\Http\Requests\PatientRequest;
 
 
@@ -20,12 +22,14 @@ class ClerkPatientController extends Controller
     }
     public function add(){
        $data['subdivisions']=Subdivision::all();
+       $data['countries']=Country::all();
 
         return view('data_clerk.pages.patients.add',$data);
     }
     public function store(PatientRequest $request){
-        #dd($request->all());
-        $validated=$request->validated();
+      
+       $validatedData=$request->validated();
+
            // Create a new patient record
           
         $patient = Patient::create([
@@ -48,7 +52,7 @@ class ClerkPatientController extends Controller
         'patient_id' => $patient->id,
        ]);
 
-        return redirect()->route('clerk.patient.index')->with('message','Patient save sucessfully');
+        return redirect()->route('clerk.patient.index')->with('message','Patient recorded sucessfully');
     }
 
     
@@ -102,25 +106,94 @@ class ClerkPatientController extends Controller
     public function edit($id){
        
         $data['editPatient']=Patient::find($id);
+        #dd($data['editPatient']);
+        $data['subdivisions']=Subdivision::all();
+        $data['healthCenters']=HealthCenter::all();
+        $data['countries']=Country::all();
+        return view('data_clerk.pages.patients.edit',$data);
+    }
 
-        return view('data_clerk.pages.patients.add',$data);
-    }
-    public function update(PatientRequest $request, $id){
-        $validated = $request->validated();
-        $update=Patient::find($id);
-        $update->name=$request->name;
-        $update->address=$request->address;
-        $update->dob=$request->dob;
-        $update->gender=$request->gender;
-        $update->health_center_id=$request->health_center_id;
-        $update->save();
+//    public function update(PatientRequest $request, $id)
+// {
+//     $validated = $request->validated();
+    
+//     $patient = Patient::findOrFail($id);
+    
+//     // Update patient attributes
+   
+//     $patient->update([
+//         'name' => $validated['name'],
+//         'dob' => $validated['dob'],
+//         'contact' => $validated['contact'],
+//         'emmergency_contact' => $validated['emmergency_contact'],
+//         'gender' => $validated['gender'],
+//         'health_center_id' => $validated['health_center_id'],
+//         'email' => $validated['email'],
+//         'nationality' => $validated['nationality'],
+//     ]);
 
-        return view('data_clerk.pages.patients.add',$data);
+//     // Check if the patient has an associated address
+    
+//         // Update address attributes
+//         $patient->address->update([
+//             'community' => $validated['community'],
+//             'subdivision_id' => $validated['subdivision_id'],
+//             'city' => $validated['city'],
+//         ]);
+    
+   
+//     return redirect()->route('clerk.patient.index')->with('message', 'Patient updated successfully');
+// }
+
+public function update(Request $validated, $id)
+{
+    // Validate the request data
+    //$validated = $request->validated();
+    
+    // Find the patient by ID
+    $patient = Patient::findOrFail($id);
+    //dd($patient->address);
+    
+    // Update patient attributes
+    $patient->name = $validated['name'];
+    $patient->dob = $validated['dob'];
+    $patient->contact = $validated['contact'];
+    $patient->emmergency_contact = $validated['emmergency_contact'];
+    $patient->gender = $validated['gender'];
+    // $patient->health_center_id = $validated['health_center_id'];
+    $patient->email = $validated['email'];
+    $patient->nationality = $validated['nationality'];
+
+    // Check if the patient has an associated address
+    if ($patient->address) {
+        // Update address attributes
+        $patient->address->community = $validated['community'];
+        $patient->address->subdivision_id = $validated['subdivision_id'];
+        $patient->address->city = $validated['city'];
+
+        // Save the updated address
+        $patient->address->save();
     }
-    public function destroy($id){
-        $destroy=Patient::find($id);
-        $destroy->delete();
-        return redirect()->back()->with('message','Patient deleted successfully');
+
+    // Save the updated patient
+    $patient->save();
+
+    return redirect()->route('clerk.patient.index')->with('message', 'Patient record updated successfully');
+}
+
+public function destroy($id)
+{
+    $patient = Patient::findOrFail($id);
+
+    // Delete the associated address record
+    if ($patient->address) {
+        $patient->address->delete();
     }
+
+    // Delete the patient record
+    $patient->delete();
+
+    return redirect()->route('clerk.patient.index')->with('message', 'Patient and associated address deleted successfully');
+}
 
 }

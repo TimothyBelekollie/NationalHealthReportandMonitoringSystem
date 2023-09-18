@@ -75,10 +75,10 @@
 								<div class="form-group">
 									<label  class="form-label">Nationality* :</label>
 									<select class="form-select"  name="nationality">
-										<option value="">Select Country </option>
-										<option value="Liberia">Liberia</option>
-										<option value="United States of America">United States of America</option>
-										<option value="Sierra Leone">Sierra Leone</option>
+										<option value="" selected>Select Country </option>
+										@foreach($countries as $country)
+                                    <option value="{{ $country->name }}">{{ $country->name }}</option>
+                                        @endforeach
 									</select>
                                     @error('nationality')
                                     <span class="text-danger">{{ $message }}</span>
@@ -140,12 +140,7 @@
 							<div class="col-md-4">
 								<div class="form-group">
 									<label  class="form-label">City*:</label>
-									<select class="form-select"  name="city">
-										<option value="">Select City</option>
-										<option value="India">Gbarnga</option>
-										<option value="USA">Monrovia</option>
-										<option value="Dubai">Kakata</option>
-									</select>
+									<input type="text" class="form-control"  name="city"> 
                                     @error('city')
                                     <span class="text-danger">{{ $message }}</span>
                                     @enderror

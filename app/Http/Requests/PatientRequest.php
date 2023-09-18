@@ -26,7 +26,7 @@ class PatientRequest extends FormRequest
             'name'=>'required',
             'gender'=>'required',
             'dob'=>'required',
-            'address'=>'required',
+           
             'health_center_id'=>'required',
             'nationality'=>'required',
             'contact'=>'required',

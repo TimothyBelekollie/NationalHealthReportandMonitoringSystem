@@ -119,7 +119,7 @@ Route::middleware(['auth:sanctum', 'verified','role:data_clerk'])->group(functio
      Route::get('/clerk/patients/add',[ClerkPatientController::class,'add'])->name('clerk.patient.add');
      Route::post('/clerk/patients/store',[ClerkPatientController::class,'store'])->name('clerk.patient.store');
      Route::get('/clerk/patients/edit/{id}',[ClerkPatientController::class,'edit'])->name('clerk.patient.edit');
-     Route::post('/clerk/patients/edit/{id}',[ClerkPatientController::class,'edit'])->name('clerk.patient.edit');
+     Route::post('/clerk/patients/update/{id}',[ClerkPatientController::class,'update'])->name('clerk.patient.update');
      Route::get('/clerk/patients/destroy/{id}',[ClerkPatientController::class,'destroy'])->name('clerk.patient.destroy');
 
 });
