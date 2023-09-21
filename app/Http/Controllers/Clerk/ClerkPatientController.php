@@ -11,6 +11,8 @@ use App\Models\Subdivision;
 use App\Models\Country;
 use App\Http\Requests\PatientRequest;
 
+use Illuminate\Support\Str;
+
 
 class ClerkPatientController extends Controller
 {
@@ -26,24 +28,38 @@ class ClerkPatientController extends Controller
 
         return view('data_clerk.pages.patients.add',$data);
     }
+
+    
+
+
+
     public function store(PatientRequest $request){
       
        $validatedData=$request->validated();
+    // Generate a random alphanumeric identifier
+    $identifier = Str::random(8); // Adjust the length as needed
+    
+    // Check if the identifier is already in use
+    while (Patient::where('unique_patient_identifier', $identifier)->exists()) {
+        $identifier = Str::random(8); // Regenerate until unique
+    }
 
            // Create a new patient record
           
-        $patient = Patient::create([
-        'name' => $request->input('name'),
-        'dob' => $request->input('dob'),
-        'contact' => $request->input('contact'),
-        'emmergency_contact' => $request->input('emmergency_contact'),
-        'gender' => $request->input('gender'),
-        'health_center_id' => $request->input('health_center_id'),
-        'email' => $request->input('email'),
-        
-        'nationality' => $request->input('nationality'),
-       ]);
-  
+           $patient = Patient::create([
+            'name' => $request->input('name'),
+            'dob' => $request->input('dob'),
+            'contact' => $request->input('contact'),
+            'emmergency_contact' => $request->input('emmergency_contact'),
+            'gender' => $request->input('gender'),
+            'health_center_id' => $request->input('health_center_id'),
+            'email' => $request->input('email'),
+            'unique_patient_identifier' =>$identifier, // Use = instead of ->
+            'nationality' => $request->input('nationality'),
+        ]);
+
+
+
     // // Create a new address record associated with the patient
        $address=Address::create([
         'community' => $request->input('community'),

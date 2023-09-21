@@ -6,7 +6,7 @@
 		<div class="content-header">
 			<div class="d-flex align-items-center">
 				<div class="me-auto">
-					<h3 class="page-title">Patient Table</h3>
+					<h3 class="page-title"> Birth Table</h3>
 					<div class="d-inline-block align-items-center">
 						<nav>
 							<ol class="breadcrumb">
@@ -48,10 +48,10 @@
 				<div class="box-header with-border">
                     <div class="row justify-content-end">
                         <div class="col-md-4">
-                        <h3 class="box-title">All Patient Records</h3>
+                        <h3 class="box-title">All Birth Records</h3>
                        </div>
                        <div class="col-md-4 ms-auto">
-                        <a href="{{route('clerk.patient.add')}}" class="btn btn-primary">Add Patient</a>
+                        <a href="{{route('clerk.pat.birth.add')}}" class="btn btn-primary">Add Birth Record</a>
                        </div>
                     </div>
 				
@@ -63,10 +63,11 @@
 						<thead>
 							<tr>
 								<th>#</th>
-								<th>Full-Name</th>
-								<th>Health-Center</th>
-								<th>Nationality</th>
-								<th>Address-Community</th>
+								<th>Event Date</th>
+								<th>Patient Name</th>
+								<th>Patient Age at Delivery</th>
+								<th>Baby Gender</th>
+								<th>Baby No.</th>
 								<th>Gender</th>
 								
 								

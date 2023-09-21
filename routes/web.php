@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Clerk\ProfileController as ClerkProfile;
 use App\Http\Controllers\Clerk\ClerkPatientController;
+use App\Http\Controllers\Clerk\ClerkPatientEncounterController;
+use App\Http\Controllers\Clerk\ClerkBirthEventController;
+use App\Http\Controllers\Clerk\ClerkDeathEventController;
 
 /*
 |--------------------------------------------------------------------------
@@ -121,6 +124,32 @@ Route::middleware(['auth:sanctum', 'verified','role:data_clerk'])->group(functio
      Route::get('/clerk/patients/edit/{id}',[ClerkPatientController::class,'edit'])->name('clerk.patient.edit');
      Route::post('/clerk/patients/update/{id}',[ClerkPatientController::class,'update'])->name('clerk.patient.update');
      Route::get('/clerk/patients/destroy/{id}',[ClerkPatientController::class,'destroy'])->name('clerk.patient.destroy');
+
+     // Encounters and Encounter Diagnosis
+     Route::get('/clerk/patients/encounter',[ClerkPatientEncounterController::class,'index'])->name('clerk.pat.encounter.index');
+     Route::get('/clerk/patients/encounter/add',[ClerkPatientEncounterController::class,'add'])->name('clerk.pat.encounter.add');
+     Route::post('/clerk/patients/encounter/store',[ClerkPatientEncounterController::class,'store'])->name('clerk.pat.encounter.store');
+     Route::get('/clerk/patients/encounter/edit/{id}',[ClerkPatientEncounterController::class,'edit'])->name('clerk.pat.encounter.edit');
+     Route::post('/clerk/patients/encounter/update/{id}',[ClerkPatientEncounterController::class,'update'])->name('clerk.pat.encounter.update');
+     Route::get('/clerk/patients/encounter/destroy/{id}',[ClerkPatientEncounterController::class,'destroy'])->name('clerk.pat.encounter.destroy');
+
+
+
+     // Birth Events 
+     Route::get('/clerk/patients/birth',[ClerkBirthEventController::class,'index'])->name('clerk.pat.birth.index');
+     Route::get('/clerk/patients/birth/add',[ClerkBirthEventController::class,'add'])->name('clerk.pat.birth.add');
+     Route::post('/clerk/patients/birth/store',[ClerkBirthEventController::class,'store'])->name('clerk.pat.birth.store');
+     Route::get('/clerk/patients/birth/edit/{id}',[ClerkBirthEventController::class,'edit'])->name('clerk.pat.birth.edit');
+     Route::post('/clerk/patients/birth/update/{id}',[ClerkBirthEventController::class,'update'])->name('clerk.pat.birth.update');
+     Route::get('/clerk/patients/birth/destroy/{id}',[ClerkBirthEventController::class,'destroy'])->name('clerk.pat.birth.destroy');
+
+      // Death Events 
+      Route::get('/clerk/patients/death',[ClerkDeathEventController::class,'index'])->name('clerk.pat.death.index');
+      Route::get('/clerk/patients/death/add',[ClerkDeathEventController::class,'add'])->name('clerk.pat.death.add');
+      Route::post('/clerk/patients/death/store',[ClerkDeathEventController::class,'store'])->name('clerk.pat.death.store');
+      Route::get('/clerk/patients/death/edit/{id}',[ClerkDeathEventController::class,'edit'])->name('clerk.pat.death.edit');
+      Route::post('/clerk/patients/death/update/{id}',[ClerkDeathEventController::class,'update'])->name('clerk.pat.death.update');
+      Route::get('/clerk/patients/death/destroy/{id}',[ClerkDeathEventController::class,'destroy'])->name('clerk.pat.death.destroy');
 
 });
 

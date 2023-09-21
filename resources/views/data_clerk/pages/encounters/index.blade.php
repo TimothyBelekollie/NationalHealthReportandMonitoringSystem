@@ -6,7 +6,7 @@
 		<div class="content-header">
 			<div class="d-flex align-items-center">
 				<div class="me-auto">
-					<h3 class="page-title">Patient Table</h3>
+					<h3 class="page-title">Patient's Encounter Table</h3>
 					<div class="d-inline-block align-items-center">
 						<nav>
 							<ol class="breadcrumb">
@@ -48,10 +48,10 @@
 				<div class="box-header with-border">
                     <div class="row justify-content-end">
                         <div class="col-md-4">
-                        <h3 class="box-title">All Patient Records</h3>
+                        <h3 class="box-title">All Patient Encounter Records</h3>
                        </div>
                        <div class="col-md-4 ms-auto">
-                        <a href="{{route('clerk.patient.add')}}" class="btn btn-primary">Add Patient</a>
+                        <a href="{{route('clerk.pat.encounter.add')}}" class="btn btn-primary">Add Patient Encounter</a>
                        </div>
                     </div>
 				
@@ -62,41 +62,58 @@
 					  <table id="example5" class="table table-bordered table-striped" style="width:100%">
 						<thead>
 							<tr>
-								<th>#</th>
-								<th>Full-Name</th>
-								<th>Health-Center</th>
-								<th>Nationality</th>
-								<th>Address-Community</th>
-								<th>Gender</th>
+								<th>No.</th>
+								<th>Patient Name</th>
+								<th>Encounter Center</th>
+								<th>Diagnosis Code</th>
+								<th>Test Conducted</th>
+								<th>Test Positive</th>
+								<th>Prescribe Treatment</th>
+
+								
 								
 								
 								<th>Action</th>
 							</tr>
 						</thead>
 						<tbody>
-							@foreach ($allPatient as $key=> $patient)
+							@foreach ($allData as $key=> $data)
 								
 						
 							<tr>
 								<td>{{$key+1}}</td>
-								<td>{{$patient->name}}</td>
-								<td>{{$patient->healthCenter->name}}</td>
-								<td>{{$patient->nationality}}</td>
-								<td>{{$patient->address->community}}</td>
-								<td>{{$patient->gender}}</td>
-								<td><a href="{{route('clerk.patient.edit', $patient->id)}}">Edit</a> <a href="">Detail</a> <a href="{{route('clerk.patient.destroy',$patient->id)}}">Delete</a></td>
+								<td>{{$data->patient->name}}</td>
+								<td>{{$data->healthCenter->name}}</td>
+								<td>{{$data->encounterDiagnosis->diagnosisCode}}</td>
+								<td>@foreach ($data->encounterDiagnosis->testConducted as $value)
+									{{ $value }}<br>
+								    @endforeach 
+								
+								
+							    </td>
+								 <td>
+									@foreach ($data->encounterDiagnosis->diagnosisDescription as $value)
+									{{ $value }}<br>
+								    @endforeach 
+								
+								</td> 
+								<td>{{$data->encounterDiagnosis->doctor_prescription}}</td>
+								
+								<td><a href="{{route('clerk.pat.encounter.edit',$data->id)}}">Edit</a> <a href="">Detail</a> <a href="{{route('clerk.pat.encounter.destroy',$data->id)}}">Delete</a></td>
 							</tr>
 							@endforeach
 						</tbody>
 						<tfoot>
 							<tr>
-								<th></th>
-								<th>Full-Name</th>
-								<th>Health-Center</th>
-								<th>Nationality</th>
-								<th>Address-Community</th>
-								<th>Gender</th>
+								<th>No.</th>
+								<th>Patient Name</th>
+								<th>Encounter Center</th>
+								<th>Diagnosis Code</th>
+								<th>Test Conducted</th>
+								<th>Test Positive</th>
+								<th>Prescribe Treatment</th>
 								<th>Action</th>
+								
 							</tr>
 						</tfoot>
 					</table>

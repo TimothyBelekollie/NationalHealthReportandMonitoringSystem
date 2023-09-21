@@ -15,7 +15,8 @@
 					</span>
 				  </a>
 				  <ul class="treeview-menu">
-					<li><a href=""><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Record Birth</a></li>
+					<li><a href=""><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i> View Birth Record</a></li>
+					<li><a href=""><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i> Add Birth Record</a></li>
 					
 					
 				  </ul>
@@ -42,10 +43,25 @@
 					</span>
 				  </a>
 				  <ul class="treeview-menu">
-					<li><a href="{{route('clerk.patient.index')}}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Add Patient Record</a></li>
-					<li><a href=""><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Patient Dignostic</a></li>
-				</li>
-							
+					<li><a href="{{route('clerk.patient.index')}}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>All Patient Record</a></li>
+					<li><a href="{{route('clerk.patient.add')}}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Add Patient Record</a></li>
+				  </ul>
+				</li>	
+				
+				
+				<li class="treeview">
+					<a href="#">
+					  <i span class="icon-Layout-grid"><span class="path1"></span><span class="path2"></span></i>
+					  <span>Patient Encounters</span>
+					  <span class="pull-right-container">
+						<i class="fa fa-angle-right pull-right"></i>
+					  </span>
+					</a>
+					<ul class="treeview-menu">
+					  <li><a href="{{route('clerk.pat.encounter.index')}}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>View Encounters</a></li>
+					  <li><a href="{{route('clerk.pat.encounter.add')}}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Add Encounters</a></li>
+					</ul>
+				  </li>	
 							 
 				 	     
 			  </ul>

@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Patient extends Model
 {
     use HasFactory;
-    protected $fillable=["name","nationality","contact","emmergency_contact","email","gender","dob","health_center_id"];
+    protected $fillable=["name","nationality","contact","emmergency_contact","email","gender","dob","health_center_id","unique_patient_identifier"];
 
 /**
          * Get the healthCenter that owns the Patient
@@ -28,6 +28,10 @@ class Patient extends Model
         public function address()
     {
         return $this->hasOne(Address::class);
+    }
+    public function encounters(): HasMany
+    {
+        return $this->hasMany(Encounter::class);
     }
     
 }
