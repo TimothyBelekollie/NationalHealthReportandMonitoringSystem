@@ -82,6 +82,7 @@
 								</div>
 							
 						</div>
+					
 						<div class="col-md-6">
 							<div class="form-group">
 								<label  class="form-label">Diagnosis Code* :</label>

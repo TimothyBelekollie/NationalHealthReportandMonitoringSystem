@@ -67,36 +67,37 @@
 								<th>Patient Name</th>
 								<th>Patient Age at Delivery</th>
 								<th>Baby Gender</th>
-								<th>Baby No.</th>
-								<th>Gender</th>
+								<th>Baby Type</th>
+								
 								
 								
 								<th>Action</th>
 							</tr>
 						</thead>
 						<tbody>
-							@foreach ($allPatient as $key=> $patient)
+							@foreach ($birthEvents as $key=> $event)
 								
 						
 							<tr>
 								<td>{{$key+1}}</td>
-								<td>{{$patient->name}}</td>
-								<td>{{$patient->healthCenter->name}}</td>
-								<td>{{$patient->nationality}}</td>
-								<td>{{$patient->address->community}}</td>
-								<td>{{$patient->gender}}</td>
-								<td><a href="{{route('clerk.patient.edit', $patient->id)}}">Edit</a> <a href="">Detail</a> <a href="{{route('clerk.patient.destroy',$patient->id)}}">Delete</a></td>
+								<td>{{ \Carbon\Carbon::parse($event->event_date)->diffForHumans()}}</td>
+								<td>{{$event->patient->name}}</td>
+								<td>{{ \Carbon\Carbon::parse($event->patient->dob)->age }}</td>
+								<td>{{$event->baby_gender}}</td>
+								<td>{{$event->baby_type}}</td>
+								<td><a href="{{route('clerk.pat.birth.edit', $event->id)}}">Edit</a> <a href="">Detail</a> <a href="{{route('clerk.pat.birth.destroy',$event->id)}}">Delete</a></td>
 							</tr>
 							@endforeach
 						</tbody>
 						<tfoot>
 							<tr>
-								<th></th>
-								<th>Full-Name</th>
-								<th>Health-Center</th>
-								<th>Nationality</th>
-								<th>Address-Community</th>
-								<th>Gender</th>
+								<th>#</th>
+								<th>Event Date</th>
+								<th>Patient Name</th>
+								<th>Patient Age at Delivery</th>
+								<th>Baby Gender</th>
+								<th>Baby Type</th>
+								
 								<th>Action</th>
 							</tr>
 						</tfoot>

@@ -15,8 +15,8 @@
 					</span>
 				  </a>
 				  <ul class="treeview-menu">
-					<li><a href=""><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i> View Birth Record</a></li>
-					<li><a href=""><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i> Add Birth Record</a></li>
+					<li><a href="{{route('clerk.pat.birth.index')}}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i> View Birth Record</a></li>
+					<li><a href="{{route('clerk.pat.birth.add')}}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i> Add Birth Record</a></li>
 					
 					
 				  </ul>
@@ -31,7 +31,8 @@
                       </span>
                     </a>
                     <ul class="treeview-menu">
-                      <li><a href=""><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Record Death</a></li>
+                      <li><a href="{{route('clerk.pat.death.index')}}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i> View Death Record</a></li>
+                      <li><a href="{{route('clerk.pat.death.add')}}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Add Death Record</a></li>
                     </ul>
                   </li>
 				<li class="treeview">

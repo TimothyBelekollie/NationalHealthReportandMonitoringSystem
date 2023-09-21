@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use App\Models\Patient;
-use App\Models\Ecounter;
+use App\Models\Encounter;
+use App\Models\BirthEvent;
 
 class HealthCenter extends Model
 {
@@ -21,6 +22,12 @@ class HealthCenter extends Model
         return $this->hasMany(Patient::class,'health_center_id','id');
     }
     
+    public function birthEvents(): HasMany
+    {
+        return $this->hasMany(BirthEvent::class);
+    }
+
+
     public function encounters(): HasMany
     {
         return $this->hasMany(Encounter::class);
