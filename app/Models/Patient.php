@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\HealthCenter;
 use App\Models\Address;
+use App\Models\DeathEvent;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
@@ -38,5 +39,10 @@ class Patient extends Model
     public function birthEvents(): HasMany
     {
         return $this->hasMany(BirthEvent::class);
+    }
+
+    public function deathEvent()
+    {
+        return $this->hasOne(DeathEvent::class);
     }
 }

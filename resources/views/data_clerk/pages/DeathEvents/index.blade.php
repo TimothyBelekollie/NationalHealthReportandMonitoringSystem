@@ -51,7 +51,7 @@
                         <h3 class="box-title">All Birth Records</h3>
                        </div>
                        <div class="col-md-4 ms-auto">
-                        <a href="{{route('clerk.pat.birth.add')}}" class="btn btn-primary">Add Birth Record</a>
+                        <a href="{{route('clerk.pat.death.add')}}" class="btn btn-primary">Add Death Record</a>
                        </div>
                     </div>
 				
@@ -65,9 +65,9 @@
 								<th>#</th>
 								<th>Event Date</th>
 								<th>Patient Name</th>
-								<th>Patient Age at Delivery</th>
-								<th>Baby Gender</th>
-								<th>Baby Type</th>
+								<th>Patient Age of Death</th>
+								<th>Patient Gender</th>
+							
 								
 								
 								
@@ -75,7 +75,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							@foreach ($birthEvents as $key=> $event)
+							@foreach ($deathEvents as $key=> $event)
 								
 						
 							<tr>
@@ -83,9 +83,9 @@
 								<td>{{ \Carbon\Carbon::parse($event->event_date)->diffForHumans()}}</td>
 								<td>{{$event->patient->name}}</td>
 								<td>{{ \Carbon\Carbon::parse($event->patient->dob)->age }}</td>
-								<td>{{$event->baby_gender}}</td>
-								<td>{{$event->baby_type}}</td>
-								<td><a href="{{route('clerk.pat.birth.edit', $event->id)}}">Edit</a> <a href="">Detail</a> <a href="{{route('clerk.pat.birth.destroy',$event->id)}}">Delete</a></td>
+								<td>{{$event->patient->gender}}</td>
+								
+								<td><a href="{{route('clerk.pat.death.edit', $event->id)}}">Edit</a> <a href="">Detail</a> <a href="{{route('clerk.pat.death.destroy',$event->id)}}">Delete</a></td>
 							</tr>
 							@endforeach
 						</tbody>
@@ -94,10 +94,9 @@
 								<th>#</th>
 								<th>Event Date</th>
 								<th>Patient Name</th>
-								<th>Patient Age at Delivery</th>
-								<th>Baby Gender</th>
-								<th>Baby Type</th>
-								
+								<th>Patient Age at Death</th>
+								<th>Patient Gender</th>
+		
 								<th>Action</th>
 							</tr>
 						</tfoot>

@@ -26,6 +26,11 @@ class HealthCenter extends Model
     {
         return $this->hasMany(BirthEvent::class);
     }
+   
+    public function deathEvents(): HasMany
+    {
+        return $this->hasMany(DeathEvent::class);
+    }
 
 
     public function encounters(): HasMany
