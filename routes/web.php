@@ -14,6 +14,10 @@ use App\Http\Controllers\Clerk\ClerkDeathEventController;
 use App\Http\Controllers\ChiefDoctor\ChiefDoctorProfileController;
 use App\Http\Controllers\ChiefDoctor\DoctorDataClerkController;
 
+
+// Health Officer Controllers
+use App\Http\Controllers\HealthOfficer\OfficerProfileController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -108,6 +112,25 @@ Route::middleware([
 //     });
 // });
 
+Route::middleware(['auth:sanctum','verified','role:health_officer'])->group(function (){
+    Route::get('/health-officer/profile',[OfficerProfileController::class,'index'])->name('officer.profile.index');
+    Route::get('/health-officer/profile/edit',[OfficerProfileController::class,'edit'])->name('officer.profile.edit');
+    Route::post('/health-officer/profile/update',[OfficerProfileController::class,'update'])->name('officer.profile.update');
+
+     // Health Officer Change of Password
+     Route::get('/health-officer/password/change',[OfficerProfileController::class,'OfficerChangePassword'])->name('officer.change.password');
+     Route::post('/health-officer/password/update',[OfficerProfileController::class,'OfficerUpdatePassword'])->name('officer.update.password');
+
+
+});
+
+
+
+
+
+
+
+// SESSION OF  CHIEF_DOCTOR
 Route::middleware(['auth:sanctum','verified','role:chief_doctor'])->group(function (){
     Route::get('/chief-doctor/profile',[ChiefDoctorProfileController::class,'index'])->name('doctor.profile.index');
     Route::get('/chief-doctor/profile/edit',[ChiefDoctorProfileController::class,'edit'])->name('doctor.profile.edit');
@@ -118,7 +141,12 @@ Route::middleware(['auth:sanctum','verified','role:chief_doctor'])->group(functi
      Route::post('/chief-doctor/password/update',[ChiefDoctorProfileController::class,'DoctorUpdatePassword'])->name('doctor.update.password');
 
      // Add new Data Clerk
-     Route::get('/chief-doctor/add-clerk',[ChiefDoctorProfileController::class,'DoctorUpdatePassword'])->name('doctor.update.password');
+     Route::get('/chief-doctor/all-clerk',[DoctorDataClerkController::class,'Index'])->name('doctor.index_clerk');
+     Route::get('/chief-doctor/add-clerk',[DoctorDataClerkController::class,'Add'])->name('doctor.add_clerk');
+     Route::post('/chief-doctor/store-clerk',[DoctorDataClerkController::class,'Store'])->name('doctor.store_clerk');
+     Route::get('/chief-doctor/edit-clerk/{id}',[DoctorDataClerkController::class,'Edit'])->name('doctor.edit_clerk');
+     Route::post('/chief-doctor/update-clerk/{id}',[DoctorDataClerkController::class,'Update'])->name('doctor.update_clerk');
+     Route::get('/chief-doctor/delete-clerk/{id}',[DoctorDataClerkController::class,'Destroy'])->name('doctor.destroy_clerk');
   
 
 });
