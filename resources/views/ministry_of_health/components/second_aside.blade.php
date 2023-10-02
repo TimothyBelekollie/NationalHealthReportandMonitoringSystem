@@ -1,23 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-@include('health_officer.components.metadata')
-
-<body class="layout-top-nav light-skin theme-primary">
-	
-<div class="wrapper">
-  <div id="loader"></div>
-	
- @include('health_officer.components.header')
-  
-@include('health_officer.components.aside')
-
-  <!-- Content Wrapper. Contains page content -->
-@yield('health-officer')
-  <!-- /.content-wrapper -->
-  @include('health_officer.components.footer')
-
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar">
+<aside class="control-sidebar">
 	  
 	<div class="rpanel-title"><span class="pull-right btn btn-circle btn-danger"><i class="ion ion-close text-white" data-toggle="control-sidebar"></i></span> </div>  <!-- Create the tabs -->
     <ul class="nav nav-tabs control-sidebar-tabs">
@@ -41,7 +22,7 @@
           <div class="media-list media-list-hover mt-20">
 			<div class="media py-10 px-0">
 			  <a class="avatar avatar-lg status-success" href="#">
-				<img src="../images/avatar/1.jpg" alt="...">
+				<img src="{{asset('images/avatar/1.jpg')}}" alt="...">
 			  </a>
 			  <div class="media-body">
 				<p class="fs-16">
@@ -54,7 +35,7 @@
 
 			<div class="media py-10 px-0">
 			  <a class="avatar avatar-lg status-danger" href="#">
-				<img src="../images/avatar/2.jpg" alt="...">
+				<img src="{{asset('images/avatar/2.jpg')}}" alt="...">
 			  </a>
 			  <div class="media-body">
 				<p class="fs-16">
@@ -67,7 +48,7 @@
 
 			<div class="media py-10 px-0">
 			  <a class="avatar avatar-lg status-warning" href="#">
-				<img src="../images/avatar/3.jpg" alt="...">
+				<img src="{{asset('images/avatar/3.jpg')}}" alt="...">
 			  </a>
 			  <div class="media-body">
 				<p class="fs-16">
@@ -80,7 +61,7 @@
 
 			<div class="media py-10 px-0">
 			  <a class="avatar avatar-lg status-primary" href="#">
-				<img src="../images/avatar/4.jpg" alt="...">
+				<img src="{{asset('images/avatar/4.jpg')}}" alt="...">
 			  </a>
 			  <div class="media-body">
 				<p class="fs-16">
@@ -93,7 +74,7 @@
 			
 			<div class="media py-10 px-0">
 			  <a class="avatar avatar-lg status-success" href="#">
-				<img src="../images/avatar/1.jpg" alt="...">
+				<img src="{{asset('images/avatar/1.jpg')}}" alt="...">
 			  </a>
 			  <div class="media-body">
 				<p class="fs-16">
@@ -106,7 +87,7 @@
 
 			<div class="media py-10 px-0">
 			  <a class="avatar avatar-lg status-danger" href="#">
-				<img src="../images/avatar/2.jpg" alt="...">
+				<img src="{{asset('images/avatar/2.jpg')}}" alt="...">
 			  </a>
 			  <div class="media-body">
 				<p class="fs-16">
@@ -119,7 +100,7 @@
 
 			<div class="media py-10 px-0">
 			  <a class="avatar avatar-lg status-warning" href="#">
-				<img src="../images/avatar/3.jpg" alt="...">
+				<img src="{{asset('images/avatar/3.jpg')}}" alt="...">
 			  </a>
 			  <div class="media-body">
 				<p class="fs-16">
@@ -132,7 +113,7 @@
 
 			<div class="media py-10 px-0">
 			  <a class="avatar avatar-lg status-primary" href="#">
-				<img src="../images/avatar/4.jpg" alt="...">
+				<img src="{{asset('images/avatar/4.jpg')}}" alt="...">
 			  </a>
 			  <div class="media-body">
 				<p class="fs-16">
@@ -278,31 +259,3 @@
       <!-- /.tab-pane -->
     </div>
   </aside>
-  <!-- /.control-sidebar -->
-  
-  <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
-  <div class="control-sidebar-bg"></div>
-  
-</div>
-<!-- ./wrapper -->
-	
-	<!-- ./side demo panel -->
-	{{-- <div class="sticky-toolbar">	    
-	    <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="Buy Now" class="waves-effect waves-light btn btn-success btn-flat mb-5 btn-sm" target="_blank">
-			<span class="icon-Money"><span class="path1"></span><span class="path2"></span></span>
-		</a>
-	    <a href="https://themeforest.net/user/multipurposethemes/portfolio" data-bs-toggle="tooltip" data-bs-placement="left" title="Portfolio" class="waves-effect waves-light btn btn-danger btn-flat mb-5 btn-sm" target="_blank">
-			<span class="icon-Image"></span>
-		</a>
-	    <a id="chat-popup" href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="Live Chat" class="waves-effect waves-light btn btn-warning btn-flat btn-sm">
-			<span class="icon-Group-chat"><span class="path1"></span><span class="path2"></span></span>
-		</a>
-	</div> --}}
-	<!-- Sidebar -->
-@include('health_officer.components.chat')
-	<!-- Page Content overlay -->
-	
-	
-@include('health_officer.components.js')
-</body>
-</html>

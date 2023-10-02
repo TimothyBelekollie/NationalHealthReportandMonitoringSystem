@@ -112,6 +112,18 @@ Route::middleware([
 //     });
 // });
 
+// SESSION OF  Health Minister
+Route::middleware(['auth:sanctum','verified','role:health_minister'])->group(function (){
+    Route::get('/health-minister/profile',[OfficerProfileController::class,'index'])->name('officer.profile.index');
+    Route::get('/health-minister/profile/edit',[OfficerProfileController::class,'edit'])->name('officer.profile.edit');
+    Route::post('/health-minister/profile/update',[OfficerProfileController::class,'update'])->name('officer.profile.update');
+
+     // Health Officer Change of Password
+     Route::get('/health-officer/password/change',[OfficerProfileController::class,'OfficerChangePassword'])->name('officer.change.password');
+     Route::post('/health-officer/password/update',[OfficerProfileController::class,'OfficerUpdatePassword'])->name('officer.update.password');
+
+});
+
 Route::middleware(['auth:sanctum','verified','role:health_officer'])->group(function (){
     Route::get('/health-officer/profile',[OfficerProfileController::class,'index'])->name('officer.profile.index');
     Route::get('/health-officer/profile/edit',[OfficerProfileController::class,'edit'])->name('officer.profile.edit');
