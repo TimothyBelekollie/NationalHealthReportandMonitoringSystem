@@ -9,7 +9,7 @@
 		<div class="content-header">
 			<div class="d-flex align-items-center">
 				<div class="me-auto">
-					<h3 class="page-title">Doctor Form</h3>
+					<h3 class="page-title">Doctor Registration</h3>
 					<div class="d-inline-block align-items-center">
 						<nav>
 							<ol class="breadcrumb">
@@ -30,7 +30,7 @@
 		 <!-- Step wizard -->
 		  <div class="box">
 			<div class="box-header with-border">
-			  <h4 class="box-title">Doctor Registration</h4>
+			  <h4 class="box-title">Doctor Form</h4>
 				
 			</div>
 			<!-- /.box-header -->

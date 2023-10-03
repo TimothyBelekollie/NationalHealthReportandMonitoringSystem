@@ -7,9 +7,10 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Role;
 use App\Models\HealthCenter;
+use App\Http\Requests\Officer\DoctorCreationRequest;
 class OfficerDoctorRegistryController extends Controller
 {
-    public function Index(){
+    public function index(){
 
         $usersWithRole = User::whereHas('role', function ($query) {
             $query->where('name', 'chief_doctor');
@@ -20,34 +21,35 @@ class OfficerDoctorRegistryController extends Controller
 
     public function Add(){
         
-        $roles=Role::all()->where('name','data_clerk');
+        $roles=Role::all()->where('name','chief_doctor');
         $healthCenter=HealthCenter::latest()->get();
         return view('health_officer.pages.chiefDoctor.add',compact('roles','healthCenter'));
     }
 
-    public function Store(DataClerkRequest $request){
-        $validatedData=$request->validated();
-        $saveDataClerk=new User();
-        $saveDataClerk->name=$request->name;
-        $saveDataClerk->email=$request->email;
-        $saveDataClerk->role_id=$request->role_id;
-        $saveDataClerk->health_center_id=$request->health_center_id;
-        $saveDataClerk->password='$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi';
-        $saveDataClerk->save();
+    public function store(DoctorCreationRequest $request){
+       
+        $saveDocotor=new User();
+        $saveDocotor->name=$request->name;
+        $saveDocotor->email=$request->email;
+        $saveDocotor->role_id=$request->role_id;
+        $saveDocotor->health_center_id=$request->health_center_id;
+        $saveDocotor->password='$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi';
+        $saveDocotor->save();
 
-        return redirect()->route('officer.index_clerk')->with('message','You have just added a new Data Clerk');
+        return redirect()->route('officer.index_doctor')->with('message','You have just added a new Data Clerk');
 
 
     }
 
     
-    public function Edit($id){
+    public function edit($id){
         $editData=User::find($id);
         $roles=Role::all()->where('name','chief_doctor');
-        return view('health_officer.pages.chiefDoctor.edit',compact('editData','roles'));
+        $healthCenter=HealthCenter::latest()->get();
+        return view('health_officer.pages.chiefDoctor.edit',compact('editData','roles','healthCenter'));
     }
 
-    public function Update(DataClerkRequest $request, $id){
+    public function update(DoctorCreationRequest $request, $id){
         $validatedData=$request->validated();
         $updateData=User::find($id);
            // Update user data
@@ -57,10 +59,10 @@ class OfficerDoctorRegistryController extends Controller
         $updateData->health_center_id = $validatedData['health_center_id'];
         $updateData->save();
         
-        return redirect()->route('officer.index_clerk')->with('message','You have just updated a doctor Information');
+        return redirect()->route('officer.index_doctor')->with('message','You have just updated a doctor Information');
     }
 
-    public function Destroy($id){
+    public function destroy($id){
         $deleteData=User::find($id);
         $deleteData->delete();
         return redirect()->back()->with('message','You have succeded in deleting Doctor');
