@@ -37,4 +37,9 @@ class HealthCenter extends Model
     {
         return $this->hasMany(Encounter::class);
     }
+
+    public function subdivision()
+    {
+        return $this->belongsTo(Subdivision::class);
+    }
 }

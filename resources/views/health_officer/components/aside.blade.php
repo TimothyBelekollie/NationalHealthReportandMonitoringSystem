@@ -10,9 +10,9 @@
 	<ul id="main-menu" class="sm sm-blue">
 	  <li><a href="#"><i class="icon-Layout-4-blocks"><span class="path1"></span><span class="path2"></span></i>Health Facility</a>
 		  <ul> 
-			  <li><a href=""><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Facility One</a></li>
-			  <li><a href=""><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Facility Two</a></li>
-			  <li><a href=""><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Facility Three</a></li>
+			  <li><a href="{{route('officer.add_center')}}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Add New Facility</a></li>
+			  <li><a href="{{route('officer.index_center')}}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>View All Facility</a></li>
+			
 			
 		  </ul>
 	  </li>
@@ -146,7 +146,7 @@
 		  <li><a href="charts_echarts_pie_doughnut.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Pie & Doughnut Chart</a></li>
 		</ul>  	
 	  </li> --}}
-	  <li><a href="#"><i class="icon-User"><span class="path1"></span><span class="path2"></span></i>Doctor Registry</a>
+	  <li><a href="{{route('officer.index_doctor')}}"><i class="icon-User"><span class="path1"></span><span class="path2"></span></i>Doctor Registry</a>
 		{{-- <ul>
 		  <li><a href="invoice.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Invoice</a></li>
 		  <li><a href="invoicelist.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Invoice List</a></li>	

@@ -1,13 +1,13 @@
+@extends('health_officer.master')
+@section('health-officer')
 
-@extends('chief_doctor.master')
-@section('chief_doctor')
 <div class="content-wrapper">
 	  <div class="container-full">
 		<!-- Content Header (Page header) -->
 		<div class="content-header">
 			<div class="d-flex align-items-center">
 				<div class="me-auto">
-					<h3 class="page-title"> Data Clerk Tables</h3>
+					<h3 class="page-title"> Doctor Tables</h3>
 					<div class="d-inline-block align-items-center">
 						<nav>
 							<ol class="breadcrumb">
@@ -52,7 +52,7 @@
                         <h3 class="box-title">All Data Clerk Records</h3>
                        </div>
                        <div class="col-md-4 ms-auto">
-                        <a href="{{route('doctor.add_clerk')}}" class="btn btn-primary">Add Data Clerk</a>
+                        <a href="{{route('officer.add_doctor')}}" class="btn btn-primary">Add New Doctor</a>
                        </div>
                     </div>
 				
@@ -88,7 +88,7 @@
 								<td>{{$user->role->name}}</td>
 								
 								<td>{{ \Carbon\Carbon::parse($user->created_at)->diffForHumans()}}</td>
-								<td><a href="{{route('doctor.edit_clerk', $user->id)}}">Edit</a> <a href="">Detail</a> <a href="{{route('doctor.destroy_clerk',$user->id)}}">Delete</a></td>
+								<td><a href="{{route('officer.edit_doctor', $user->id)}}">Edit</a> <a href="">Detail</a> <a href="{{route('officer.destroy_doctor',$user->id)}}">Delete</a></td>
 							</tr>
 							@endforeach
 						</tbody>

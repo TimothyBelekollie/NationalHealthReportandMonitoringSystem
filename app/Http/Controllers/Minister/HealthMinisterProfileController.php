@@ -1,22 +1,20 @@
 <?php
 
-namespace App\Http\Controllers\HealthOfficer;
+namespace App\Http\Controllers\Minister;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-class OfficerProfileController extends Controller
+class HealthMinisterProfileController extends Controller
 {
      //
      public function index(){
 
-        return view('health_officer.pages.profile.profile_index');
+        return view('chief_doctor.pages.profile.profile_index');
     }
     public function edit(){
-        return view('health_officer.pages.profile.profile_edit');
+        return view('chief_doctor.pages.profile.profile_edit');
     }
 
     public function update(Request $request){
@@ -30,21 +28,21 @@ class OfficerProfileController extends Controller
        
         $update->title=$request->title;
         $update->about=$request->about;
-        // $update->address=$request->address;
+        $update->address=$request->address;
         if($request->file('image')){
             $file=$request->file('image');
-            @unlink(public_path('Upload/health_officer/'.$update->image));
+            @unlink(public_path('Upload/chief_doctor/'.$update->image));
             $filename=date('YmdHi').$file->getClientOriginalName();// 2223222.png
-            $file->move(public_path('Upload/health_officer'),$filename);
+            $file->move(public_path('Upload/chief_doctor'),$filename);
             $update['image']=$filename;
         }
         $update->save();
       
-         return redirect()->route('officer.profile.index')->with('message','You have updated your profile successfully');
+         return redirect()->route('doctor.profile.index')->with('message','You have updated your profile successfully');
     }
     public function OfficerChangePassword(){
         
-        return view('health_officer.pages.profile.password.changepassword');
+        return view('chief_doctor.pages.profile.password.changepassword');
     }// End Method
     
     public function OfficerUpdatePassword(Request $request){

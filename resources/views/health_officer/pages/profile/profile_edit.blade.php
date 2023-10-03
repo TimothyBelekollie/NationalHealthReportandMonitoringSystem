@@ -1,5 +1,5 @@
-@extends('chief_doctor.master')
-@section('chief_doctor')
+@extends('health_officer.master')
+@section('health-officer')
 
 <div class="content-wrapper">
     <div class="container-full">
@@ -31,7 +31,7 @@
                         <h4 class="box-title">Update Profile</h4>
                     </div>
                       <!-- /.box-header -->
-                      <form class="form" action="{{route('doctor.profile.update')}}" method="POST" enctype="multipart/form-data">
+                      <form class="form" action="{{route('officer.profile.update')}}" method="POST" enctype="multipart/form-data">
                         @csrf
                           <div class="box-body">
                               <h4 class="box-title text-info mb-0"><i class="ti-user me-15"></i> Personal Info</h4>
@@ -62,10 +62,10 @@
                               </div>
                               <h4 class="box-title text-info mb-0 mt-20"><i class="ti-save me-15"></i> Requirements</h4>
                               <hr class="my-15">
-                              <div class="form-group">
+                              {{-- <div class="form-group">
                                 <label class="form-label">Assigned Hospital</label>
                                 <input type="text" name="health_center_id" class="form-control" placeholder="" value="{{Auth::user()->healthCenter->name}}" disabled>
-                              </div>
+                              </div> --}}
                             
                               <div class="row">
                                 <div class="form-group col-md-6">
@@ -76,7 +76,7 @@
                                 </div>
                                 <div class="form-group col-md-6">
                                   <label class="form-label">Current Profile Image</label> <br>
-                                  <img src="{{asset('Upload/chief_doctor/'.Auth::user()->image)}}" alt="" style="height:100px;">
+                                  <img src="{{asset('Upload/health_officer/'.Auth::user()->image)}}" alt="" style="height:100px;">
                                 </div>
                               </div>
                             
@@ -89,7 +89,7 @@
                           </div>
                           <!-- /.box-body -->
                           <div class="box-footer">
-                              <a href="{{route('doctor.profile.index')}}" class="btn btn-warning me-1">
+                              <a href="{{route('officer.profile.index')}}" class="btn btn-warning me-1">
                                 <i class="ti-trash"></i> Cancel
                               </a>
                               {{-- <a type="submit" class="btn btn-primary">

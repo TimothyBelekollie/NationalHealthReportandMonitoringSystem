@@ -1,5 +1,5 @@
-@extends('chief_doctor.master')
-@section('chief_doctor')
+@extends('health_officer.master')
+@section('health-officer')
 
 <div class="content-wrapper">
     <div class="container-full">
@@ -7,13 +7,13 @@
       <div class="content-header">
           <div class="d-flex align-items-center">
               <div class="me-auto">
-                  <h3 class="page-title">Chief Doctor</h3>
+                  <h3 class="page-title">Health Officer</h3>
                   <div class="d-inline-block align-items-center">
                       <nav>
                           <ol class="breadcrumb">
                            <li class="breadcrumb-item"> <a href="{{route('dashboard')}}"><i class="mdi mdi-home-outline"></i>Dashboard</a></li>
                               
-                            <li class="breadcrumb-item active" aria-current="page"><a href="{{route('doctor.profile.index')}}">Profile</a></li> 
+                            <li class="breadcrumb-item active" aria-current="page"><a href="{{route('officer.profile.index')}}">Profile</a></li> 
                           </ol>
                       </nav>
                   </div>
@@ -28,7 +28,7 @@
               <div class="col-lg-8 col-12">
                     <div class="box">
                       <div class="box-header with-border">
-                        <h4 class="box-title">Update Profile</h4>
+                        <h4 class="box-title">Change Password</h4>
                         @if(count($errors))
                        
                         <div class="alert alert-danger alert-dismissible">
@@ -51,7 +51,7 @@
                        @endif
                     </div>
                       <!-- /.box-header -->
-                      <form class="form" action="{{route('doctor.update.password')}}" method="POST" enctype="multipart/form-data">
+                      <form class="form" action="{{route('officer.update.password')}}" method="POST" enctype="multipart/form-data">
                         @csrf
                           <div class="box-body">
                               <h4 class="box-title text-info mb-0"><i class="ti-user me-15"></i> Password Info</h4>
@@ -83,7 +83,7 @@
                           </div>
                           <!-- /.box-body -->
                           <div class="box-footer">
-                              <a href="{{route('doctor.profile.index')}}" class="btn btn-warning me-1">
+                              <a href="{{route('officer.profile.index')}}" class="btn btn-warning me-1">
                                 <i class="ti-trash"></i> Cancel
                               </a>
                               {{-- <button type="submit" class="btn btn-primary">

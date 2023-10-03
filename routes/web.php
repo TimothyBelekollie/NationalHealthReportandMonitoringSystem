@@ -17,6 +17,9 @@ use App\Http\Controllers\ChiefDoctor\DoctorDataClerkController;
 
 // Health Officer Controllers
 use App\Http\Controllers\HealthOfficer\OfficerProfileController;
+use App\Http\Controllers\HealthOfficer\OfficerDoctorRegistryController;
+use App\Http\Controllers\HealthOfficer\OfficerHealthCenterRegistryController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -114,16 +117,18 @@ Route::middleware([
 
 // SESSION OF  Health Minister
 Route::middleware(['auth:sanctum','verified','role:health_minister'])->group(function (){
-    Route::get('/health-minister/profile',[OfficerProfileController::class,'index'])->name('officer.profile.index');
-    Route::get('/health-minister/profile/edit',[OfficerProfileController::class,'edit'])->name('officer.profile.edit');
-    Route::post('/health-minister/profile/update',[OfficerProfileController::class,'update'])->name('officer.profile.update');
+    Route::get('/health-minister/profile',[HealthMinisterProfileController::class,'index'])->name('minister.profile.index');
+    Route::get('/health-minister/profile/edit',[HealthMinisterProfileController::class,'edit'])->name('minister.profile.edit');
+    Route::post('/health-minister/profile/update',[HealthMinisterProfileController::class,'update'])->name('minister.profile.update');
 
-     // Health Officer Change of Password
-     Route::get('/health-officer/password/change',[OfficerProfileController::class,'OfficerChangePassword'])->name('officer.change.password');
-     Route::post('/health-officer/password/update',[OfficerProfileController::class,'OfficerUpdatePassword'])->name('officer.update.password');
+     // Health Minister Change of Password
+     Route::get('/health-officer/password/change',[HealthMinisterProfileController::class,'MinisterChangePassword'])->name('minister.change.password');
+     Route::post('/health-officer/password/update',[HealthMinisterProfileController::class,'MinisterUpdatePassword'])->name('minister.update.password');
 
 });
 
+
+// SESSION OF  Health Officer
 Route::middleware(['auth:sanctum','verified','role:health_officer'])->group(function (){
     Route::get('/health-officer/profile',[OfficerProfileController::class,'index'])->name('officer.profile.index');
     Route::get('/health-officer/profile/edit',[OfficerProfileController::class,'edit'])->name('officer.profile.edit');
@@ -132,6 +137,23 @@ Route::middleware(['auth:sanctum','verified','role:health_officer'])->group(func
      // Health Officer Change of Password
      Route::get('/health-officer/password/change',[OfficerProfileController::class,'OfficerChangePassword'])->name('officer.change.password');
      Route::post('/health-officer/password/update',[OfficerProfileController::class,'OfficerUpdatePassword'])->name('officer.update.password');
+
+
+       // Add new Chief Doctor
+       Route::get('/health-officer/all-doctor',[OfficerDoctorRegistryController::class,'Index'])->name('officer.index_doctor');
+       Route::get('/health-officer/add-doctor',[OfficerDoctorRegistryController::class,'Add'])->name('officer.add_doctor');
+       Route::post('/health-officer/store-doctor',[OfficerDoctorRegistryController::class,'Store'])->name('officer.store_doctor');
+       Route::get('/health-officer/edit-doctor/{id}',[OfficerDoctorRegistryController::class,'Edit'])->name('officer.edit_doctor');
+       Route::post('/health-officer/update-doctor/{id}',[OfficerDoctorRegistryController::class,'Update'])->name('officer.update_doctor');
+       Route::get('/health-officer/delete-doctor/{id}',[OfficerDoctorRegistryController::class,'Destroy'])->name('officer.destroy_doctor');
+
+         // Add new Health Center
+       Route::get('/health-officer/all-health-center',[OfficerHealthCenterRegistryController::class,'index'])->name('officer.index_center');
+       Route::get('/health-officer/add-health-center',[OfficerHealthCenterRegistryController::class,'add'])->name('officer.add_center');
+       Route::post('/health-officer/store-health-center',[OfficerHealthCenterRegistryController::class,'store'])->name('officer.store_center');
+       Route::get('/health-officer/edit-health-center/{id}',[OfficerHealthCenterRegistryController::class,'edit'])->name('officer.edit_center');
+       Route::post('/health-officer/update-health-center/{id}',[OfficerHealthCenterRegistryController::class,'update'])->name('officer.update_center');
+       Route::get('/health-officer/delete-health-center/{id}',[OfficerHealthCenterRegistryController::class,'destroy'])->name('officer.destroy_center');
 
 
 });

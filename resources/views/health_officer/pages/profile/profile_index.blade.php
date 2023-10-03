@@ -1,5 +1,5 @@
-@extends('chief_doctor.master')
-@section('chief_doctor')
+@extends('health_officer.master')
+@section('health-officer')
   <div class="content-wrapper">
 	  <div class="container-full">
 		<!-- Content Header (Page header) -->
@@ -37,7 +37,7 @@
 			  <div class="col-12">
 			  	<div class="box">
 					<div class="box-header no-border">
-						<h4 class="box-title">Clerk Info</h4>
+						<h4 class="box-title">Health Officer Info</h4>
 					</div>
 				</div>
 			  </div>
@@ -46,16 +46,16 @@
 				<div class="box">
 				  <div class="text-white box-body bg-img text-center py-50" style="background-image: url(../images/gallery/creative/img-12.jpg);" data-overlay="5">
 					<a href="#">
-					  <img class="avatar avatar-xxl rounded-circle bg-warning-light" src="{{asset('Upload/chief_doctor/'.Auth::user()->image)}}" alt="">
+					  <img class="avatar avatar-xxl rounded-circle bg-warning-light" src="{{asset('Upload/health_officer/'.Auth::user()->image)}}" alt="">
 					</a>
 					<h5 class="mt-2 mb-0"><a class="text-white" href="#">{{Auth::user()->name}}</a></h5>
 					<span>{{Auth::user()->role->name}}</span>
 				  </div>
 				  <ul class="flexbox flex-justified text-center p-20">
-					<li>
+					{{-- <li>
 					  <span class="text-muted">Assigned Hospital</span><br>
 					  <span class="fs-16">{{Auth::user()->healthCenter->name}}</span>
-					</li>
+					</li> --}}
 					<li class="be-1 bs-1 border-light">
 					  <span class="text-muted">County</span><br>
 					  <span class="fs-16">{{Auth::user()->division->name}}</span>
@@ -66,7 +66,7 @@
 					</li>
 					<li>
 						<span class="fs-20">
-							<a href="{{route('doctor.profile.edit')}}" class=" btn btn-primary">Update Profile</a></span>
+							<a href="{{route('officer.profile.edit')}}" class=" btn btn-primary">Update Profile</a></span>
 					  </li>
 				  </ul>
 				</div>
