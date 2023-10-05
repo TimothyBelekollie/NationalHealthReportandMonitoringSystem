@@ -147,6 +147,18 @@
 		</ul>  	
 	  </li> --}}
 	  <li><a href="{{route('officer.index_doctor')}}"><i class="icon-User"><span class="path1"></span><span class="path2"></span></i>Doctor Registry</a>
+		{{-- <li><a href="{{route('officer.index_doctor')}}"><i class="icon-User"><span class="path1"></span><span class="path2"></span></i>Subdivision Registry(District)</a> --}}
+
+
+
+			<li><a href="#"><i class="icon-Layout-4-blocks"><span class="path1"></span><span class="path2"></span></i>Subdivision Registry(District)</a>
+				<ul> 
+					<li><a href="{{route('officer.add_subdivision')}}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Add New District</a></li>
+					<li><a href="{{route('officer.index_subdivision')}}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>View All District</a></li>
+				  
+				  
+				</ul>
+			</li>
 		{{-- <ul>
 		  <li><a href="invoice.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Invoice</a></li>
 		  <li><a href="invoicelist.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Invoice List</a></li>	

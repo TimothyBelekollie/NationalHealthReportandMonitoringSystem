@@ -19,6 +19,7 @@ use App\Http\Controllers\ChiefDoctor\DoctorDataClerkController;
 use App\Http\Controllers\HealthOfficer\OfficerProfileController;
 use App\Http\Controllers\HealthOfficer\OfficerDoctorRegistryController;
 use App\Http\Controllers\HealthOfficer\OfficerHealthCenterRegistryController;
+use App\Http\Controllers\HealthOfficer\OfficerDistrictRegistryController;
 
 
 /*
@@ -154,6 +155,14 @@ Route::middleware(['auth:sanctum','verified','role:health_officer'])->group(func
        Route::get('/health-officer/edit-health-center/{id}',[OfficerHealthCenterRegistryController::class,'edit'])->name('officer.edit_center');
        Route::post('/health-officer/update-health-center/{id}',[OfficerHealthCenterRegistryController::class,'update'])->name('officer.update_center');
        Route::get('/health-officer/delete-health-center/{id}',[OfficerHealthCenterRegistryController::class,'destroy'])->name('officer.destroy_center');
+
+       //Add new Subdivision
+       Route::get('/health-officer/all-sub-division',[OfficerDistrictRegistryController::class,'index'])->name('officer.index_subdivision');
+       Route::get('/health-officer/add-sub-division',[OfficerDistrictRegistryController::class,'add'])->name('officer.add_subdivision');
+       Route::post('/health-officer/store-sub-division',[OfficerDistrictRegistryController::class,'store'])->name('officer.store_subdivision');
+       Route::get('/health-officer/edit-sub-division/{id}',[OfficerDistrictRegistryController::class,'edit'])->name('officer.edit_subdivision');
+       Route::post('/health-officer/update-sub-division/{id}',[OfficerDistrictRegistryController::class,'update'])->name('officer.update_subdivision');
+       Route::get('/health-officer/delete-sub-division/{id}',[OfficerDistrictRegistryController::class,'destroy'])->name('officer.destroy_subdivision');
 
 
 });
