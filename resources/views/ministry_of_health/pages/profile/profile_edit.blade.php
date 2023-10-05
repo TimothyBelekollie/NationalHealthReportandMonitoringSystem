@@ -1,5 +1,5 @@
-@extends('chief_doctor.master')
-@section('chief_doctor')
+@extends('ministry_of_health.master')
+@section('minister')
 
 <div class="content-wrapper">
     <div class="container-full">
@@ -7,7 +7,7 @@
       <div class="content-header">
           <div class="d-flex align-items-center">
               <div class="me-auto">
-                  <h3 class="page-title">Data Clerk</h3>
+                  <h3 class="page-title">Health Minister</h3>
                   <div class="d-inline-block align-items-center">
                       <nav>
                           <ol class="breadcrumb">
@@ -31,7 +31,7 @@
                         <h4 class="box-title">Update Profile</h4>
                     </div>
                       <!-- /.box-header -->
-                      <form class="form" action="{{route('doctor.profile.update')}}" method="POST" enctype="multipart/form-data">
+                      <form class="form" action="{{route('minister.profile.update')}}" method="POST" enctype="multipart/form-data">
                         @csrf
                           <div class="box-body">
                               <h4 class="box-title text-info mb-0"><i class="ti-user me-15"></i> Personal Info</h4>
@@ -62,11 +62,11 @@
                               </div>
                               <h4 class="box-title text-info mb-0 mt-20"><i class="ti-save me-15"></i> Requirements</h4>
                               <hr class="my-15">
-                              <div class="form-group">
+                              {{-- <div class="form-group">
                                 <label class="form-label">Assigned Hospital</label>
                                 <input type="text" name="health_center_id" class="form-control" placeholder="" value="{{Auth::user()->healthCenter->name}}" disabled>
                               </div>
-                            
+                             --}}
                               <div class="row">
                                 <div class="form-group col-md-6">
                                   <label class="form-label">Update Profile Image</label>

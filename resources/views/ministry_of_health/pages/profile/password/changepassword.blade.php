@@ -1,5 +1,5 @@
-@extends('chief_doctor.master')
-@section('chief_doctor')
+@extends('ministry_of_health.master')
+@section('minister')
 
 <div class="content-wrapper">
     <div class="container-full">
@@ -7,13 +7,13 @@
       <div class="content-header">
           <div class="d-flex align-items-center">
               <div class="me-auto">
-                  <h3 class="page-title">Chief Doctor</h3>
+                  <h3 class="page-title">Minister</h3>
                   <div class="d-inline-block align-items-center">
                       <nav>
                           <ol class="breadcrumb">
                            <li class="breadcrumb-item"> <a href="{{route('dashboard')}}"><i class="mdi mdi-home-outline"></i>Dashboard</a></li>
                               
-                            <li class="breadcrumb-item active" aria-current="page"><a href="{{route('doctor.profile.index')}}">Profile</a></li> 
+                            <li class="breadcrumb-item active" aria-current="page"><a href="{{route('minister.profile.index')}}">Profile</a></li> 
                           </ol>
                       </nav>
                   </div>
@@ -51,7 +51,7 @@
                        @endif
                     </div>
                       <!-- /.box-header -->
-                      <form class="form" action="{{route('doctor.update.password')}}" method="POST" enctype="multipart/form-data">
+                      <form class="form" action="{{route('minister.update.password')}}" method="POST" enctype="multipart/form-data">
                         @csrf
                           <div class="box-body">
                               <h4 class="box-title text-info mb-0"><i class="ti-user me-15"></i> Password Info</h4>
@@ -83,7 +83,7 @@
                           </div>
                           <!-- /.box-body -->
                           <div class="box-footer">
-                              <a href="{{route('doctor.profile.index')}}" class="btn btn-warning me-1">
+                              <a href="{{route('minister.profile.index')}}" class="btn btn-warning me-1">
                                 <i class="ti-trash"></i> Cancel
                               </a>
                               {{-- <button type="submit" class="btn btn-primary">

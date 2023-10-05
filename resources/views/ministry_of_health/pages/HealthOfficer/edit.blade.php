@@ -1,6 +1,5 @@
-
-@extends('chief_doctor.master')
-@section('chief_doctor')
+@extends('ministry_of_health.master')
+@section('minister')
   <!-- Content Wrapper. Contains page content -->
 
   <div class="content-wrapper">
@@ -35,16 +34,16 @@
 			</div>
 			<!-- /.box-header -->
 			<div class="box-body wizard-content">
-				<form action="{{route('doctor.store_clerk')}}" class="tab-wizard wizard-circle" method="POST">
+				<form action="{{route('doctor.update_clerk', $editData->id)}}" class="tab-wizard wizard-circle" method="POST">
                     @csrf
 					<!-- Step 1 -->
-					<h6>Data Clerk's Information</h6>
+					<h6>Data Clerk's Information Update</h6>
 					<section>
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="firstName5" class="form-label">Name* :</label>
-									<input type="text" class="form-control"  name="name">
+									<input type="text" class="form-control"  name="name" value="{{$editData->name}}">
                                     @error('name')
                              <span class="text-danger">{{ $message }}</span>
                                     @enderror
@@ -53,7 +52,7 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="firstName5" class="form-label">Email* :</label>
-									<input type="text" class="form-control"  name="email">
+									<input type="text" class="form-control"  name="email" value="{{$editData->email}}">
                                     @error('email')
                              <span class="text-danger">{{ $message }}</span>
                                     @enderror

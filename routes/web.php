@@ -22,6 +22,10 @@ use App\Http\Controllers\HealthOfficer\OfficerHealthCenterRegistryController;
 use App\Http\Controllers\HealthOfficer\OfficerDistrictRegistryController;
 
 
+//Health Minister Controllers
+
+use App\Http\Controllers\Minister\HealthMinisterProfileController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -123,8 +127,8 @@ Route::middleware(['auth:sanctum','verified','role:health_minister'])->group(fun
     Route::post('/health-minister/profile/update',[HealthMinisterProfileController::class,'update'])->name('minister.profile.update');
 
      // Health Minister Change of Password
-     Route::get('/health-officer/password/change',[HealthMinisterProfileController::class,'MinisterChangePassword'])->name('minister.change.password');
-     Route::post('/health-officer/password/update',[HealthMinisterProfileController::class,'MinisterUpdatePassword'])->name('minister.update.password');
+     Route::get('/health-minister/password/change',[HealthMinisterProfileController::class,'MinisterChangePassword'])->name('minister.change.password');
+     Route::post('/health-minister/password/update',[HealthMinisterProfileController::class,'MinisterUpdatePassword'])->name('minister.update.password');
 
 });
 

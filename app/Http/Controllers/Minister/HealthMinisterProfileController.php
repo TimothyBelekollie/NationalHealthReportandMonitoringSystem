@@ -6,15 +6,18 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+
 class HealthMinisterProfileController extends Controller
 {
      //
      public function index(){
 
-        return view('chief_doctor.pages.profile.profile_index');
+        return view('ministry_of_health.pages.profile.profile_index');
     }
     public function edit(){
-        return view('chief_doctor.pages.profile.profile_edit');
+        return view('ministry_of_health.pages.profile.profile_edit');
     }
 
     public function update(Request $request){
@@ -22,30 +25,27 @@ class HealthMinisterProfileController extends Controller
         $id=Auth::user()->id;
         $update=User::find($id);
         $update->name=$request->name;
-        
         $update->email=$request->email;
         $update->contact=$request->contact;
-       
-        $update->title=$request->title;
         $update->about=$request->about;
-        $update->address=$request->address;
+      
         if($request->file('image')){
             $file=$request->file('image');
-            @unlink(public_path('Upload/chief_doctor/'.$update->image));
+            @unlink(public_path('Upload/health_minister/'.$update->image));
             $filename=date('YmdHi').$file->getClientOriginalName();// 2223222.png
-            $file->move(public_path('Upload/chief_doctor'),$filename);
+            $file->move(public_path('Upload/health_minister'),$filename);
             $update['image']=$filename;
         }
         $update->save();
       
-         return redirect()->route('doctor.profile.index')->with('message','You have updated your profile successfully');
+         return redirect()->route('minister.profile.index')->with('message','You have updated your profile successfully');
     }
-    public function OfficerChangePassword(){
+    public function MinisterChangePassword(){
         
-        return view('chief_doctor.pages.profile.password.changepassword');
+        return view('ministry_of_health.pages.profile.password.changepassword');
     }// End Method
     
-    public function OfficerUpdatePassword(Request $request){
+    public function MinisterUpdatePassword(Request $request){
     
         $validateData = $request->validate([
             'oldpassword' => 'required',

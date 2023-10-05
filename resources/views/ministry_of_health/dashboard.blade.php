@@ -1,5 +1,5 @@
-@extends('chief_doctor.master')
-@section('chief_doctor')
+@extends('ministry_of_health.master')
+@section('minister')
 
   <!-- Content Wrapper. Contains page content -->
   
