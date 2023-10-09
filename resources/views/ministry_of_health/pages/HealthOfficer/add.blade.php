@@ -34,7 +34,7 @@
 			</div>
 			<!-- /.box-header -->
 			<div class="box-body wizard-content">
-				<form action="{{route('doctor.store_clerk')}}" class="tab-wizard wizard-circle" method="POST">
+				<form action="{{route('minister.store_officer')}}" class="tab-wizard wizard-circle" method="POST">
                     @csrf
 					<!-- Step 1 -->
 					<h6>Health Officer's Information</h6>
@@ -66,13 +66,16 @@
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
-									<label  class="form-label">Health Center*:</label>
+									<label  class="form-label">Division*:</label>
 									<select class="form-select"  name="division_id" >
-										<option value="">Select Health Center</option>
-										<option value="{{Auth::user()->healthCenter->id}}" selected>{{Auth::user()->healthCenter->name}}</option>
-										
-										@error('health_center_id')
-                             <span class="text-danger">{{ $message }}</span>
+										<option value=""  disabled selected>Select Divsion</option>
+										@foreach ($divisions as $division)
+											
+									
+										<option value="{{$division->id}}">{{$division->name}}</option>
+										@endforeach
+										@error('division_id')
+                                      <span class="text-danger">{{ $message }}</span>
                                         @enderror
 									</select>
 								</div>

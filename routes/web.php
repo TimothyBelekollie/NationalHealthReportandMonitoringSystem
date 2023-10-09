@@ -25,6 +25,8 @@ use App\Http\Controllers\HealthOfficer\OfficerDistrictRegistryController;
 //Health Minister Controllers
 
 use App\Http\Controllers\Minister\HealthMinisterProfileController;
+use App\Http\Controllers\Minister\MinisterDivisionRegistryController;
+use App\Http\Controllers\Minister\MinisterOfficerRegistryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,86 +43,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-])->group(function () {
+// Route::middleware([
+//     'auth:sanctum',
+//     config('jetstream.auth_SECTION'),
+//     'verified',
+// ])->group(function () {
     Route::get('redirects-dashboard',[AuthController::class,'index'])->name("dashboard");
     Route::get('/logout',[AuthController::class,'userlogout'])->name('user.logout');
 
-});
-
-
-
-// Route::middleware([
-//     'auth:sanctum','role:health_minister',
-//     config('jetstream.auth_session'),
-//     'verified',
-// ])->group(function () {
-//     Route::get('/min/dashboard', function () {
-//         return view('ministry_of_health.dashboard');
-//     })->name('min.dashboard');
-// });
-
-// Route::middleware([
-//     'auth:sanctum','role:health_officer',
-//     config('jetstream.auth_session'),
-//     'verified',
-// ])->group(function () {
-//     Route::get('/county/officer/dashboard', function () {
-//         return view('health_officer.dashboard');
-//     })->name('off.dashboard');
-// });
-
-// Route::middleware([
-//     'auth:sanctum','role:chief_doctor',
-//     config('jetstream.auth_session'),
-//     'verified',
-// ])->group(function () {
-//     Route::get('/doctor/dashboard', function () {
-//         return view('chief_doctor.dashboard');
-//     })->name('doctor.dashboard');
-// });
-
-// Route::middleware([
-//     'auth:sanctum','role:health_minister',
-//     config('jetstream.auth_session'),
-//     'verified',
-// ])->group(function () {
-//     Route::get('/clerk-data/dashboard', function () {
-//         return view('data_clerk.dashboard');
-//     })->name('clerk.dashboard');
 // });
 
 
-// Route::middleware(['auth:sanctum', 'verified'])->group(function () {
-//     Route::middleware(['role:health_minister'])->group(function () {
-//         Route::get('/min/dashboard', function () {
-//             return view('ministry_of_health.dashboard');
-//         })->name('min.dashboard');
-//     });
 
-//     Route::middleware(['role:health_officer'])->group(function () {
-//         Route::get('/county/officer/dashboard', function () {
-//             return view('health_officer.dashboard');
-//         })->name('off.dashboard');
-//     });
 
-//     Route::middleware(['role:chief_doctor'])->group(function () {
-//         Route::get('/doctor/dashboard', function () {
-//             return view('chief_doctor.dashboard');
-//         })->name('doctor.dashboard');
-//     });
-
-//     Route::middleware(['role:data_clerk'])->group(function () {
-//         Route::get('/clerk-data/dashboard', function () {
-//             return view('data_clerk.dashboard');
-//         })->name('clerk.dashboard');
-//     });
-// });
-
-// SESSION OF  Health Minister
+//SECTION OF  Health Minister
 Route::middleware(['auth:sanctum','verified','role:health_minister'])->group(function (){
     Route::get('/health-minister/profile',[HealthMinisterProfileController::class,'index'])->name('minister.profile.index');
     Route::get('/health-minister/profile/edit',[HealthMinisterProfileController::class,'edit'])->name('minister.profile.edit');
@@ -130,10 +66,26 @@ Route::middleware(['auth:sanctum','verified','role:health_minister'])->group(fun
      Route::get('/health-minister/password/change',[HealthMinisterProfileController::class,'MinisterChangePassword'])->name('minister.change.password');
      Route::post('/health-minister/password/update',[HealthMinisterProfileController::class,'MinisterUpdatePassword'])->name('minister.update.password');
 
+    //  // Divsion 
+     Route::get('/health-minister/all-division',[MinisterDivisionRegistryController::class,'index'])->name('minister.index_division');
+     Route::get('/health-minister/add-division',[MinisterDivisionRegistryController::class,'add'])->name('minister.add_division');
+     Route::post('/health-minister/store-division',[MinisterDivisionRegistryController::class,'store'])->name('minister.store_division');
+     Route::get('/health-minister/edit-division/{id}',[MinisterDivisionRegistryController::class,'edit'])->name('minister.edit_division');
+     Route::post('/health-minister/update-division/{id}',[MinisterDivisionRegistryController::class,'update'])->name('minister.update_division');
+     Route::get('/health-minister/delete-division/{id}',[MinisterDivisionRegistryController::class,'destroy'])->name('minister.destroy_division');
+
+    //   // Add new health officer
+      Route::get('/health-minister/all-officer',[MinisterOfficerRegistryController::class,'index'])->name('minister.index_officer');
+      Route::get('/health-minister/add-officer',[MinisterOfficerRegistryController::class,'add'])->name('minister.add_officer');
+      Route::post('/health-minister/store-officer',[MinisterOfficerRegistryController::class,'store'])->name('minister.store_officer');
+      Route::get('/health-minister/edit-officer/{id}',[MinisterOfficerRegistryController::class,'edit'])->name('minister.edit_officer');
+      Route::post('/health-minister/update-officer/{id}',[MinisterOfficerRegistryController::class,'update'])->name('minister.update_officer');
+      Route::get('/health-minister/delete-officer/{id}',[MinisterOfficerRegistryController::class,'destroy'])->name('minister.destroy_officer');
+
 });
 
 
-// SESSION OF  Health Officer
+// SECTION OF  Health Officer
 Route::middleware(['auth:sanctum','verified','role:health_officer'])->group(function (){
     Route::get('/health-officer/profile',[OfficerProfileController::class,'index'])->name('officer.profile.index');
     Route::get('/health-officer/profile/edit',[OfficerProfileController::class,'edit'])->name('officer.profile.edit');
@@ -177,7 +129,7 @@ Route::middleware(['auth:sanctum','verified','role:health_officer'])->group(func
 
 
 
-// SESSION OF  CHIEF_DOCTOR
+// SECTION OF  CHIEF_DOCTOR
 Route::middleware(['auth:sanctum','verified','role:chief_doctor'])->group(function (){
     Route::get('/chief-doctor/profile',[ChiefDoctorProfileController::class,'index'])->name('doctor.profile.index');
     Route::get('/chief-doctor/profile/edit',[ChiefDoctorProfileController::class,'edit'])->name('doctor.profile.edit');
@@ -200,9 +152,7 @@ Route::middleware(['auth:sanctum','verified','role:chief_doctor'])->group(functi
 
 
 Route::middleware(['auth:sanctum', 'verified','role:data_clerk'])->group(function () {
-    // Route::get('/', function () {
-    //     // Uses first & second middleware...
-    // });
+   
  
     Route::get('/data-clerk/profile',[ClerkProfile::class,'index'])->name('clerk.profile.index');
     Route::get('/data-clerk/profile/edit',[ClerkProfile::class,'edit'])->name('clerk.profile.edit');

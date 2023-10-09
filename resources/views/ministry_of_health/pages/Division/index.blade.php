@@ -1,13 +1,13 @@
-
 @extends('ministry_of_health.master')
 @section('minister')
+
 <div class="content-wrapper">
 	  <div class="container-full">
 		<!-- Content Header (Page header) -->
 		<div class="content-header">
 			<div class="d-flex align-items-center">
 				<div class="me-auto">
-					<h3 class="page-title"> Health Officer Tables</h3>
+					<h3 class="page-title">Division Table</h3>
 					<div class="d-inline-block align-items-center">
 						<nav>
 							<ol class="breadcrumb">
@@ -49,10 +49,10 @@
 				<div class="box-header with-border">
                     <div class="row justify-content-end">
                         <div class="col-md-4">
-                        <h3 class="box-title">All Health Officer Records</h3>
+                        <h3 class="box-title">Division Records</h3>
                        </div>
                        <div class="col-md-4 ms-auto">
-                        <a href="{{route('minister.add_officer')}}" class="btn btn-primary">Add Health Officer</a>
+                        <a href="{{route('minister.add_division')}}" class="btn btn-primary">Add Division</a>
                        </div>
                     </div>
 				
@@ -64,44 +64,29 @@
 						<thead>
 							<tr>
 								<th>#</th>
-								<th>Name</th>
-								<th>Email</th>
-								<th>Division(County)</th>
 								
-								<th>Role</th>
-								<th>Date Added</th>
-					
+								<th>Division Name</th>
+								
 								<th>Action</th>
 							</tr>
 						</thead>
 						<tbody>
-							@foreach ($usersWithRole as $key=> $user)
+							@foreach ($divisions as $key=> $div)
 								
 						
 							<tr>
 								<td>{{$key+1}}</td>
-								<td>{{$user->name}}</td>
-								
-								<td>{{$user->email}}</td>
-								<td>{{$user->division->name}}</td>
-								
-								<td>{{$user->role->name}}</td>
-								
-								<td>{{ \Carbon\Carbon::parse($user->created_at)->diffForHumans()}}</td>
-								<td><a href="{{route('minister.edit_officer', $user->id)}}">Edit</a> <a href="">Detail</a> <a href="{{route('minister.destroy_officer',$user->id)}}">Delete</a></td>
+								<td>{{$div->name}}</td>
+							
+								<td><a href="{{route('minister.edit_division', $div->id)}}">Edit</a> <a href="">Detail</a> <a href="{{route('minister.destroy_division',$div->id)}}">Delete</a></td>
 							</tr>
 							@endforeach
 						</tbody>
 						<tfoot>
 							<tr>
 								<th>#</th>
-								<th>Name </th>
-								<th>Email </th>
-								<th>Division(County)</th>
 								
-								<th>Role</th>
-								<th>Date Added</th>
-								
+								<th>Division Name</th>
 								<th>Action</th>
 							</tr>
 						</tfoot>

@@ -32,7 +32,9 @@ class AuthController extends Controller
 
 
 
-
+// public function index(){
+//     return view('ministry_of_health.dashboard');
+// }
     //
     public function index(){
         $role=Auth::user()->role->name;

@@ -5,7 +5,7 @@
 <body class="layout-top-nav light-skin theme-primary">
 	
 <div class="wrapper">
-  <div id="loader"></div>
+  {{-- <div id="loader"></div> --}}
 	
  @include('ministry_of_health.components.header')
   

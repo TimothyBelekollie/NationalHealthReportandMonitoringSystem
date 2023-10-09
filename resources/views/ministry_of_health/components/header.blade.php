@@ -2,7 +2,7 @@
 	<div class="inside-header">
 	  <div class="d-flex align-items-center logo-box justify-content-start">
 		  <!-- Logo -->
-		  <a href="" class="logo">
+		  <a href="{{route('dashboard')}}" class="logo">
 			<!-- logo-->
 			<div class="logo-lg" style="height;auto-fit">
 				<span class="light-logo"><img src="{{asset('images/logo/logo-6.png')}}" alt="logo" height="50"></span>
