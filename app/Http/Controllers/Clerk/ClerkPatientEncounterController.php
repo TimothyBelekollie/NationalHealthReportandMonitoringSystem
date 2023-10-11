@@ -8,12 +8,22 @@ use App\Models\Encounter;
 use App\Models\Patient;
 use App\Models\EncounterDiagnosis;
 use Illuminate\Support\Facades\Auth;
+use App\Models\HealthCenter;
 
 class ClerkPatientEncounterController extends Controller
 {
     //
     public function index(){
-        $data['allData']=Encounter::latest()->get();
+        //$data['allData']=Encounter::latest()->get();
+
+           // Get the currently logged-in data clerk
+   
+             $dataClerk = Auth::user();
+           // Get the hospital assigned to the data clerk
+             $hospital = $dataClerk->healthCenter;
+
+           // Get the total number of patients for the hospital
+             $data['totalPatients'] = Encounter::where('health_center_id', $hospital->id)->get();
         return view('data_clerk.pages.encounters.index',$data);
     }
     public function add(){

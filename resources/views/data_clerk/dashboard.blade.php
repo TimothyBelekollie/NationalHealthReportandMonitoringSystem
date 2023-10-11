@@ -42,157 +42,90 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-xl-4 col-md-6 col-12">
-					<div class="box bg-secondary-light pull-up" style="background-image: url({{asset('images/svg-icon/color-svg/st-1.svg')}}); background-position: right bottom; background-repeat: no-repeat;">
-						<div class="box-body">	
-							<div class="flex-grow-1">	
-								<div class="d-flex align-items-center pe-2 justify-content-between">
-									<div class="d-flex">									
-										<span class="badge badge-primary me-15">Birth</span>
-										<span class="badge badge-primary me-5"><i class="fa fa-lock"></i></span>
-										<span class="badge badge-primary"><i class="fa fa-clock-o"></i></span>
-									</div>
-									<div class="dropdown">
-										<a data-bs-toggle="dropdown" href="#" class="px-10 pt-5"><i class="ti-more-alt"></i></a>
-										<div class="dropdown-menu dropdown-menu-end">
-										  <a class="dropdown-item" href="#"><i class="ti-import"></i> Import</a>
-										  <a class="dropdown-item" href="#"><i class="ti-export"></i> Export</a>
-										  <a class="dropdown-item" href="#"><i class="ti-printer"></i> Print</a>
-										  <div class="dropdown-divider"></div>
-										  <a class="dropdown-item" href="#"><i class="ti-settings"></i> Settings</a>
-										</div>
-									</div>						
-								</div>
-								<h4 class="mt-25 mb-5">Over all Total</h4>
-								<p class="text-fade mb-0 fs-12">45</p>
-							</div>	
-						</div>					
-					</div>
-				</div>
-				<div class="col-xl-4 col-md-6 col-12">
-					<div class="box bg-secondary-light pull-up" style="background-image: url({{asset('images/svg-icon/color-svg/st-2.svg')}}); background-position: right bottom; background-repeat: no-repeat;">
-						<div class="box-body">	
-							<div class="flex-grow-1">	
-								<div class="d-flex align-items-center pe-2 justify-content-between">
-									<div class="d-flex">									
-										<span class="badge badge-dark me-15">Death</span>
-									</div>
-									<div class="dropdown">
-										<a data-bs-toggle="dropdown" href="#" class="px-10 pt-5"><i class="ti-more-alt"></i></a>
-										<div class="dropdown-menu dropdown-menu-end">
-										  <a class="dropdown-item" href="#"><i class="ti-import"></i> Import</a>
-										  <a class="dropdown-item" href="#"><i class="ti-export"></i> Export</a>
-										  <a class="dropdown-item" href="#"><i class="ti-printer"></i> Print</a>
-										  <div class="dropdown-divider"></div>
-										  <a class="dropdown-item" href="#"><i class="ti-settings"></i> Settings</a>
-										</div>
-									</div>						
-								</div>
-								<h4 class="mt-25 mb-5">Over all Total</h4>
-								<p class="text-fade mb-0 fs-12">100</p>
-							</div>	
-						</div>					
-					</div>
-				</div>
-				<div class="col-xl-4 col-md-6 col-12">
-					<div class="box bg-secondary-light pull-up" style="background-image: url({{asset('images/svg-icon/color-svg/st-3.svg')}}); background-position: right bottom; background-repeat: no-repeat;">
-						<div class="box-body">	
-							<div class="flex-grow-1">	
-								<div class="d-flex align-items-center pe-2 justify-content-between">
-									<div class="d-flex">									
-										<span class="badge badge-primary me-15">Patients</span>
-										<span class="badge badge-primary me-5"><i class="fa fa-lock"></i></span>
-									</div>
-									<div class="dropdown">
-										<a data-bs-toggle="dropdown" href="#" class="px-10 pt-5"><i class="ti-more-alt"></i></a>
-										<div class="dropdown-menu dropdown-menu-end">
-										  <a class="dropdown-item" href="#"><i class="ti-import"></i> Import</a>
-										  <a class="dropdown-item" href="#"><i class="ti-export"></i> Export</a>
-										  <a class="dropdown-item" href="#"><i class="ti-printer"></i> Print</a>
-										  <div class="dropdown-divider"></div>
-										  <a class="dropdown-item" href="#"><i class="ti-settings"></i> Settings</a>
-										</div>
-									</div>						
-								</div>
-								<h4 class="mt-25 mb-5">Over all Total</h4>
-								<p class="text-fade mb-0 fs-12">150</p>
-							</div>	
-						</div>					
-					</div>
-				</div>
-				<!-- <div class="col-xl-3 col-md-6 col-12">
-					<div class="box bg-secondary-light pull-up" style="background-image: url(../images/svg-icon/color-svg/st-4.svg); background-position: right bottom; background-repeat: no-repeat;">
-						<div class="box-body">	
-							<div class="flex-grow-1">	
-								<div class="d-flex align-items-center pe-2 justify-content-between">
-									<div class="d-flex">									
-										<span class="badge badge-warning-light me-15">Paused</span>
-										<span class="badge badge-warning-light me-5"><i class="fa fa-lock"></i></span>
-									</div>
-									<div class="dropdown">
-										<a data-bs-toggle="dropdown" href="#" class="px-10 pt-5"><i class="ti-more-alt"></i></a>
-										<div class="dropdown-menu dropdown-menu-end">
-										  <a class="dropdown-item" href="#"><i class="ti-import"></i> Import</a>
-										  <a class="dropdown-item" href="#"><i class="ti-export"></i> Export</a>
-										  <a class="dropdown-item" href="#"><i class="ti-printer"></i> Print</a>
-										  <div class="dropdown-divider"></div>
-										  <a class="dropdown-item" href="#"><i class="ti-settings"></i> Settings</a>
-										</div>
-									</div>						
-								</div>
-								<h4 class="mt-25 mb-5">Network Security</h4>
-								<p class="text-fade mb-0 fs-12">21 Days Left</p>
-							</div>	
-						</div>					
-					</div>
-				</div> -->
-			</div>
-			<div class="row">
-				<div class="col-xl-4 col-12">
-					<div class="box">
-						<div class="box-body">
-							<p class="text-fade">Majority Report</p>
-							<!-- <h3 class="mt-0 mb-20">19 <small class="text-success"><i class="fa fa-arrow-up ms-15 me-5"></i> 2 New</small></h3> -->
-							<div id="charts_widget_2_chart"></div>
-						</div>
-					</div>
-				</div>
-				<div class="col-xl-5 col-12">
-					<div class="box">
-						<div class="box-body">
-							<p class="text-fade">Hours spent</p>
-							<h3 class="mt-0 mb-20">21 h 30 min <small class="text-danger"><i class="fa fa-arrow-down ms-25 me-5"></i> 15%</small></h3>
-							<div id="charts_widget_1_chart"></div>
-						</div>
+				<div class="col-xl-3 col-12">
+					<div class="box box-body bg-primary">
+					  <div class="flexbox">
+						<span class="icon-User fs-50"><span class="path1"></span><span class="path2"></span></span>
+						<span class="fs-40 fw-200">{{$totalPatients}}</span>
+					  </div>
+					  <div class="text-end">Pioneer Patients</div>
 					</div>
 				</div>
 				<div class="col-xl-3 col-12">
-					<div class="box">
-						<div class="box-header with-border">
-							<h4 class="box-title">Patient Origin</h4>
-							<ul class="box-controls pull-right d-md-flex d-none">
-							  <li class="dropdown">
-								<button class="dropdown-toggle btn btn-warning-light px-10" data-bs-toggle="dropdown" href="#">Today</button>										  
-								<div class="dropdown-menu dropdown-menu-end">
-								  <a class="dropdown-item active" href="#">Today</a>
-								  <a class="dropdown-item" href="#">Yesterday</a>
-								  <a class="dropdown-item" href="#">Last week</a>
-								  <a class="dropdown-item" href="#">Last month</a>
-								</div>
-							  </li>
-							</ul>
-						</div>
-						<div class="box-body">
-							<div id="revenue5"></div>
-							<div class="d-flex justify-content-center">
-								<p class="d-flex align-items-center fw-600 mx-20"><span class="badge badge-xl badge-dot badge-warning me-20"></span>In Region</p>
-								<p class="d-flex align-items-center fw-600 mx-20"><span class="badge badge-xl badge-dot badge-primary me-20"></span>Out of Region</p>
-							</div>
+					<div class="box box-body bg-info">
+					  <div class="flexbox">
+						<span class="icon-User fs-50"><span class="path1"></span><span class="path2"></span></span>
+						<span class="fs-40 fw-200">{{$totalEncounters}}</span>
+					  </div>
+					  <div class="text-end">Total Patients Encounters</div>
+					</div>
+				</div>
+
+				<div class="col-xl-3 col-12">
+					<div class="box box-body bg-secondary">
+					  <div class="flexbox">
+						<span class="icon-User fs-50"><span class="path1"></span><span class="path2"></span></span>
+						<span class="fs-40 fw-200">{{$totalUniqueDiseases}}
+						</span>
+					  </div>
+					  <div class="text-end">Total Desease Diagnosis</div>
+					</div>
+				</div>
+				<div class="col-xl-3 col-12">
+					<div class="box box-body bg-dark">
+					  <div class="flexbox">
+						<span class="icon-User fs-50"><span class="path1"></span><span class="path2"></span></span>
+						<span class="fs-40 fw-200">{{$totalDeathEvents}}
+						</span>
+					  </div>
+					  <div class="text-end">Total Death</div>
+					</div>
+				</div>
+			
+				
+			</div>
+			<div class="row">
+				<div class="col-12">														
+					<div class="box no-shadow mb-0 bg-transparent">
+						<div class="box-header no-border px-0">
+							<h4 class="box-title">Today's Stastics</h4>	
+							
 						</div>
 					</div>
 				</div>
+				<div class="col-xl-4 col-12">
+					<div class="box box-body bg-success">
+					  <div class="flexbox">
+						<span class="icon-User fs-50"><span class="path1"></span><span class="path2"></span></span>
+						<span class="fs-40 fw-200">{{$todayTotalBirthEvents}}</span>
+					  </div>
+					  <div class="text-end">Today's Birth</div>
+					</div>
+				</div>
+
+				<div class="col-xl-4 col-12">
+					<div class="box box-body bg-img" style="background-image: url(../images/gallery/thumb/7.jpg);">
+					  <div class="flexbox">
+						<span class="icon-User fs-50"><span class="path1"></span><span class="path2"></span></span>
+						<span class="fs-40 fw-200">{{$todayTotalEncounters}}</span>
+					  </div>
+					  <div class="text-end">Today's Encounter</div>
+					</div>
+				</div>
+
+				<div class="col-xl-4 col-12">
+					<div class="box box-body bg-danger">
+					  <div class="flexbox">
+						<span class="icon-User fs-50"><span class="path1"></span><span class="path2"></span></span>
+						<span class="fs-40 fw-200">{{$todayTotalDeathEvents}}</span>
+					  </div>
+					  <div class="text-end">Today's Casualty</div>
+					</div>
+				</div>
+				
+				
 			</div>
-			<div class="row">
+			{{-- <div class="row">
 				<div class="col-12">														
 					<div class="box no-shadow mb-0 bg-transparent">
 						<div class="box-header no-border px-0">
@@ -460,7 +393,7 @@
 						</div>
 					</div>
 				</div>
-			</div>
+			</div> --}}
 		</section>
 		<!-- /.content -->
 	  </div>

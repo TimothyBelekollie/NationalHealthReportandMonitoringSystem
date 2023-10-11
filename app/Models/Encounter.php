@@ -22,8 +22,8 @@ class Encounter extends Model
         return $this->belongsTo(Patient::class, 'patient_id', 'id');
     }
 
-    public function encounterDiagnosis()
+    public function encounterDiagnoses()
     {
-        return $this->hasOne(EncounterDiagnosis::class);
+        return $this->hasMany(EncounterDiagnosis::class, 'encounter_id');
     }
 }

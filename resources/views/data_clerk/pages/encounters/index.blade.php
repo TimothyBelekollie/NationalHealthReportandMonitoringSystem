@@ -77,7 +77,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							@foreach ($allData as $key=> $data)
+							@foreach ($totalPatients as $key=> $data)
 								
 						
 							<tr>

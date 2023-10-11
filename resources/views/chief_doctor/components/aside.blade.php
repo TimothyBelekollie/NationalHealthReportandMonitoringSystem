@@ -69,7 +69,7 @@
 				<li class="treeview">
 					<a href="#">
 					  <i span class="icon-Layout-grid"><span class="path1"></span><span class="path2"></span></i>
-					  <span>Patient Encounters Report</span>
+					  <span>Patient Encounters</span>
 					  <span class="pull-right-container">
 						<i class="fa fa-angle-right pull-right"></i>
 					  </span>

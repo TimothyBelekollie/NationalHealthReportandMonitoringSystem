@@ -4,7 +4,7 @@
 			<span class="icon-Align-left"><span class="path1"></span><span class="path2"></span><span class="path3"></span></span>
 		</a>	
 		<!-- Logo -->
-		<a href="" class="logo">
+		<a href="{{route('dashboard')}}" class="logo">
 		  <!-- logo-->
 		  <div class="logo-lg">
 			  <span class="light-logo"><img src="{{asset('images/logo-dark-text.png')}}" alt="logo"></span>
@@ -22,21 +22,9 @@
 					<span class="icon-Align-left"><span class="path1"></span><span class="path2"></span><span class="path3"></span></span>
 			    </a>
 			</li>
-			<li class="btn-group nav-item d-none d-xl-inline-block">
-				<a href="contact_app_chat.html" class="waves-effect waves-light nav-link svg-bt-icon" title="Chat">
-					<i class="icon-Chat"><span class="path1"></span><span class="path2"></span></i>
-			    </a>
-			</li>
-			<li class="btn-group nav-item d-none d-xl-inline-block">
-				<a href="mailbox.html" class="waves-effect waves-light nav-link svg-bt-icon" title="Mailbox">
-					<i class="icon-Mailbox"><span class="path1"></span><span class="path2"></span></i>
-			    </a>
-			</li>
-			<li class="btn-group nav-item d-none d-xl-inline-block">
-				<a href="extra_taskboard.html" class="waves-effect waves-light nav-link svg-bt-icon" title="Taskboard">
-					<i class="icon-Clipboard-check"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>
-			    </a>
-			</li>
+			
+		
+		
 		</ul> 
 	  </div>
 		

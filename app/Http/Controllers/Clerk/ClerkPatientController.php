@@ -10,7 +10,7 @@ use App\Models\HealthCenter;
 use App\Models\Subdivision;
 use App\Models\Country;
 use App\Http\Requests\PatientRequest;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 
@@ -18,7 +18,15 @@ class ClerkPatientController extends Controller
 {
     //
     public function index(){
-        $data['allPatient']=Patient::latest()->get();
+        //$data['allPatient']=Patient::latest()->get();
+        
+
+           // Get the currently logged-in data clerk
+           $dataClerk = Auth::user();
+           // Get the hospital assigned to the data clerk
+             $hospital = $dataClerk->healthCenter;
+           // Get the total number of patients for the hospital
+             $data['allPatient'] = Patient::where('health_center_id', $hospital->id)->get();
 
         return view('data_clerk.pages.patients.index',$data);
     }

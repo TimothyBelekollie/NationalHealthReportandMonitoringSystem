@@ -1,4 +1,3 @@
-
 @extends('chief_doctor.master')
 @section('chief_doctor')
 
@@ -18,7 +17,7 @@
 									<h2>Hello {{Auth::user()->name}}, Welcome Back!</h2>
 									<p class="text-dark mb-0 fs-16">
 										
-                                        This is the John Brown Hospital Data Clerk Dashboard. Data can overwhelming but take your time.
+                                        This is the John Brown Hospital {{Auth::user()->role->name}} Dashboard. Data can overwhelming but take your time.
 									</p>
 								</div>
 							</div>
@@ -43,113 +42,60 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-xl-4 col-md-6 col-12">
-					<div class="box bg-secondary-light pull-up" style="background-image: url({{asset('images/svg-icon/color-svg/st-1.svg')}}); background-position: right bottom; background-repeat: no-repeat;">
-						<div class="box-body">	
-							<div class="flex-grow-1">	
-								<div class="d-flex align-items-center pe-2 justify-content-between">
-									<div class="d-flex">									
-										<span class="badge badge-primary me-15">Birth</span>
-										<span class="badge badge-primary me-5"><i class="fa fa-lock"></i></span>
-										<span class="badge badge-primary"><i class="fa fa-clock-o"></i></span>
-									</div>
-									<div class="dropdown">
-										<a data-bs-toggle="dropdown" href="#" class="px-10 pt-5"><i class="ti-more-alt"></i></a>
-										<div class="dropdown-menu dropdown-menu-end">
-										  <a class="dropdown-item" href="#"><i class="ti-import"></i> Import</a>
-										  <a class="dropdown-item" href="#"><i class="ti-export"></i> Export</a>
-										  <a class="dropdown-item" href="#"><i class="ti-printer"></i> Print</a>
-										  <div class="dropdown-divider"></div>
-										  <a class="dropdown-item" href="#"><i class="ti-settings"></i> Settings</a>
-										</div>
-									</div>						
-								</div>
-								<h4 class="mt-25 mb-5">Over all Total</h4>
-								<p class="text-fade mb-0 fs-12">45</p>
-							</div>	
-						</div>					
+				<div class="col-xl-3 col-12">
+					<div class="flexbox flex-justified text-center bg-primary rounded10 overflow-hidden">
+					  <div class="no-shrink py-30">
+						<span class="icon-Equalizer fs-50"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></span>
+					  </div>
+	
+					  <div class="py-30 bg-white text-dark">
+						<div class="fs-30">+85</div>
+						<span> Total Pioneer Patients</span>
+					  </div>
 					</div>
 				</div>
-				<div class="col-xl-4 col-md-6 col-12">
-					<div class="box bg-secondary-light pull-up" style="background-image: url({{asset('images/svg-icon/color-svg/st-2.svg')}}); background-position: right bottom; background-repeat: no-repeat;">
-						<div class="box-body">	
-							<div class="flex-grow-1">	
-								<div class="d-flex align-items-center pe-2 justify-content-between">
-									<div class="d-flex">									
-										<span class="badge badge-dark me-15">Death</span>
-									</div>
-									<div class="dropdown">
-										<a data-bs-toggle="dropdown" href="#" class="px-10 pt-5"><i class="ti-more-alt"></i></a>
-										<div class="dropdown-menu dropdown-menu-end">
-										  <a class="dropdown-item" href="#"><i class="ti-import"></i> Import</a>
-										  <a class="dropdown-item" href="#"><i class="ti-export"></i> Export</a>
-										  <a class="dropdown-item" href="#"><i class="ti-printer"></i> Print</a>
-										  <div class="dropdown-divider"></div>
-										  <a class="dropdown-item" href="#"><i class="ti-settings"></i> Settings</a>
-										</div>
-									</div>						
-								</div>
-								<h4 class="mt-25 mb-5">Over all Total</h4>
-								<p class="text-fade mb-0 fs-12">100</p>
-							</div>	
-						</div>					
+				<div class="col-xl-3 col-12">
+					<div class="flexbox flex-justified text-center bg-white rounded10 overflow-hidden">
+					  <div class="no-shrink py-30">
+						<span class="icon-Like fs-50 text-info"><span class="path1"></span><span class="path2"></span></span>
+					  </div>
+	
+					  <div class="py-30 bg-info-light">
+						<div class="fs-30">+512</div>
+						<span>Total Encounters</span>
+					  </div>
 					</div>
 				</div>
-				<div class="col-xl-4 col-md-6 col-12">
-					<div class="box bg-secondary-light pull-up" style="background-image: url({{asset('images/svg-icon/color-svg/st-3.svg')}}); background-position: right bottom; background-repeat: no-repeat;">
-						<div class="box-body">	
-							<div class="flex-grow-1">	
-								<div class="d-flex align-items-center pe-2 justify-content-between">
-									<div class="d-flex">									
-										<span class="badge badge-primary me-15">Patients</span>
-										<span class="badge badge-primary me-5"><i class="fa fa-lock"></i></span>
-									</div>
-									<div class="dropdown">
-										<a data-bs-toggle="dropdown" href="#" class="px-10 pt-5"><i class="ti-more-alt"></i></a>
-										<div class="dropdown-menu dropdown-menu-end">
-										  <a class="dropdown-item" href="#"><i class="ti-import"></i> Import</a>
-										  <a class="dropdown-item" href="#"><i class="ti-export"></i> Export</a>
-										  <a class="dropdown-item" href="#"><i class="ti-printer"></i> Print</a>
-										  <div class="dropdown-divider"></div>
-										  <a class="dropdown-item" href="#"><i class="ti-settings"></i> Settings</a>
-										</div>
-									</div>						
-								</div>
-								<h4 class="mt-25 mb-5">Over all Total</h4>
-								<p class="text-fade mb-0 fs-12">150</p>
-							</div>	
-						</div>					
+				<div class="col-xl-3 col-12">
+					<div class="flexbox flex-justified text-center bg-white rounded10 overflow-hidden">
+					  <div class="no-shrink py-30">
+						<span class="icon-Chart-line fs-50 text-success"><span class="path1"></span><span class="path2"></span></span>
+					  </div>
+	
+					  <div class="py-30 bg-success-light">
+						<div class="fs-30">+85</div>
+						<span>Total Birth</span>
+					  </div>
 					</div>
 				</div>
-				<!-- <div class="col-xl-3 col-md-6 col-12">
-					<div class="box bg-secondary-light pull-up" style="background-image: url(../images/svg-icon/color-svg/st-4.svg); background-position: right bottom; background-repeat: no-repeat;">
-						<div class="box-body">	
-							<div class="flex-grow-1">	
-								<div class="d-flex align-items-center pe-2 justify-content-between">
-									<div class="d-flex">									
-										<span class="badge badge-warning-light me-15">Paused</span>
-										<span class="badge badge-warning-light me-5"><i class="fa fa-lock"></i></span>
-									</div>
-									<div class="dropdown">
-										<a data-bs-toggle="dropdown" href="#" class="px-10 pt-5"><i class="ti-more-alt"></i></a>
-										<div class="dropdown-menu dropdown-menu-end">
-										  <a class="dropdown-item" href="#"><i class="ti-import"></i> Import</a>
-										  <a class="dropdown-item" href="#"><i class="ti-export"></i> Export</a>
-										  <a class="dropdown-item" href="#"><i class="ti-printer"></i> Print</a>
-										  <div class="dropdown-divider"></div>
-										  <a class="dropdown-item" href="#"><i class="ti-settings"></i> Settings</a>
-										</div>
-									</div>						
-								</div>
-								<h4 class="mt-25 mb-5">Network Security</h4>
-								<p class="text-fade mb-0 fs-12">21 Days Left</p>
-							</div>	
-						</div>					
+				<div class="col-xl-3 col-12">
+					<div class="flexbox flex-justified text-center bg-white rounded10 overflow-hidden">
+					  <div class="no-shrink py-30">
+						<span class="icon-Chart-line fs-50 text-success"><span class="path1"></span><span class="path2"></span></span>
+					  </div>
+	
+					  <div class="py-30 bg-secondary-light">
+						<div class="fs-30">-85</div>
+						<span>Birth</span>
+					  </div>
 					</div>
-				</div> -->
+				</div>
+				
+				
+				
 			</div>
 			<div class="row">
-				<div class="col-xl-4 col-12">
+				<div class="col-xl-6 col-12">
 					<div class="box">
 						<div class="box-body">
 							<p class="text-fade">Majority Report</p>
@@ -158,7 +104,16 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-xl-5 col-12">
+				<div class="col-xl-6 col-12">
+					<div class="box">
+						<div class="box-body">
+							<p class="text-fade">Majority Report</p>
+							<!-- <h3 class="mt-0 mb-20">19 <small class="text-success"><i class="fa fa-arrow-up ms-15 me-5"></i> 2 New</small></h3> -->
+							<div id="charts_widget_2_chart"></div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-12 col-12">
 					<div class="box">
 						<div class="box-body">
 							<p class="text-fade">Hours spent</p>
@@ -167,33 +122,9 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-xl-3 col-12">
-					<div class="box">
-						<div class="box-header with-border">
-							<h4 class="box-title">Patient Origin</h4>
-							<ul class="box-controls pull-right d-md-flex d-none">
-							  <li class="dropdown">
-								<button class="dropdown-toggle btn btn-warning-light px-10" data-bs-toggle="dropdown" href="#">Today</button>										  
-								<div class="dropdown-menu dropdown-menu-end">
-								  <a class="dropdown-item active" href="#">Today</a>
-								  <a class="dropdown-item" href="#">Yesterday</a>
-								  <a class="dropdown-item" href="#">Last week</a>
-								  <a class="dropdown-item" href="#">Last month</a>
-								</div>
-							  </li>
-							</ul>
-						</div>
-						<div class="box-body">
-							<div id="revenue5"></div>
-							<div class="d-flex justify-content-center">
-								<p class="d-flex align-items-center fw-600 mx-20"><span class="badge badge-xl badge-dot badge-warning me-20"></span>In Region</p>
-								<p class="d-flex align-items-center fw-600 mx-20"><span class="badge badge-xl badge-dot badge-primary me-20"></span>Out of Region</p>
-							</div>
-						</div>
-					</div>
-				</div>
+				
 			</div>
-			<div class="row">
+			{{-- <div class="row">
 				<div class="col-12">														
 					<div class="box no-shadow mb-0 bg-transparent">
 						<div class="box-header no-border px-0">
@@ -461,7 +392,7 @@
 						</div>
 					</div>
 				</div>
-			</div>
+			</div> --}}
 		</section>
 		<!-- /.content -->
 	  </div>
