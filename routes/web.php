@@ -13,6 +13,9 @@ use App\Http\Controllers\Clerk\ClerkDeathEventController;
 // Chief Doctor Controllers
 use App\Http\Controllers\ChiefDoctor\ChiefDoctorProfileController;
 use App\Http\Controllers\ChiefDoctor\DoctorDataClerkController;
+use App\Http\Controllers\ChiefDoctor\DoctorBirthReportController;
+use App\Http\Controllers\ChiefDoctor\DoctorDeathReportController;
+use App\Http\Controllers\ChiefDoctor\DoctorPatientReportController;
 
 
 // Health Officer Controllers
@@ -126,9 +129,6 @@ Route::middleware(['auth:sanctum','verified','role:health_officer'])->group(func
 
 
 
-
-
-
 // SECTION OF  CHIEF_DOCTOR
 Route::middleware(['auth:sanctum','verified','role:chief_doctor'])->group(function (){
     Route::get('/chief-doctor/profile',[ChiefDoctorProfileController::class,'index'])->name('doctor.profile.index');
@@ -146,7 +146,15 @@ Route::middleware(['auth:sanctum','verified','role:chief_doctor'])->group(functi
      Route::get('/chief-doctor/edit-clerk/{id}',[DoctorDataClerkController::class,'Edit'])->name('doctor.edit_clerk');
      Route::post('/chief-doctor/update-clerk/{id}',[DoctorDataClerkController::class,'Update'])->name('doctor.update_clerk');
      Route::get('/chief-doctor/delete-clerk/{id}',[DoctorDataClerkController::class,'Destroy'])->name('doctor.destroy_clerk');
-  
+
+     //Report
+  //Birth Report
+     Route::get('/chief-doctor/birth-report',[DoctorBirthReportController::class,'birthDetail'])->name('doctor.detail_birth');
+
+     //Death Report
+     Route::get('/chief-doctor/death-report',[DoctorDeathReportController::class,'deathDetail'])->name('doctor.detail_death');
+    //Patient Report
+     Route::get('/chief-doctor/patient-report',[DoctorPatientReportController::class,'patientDetail'])->name('doctor.detail_patient');
 
 });
 

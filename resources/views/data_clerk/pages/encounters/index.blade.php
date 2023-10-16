@@ -77,27 +77,28 @@
 							</tr>
 						</thead>
 						<tbody>
-							@foreach ($totalPatients as $key=> $data)
+							@foreach ($allPatients as $key=> $data)
 								
 						
 							<tr>
 								<td>{{$key+1}}</td>
 								<td>{{$data->patient->name}}</td>
 								<td>{{$data->healthCenter->name}}</td>
-								<td>{{$data->encounterDiagnosis->diagnosisCode}}</td>
-								<td>@foreach ($data->encounterDiagnosis->testConducted as $value)
+								<td>{{$data->encounterDiagno->diagnosisCode}}</td>
+								<td>
+									@foreach ($data->encounterDiagno->testConducted as $value)
 									{{ $value }}<br>
 								    @endforeach 
 								
 								
 							    </td>
 								 <td>
-									@foreach ($data->encounterDiagnosis->diagnosisDescription as $value)
+									@foreach ($data->encounterDiagno->diagnosisDescription as $value)
 									{{ $value }}<br>
 								    @endforeach 
 								
 								</td> 
-								<td>{{$data->encounterDiagnosis->doctor_prescription}}</td>
+								<td>{{$data->encounterDiagno->doctor_prescription}}</td>
 								
 								<td><a href="{{route('clerk.pat.encounter.edit',$data->id)}}">Edit</a> <a href="">Detail</a> <a href="{{route('clerk.pat.encounter.destroy',$data->id)}}">Delete</a></td>
 							</tr>

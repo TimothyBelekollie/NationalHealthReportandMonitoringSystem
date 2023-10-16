@@ -17,7 +17,7 @@
 									<h2>Hello {{Auth::user()->name}}, Welcome Back!</h2>
 									<p class="text-dark mb-0 fs-16">
 										
-                                        This is the John Brown Hospital Data Clerk Dashboard. Data can overwhelming but take your time.
+                                        This is the {{Auth::user()->healthCenter->name}} Data Clerk Dashboard. Data can overwhelming but take your time.
 									</p>
 								</div>
 							</div>
@@ -28,7 +28,7 @@
 					<div class="box bg-transparent no-shadow">
 						<div class="box-body p-xl-0 text-center">							
 							<h3 class="px-30 mb-20">Child is<br> born?</h3>
-							<button type="button" class="waves-effect waves-light w-p100 btn btn-primary"><i class="fa fa-plus me-15"></i> Record new Child Birth Here</button>
+							<a href="{{route('clerk.pat.birth.add')}}" class="waves-effect waves-light w-p100 btn btn-primary"><i class="fa fa-plus me-15"></i> Record new Child Birth Here</a>
 						</div>
 					</div>
 				</div>

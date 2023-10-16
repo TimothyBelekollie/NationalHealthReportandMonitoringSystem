@@ -6,7 +6,7 @@
     <meta name="author" content="">
     <link rel="icon" href="{{asset('images/favicon.ico')}}">
 
-    <title>Clerk- Dashboard</title>
+    <title>National Health Monitoring and Reporting System- Doctor Dashboard</title>
     
 	<!-- Vendors Style-->
 	<link rel="stylesheet" href="{{asset('css/vendors_css.css')}}">
@@ -14,5 +14,7 @@
 	<!-- Style-->  
 	<link rel="stylesheet" href="{{asset('css/style.css')}}">
 	<link rel="stylesheet" href="{{asset('css/skin_color.css')}}">
+	<!-- chart js-->  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
      
   </head>

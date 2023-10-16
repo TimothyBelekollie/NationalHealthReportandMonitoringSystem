@@ -24,6 +24,11 @@ class Encounter extends Model
 
     public function encounterDiagnoses()
     {
-        return $this->hasMany(EncounterDiagnosis::class, 'encounter_id');
+        return $this->hasMany(EncounterDiagnosis::class,'encounter_id');
+    }
+
+    public function encounterDiagno()
+    {
+        return $this->hasOne(EncounterDiagnosis::class,'encounter_id');
     }
 }

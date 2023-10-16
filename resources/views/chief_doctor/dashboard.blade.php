@@ -2,7 +2,6 @@
 @section('chief_doctor')
 
   <!-- Content Wrapper. Contains page content -->
-  
   <div class="content-wrapper">
 	  <div class="container-full">
 		<!-- Main content -->
@@ -17,7 +16,7 @@
 									<h2>Hello {{Auth::user()->name}}, Welcome Back!</h2>
 									<p class="text-dark mb-0 fs-16">
 										
-                                        This is the John Brown Hospital {{Auth::user()->role->name}} Dashboard. Data can overwhelming but take your time.
+                                        This is the {{Auth::user()->healthCenter->name}} {{Auth::user()->role->name}} Dashboard. Data can overwhelming but take your time.
 									</p>
 								</div>
 							</div>
@@ -27,8 +26,8 @@
 				<div class="col-xl-3 col-12">
 					<div class="box bg-transparent no-shadow">
 						<div class="box-body p-xl-0 text-center">							
-							<h3 class="px-30 mb-20">Child is<br> born?</h3>
-							<button type="button" class="waves-effect waves-light w-p100 btn btn-primary"><i class="fa fa-plus me-15"></i> Record new Child Birth Here</button>
+							<h3 class="px-30 mb-20">Have new<br> Data Clerk?</h3>
+							<a href="{{route('doctor.add_clerk')}}" class="waves-effect waves-light w-p100 btn btn-primary"><i class="fa fa-plus me-15"></i> Record New Data Clerk Here</a>
 						</div>
 					</div>
 				</div>
@@ -37,19 +36,19 @@
 				<div class="col-12">														
 					<div class="box no-shadow mb-0 bg-transparent">
 						<div class="box-header no-border px-0">
-							<h4 class="box-title">Your Statistics</h4>	
+							<h4 class="box-title text-primary">Your Overall Statistics</h4>	
 							
 						</div>
 					</div>
 				</div>
 				<div class="col-xl-3 col-12">
-					<div class="flexbox flex-justified text-center bg-primary rounded10 overflow-hidden">
+					<div class="flexbox flex-justified text-center bg-dark rounded10 overflow-hidden">
 					  <div class="no-shrink py-30">
 						<span class="icon-Equalizer fs-50"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></span>
 					  </div>
 	
 					  <div class="py-30 bg-white text-dark">
-						<div class="fs-30">+85</div>
+						<div class="fs-30">+{{$totalPatients}}</div>
 						<span> Total Pioneer Patients</span>
 					  </div>
 					</div>
@@ -60,8 +59,8 @@
 						<span class="icon-Like fs-50 text-info"><span class="path1"></span><span class="path2"></span></span>
 					  </div>
 	
-					  <div class="py-30 bg-info-light">
-						<div class="fs-30">+512</div>
+					  <div class="py-30 bg-primary">
+						<div class="fs-30">+{{$totalEncounters}}</div>
 						<span>Total Encounters</span>
 					  </div>
 					</div>
@@ -73,7 +72,7 @@
 					  </div>
 	
 					  <div class="py-30 bg-success-light">
-						<div class="fs-30">+85</div>
+						<div class="fs-30">+{{$totalBirthEvents}}</div>
 						<span>Total Birth</span>
 					  </div>
 					</div>
@@ -85,8 +84,70 @@
 					  </div>
 	
 					  <div class="py-30 bg-secondary-light">
-						<div class="fs-30">-85</div>
-						<span>Birth</span>
+						<div class="fs-30">-{{$totalDeathEvents}}</div>
+						<span>Total Death</span>
+					  </div>
+					</div>
+				</div>
+				
+				
+				
+			</div>
+
+			<div class="row">
+				<div class="col-12">														
+					<div class="box no-shadow mb-0 bg-transparent">
+						<div class="box-header no-border px-0">
+							<h4 class="box-title text-primary">Your Today's Statistics</h4>	
+							
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-3 col-12">
+					<div class="flexbox flex-justified text-center bg-dark rounded10 overflow-hidden">
+					  <div class="no-shrink py-30">
+						<span class="icon-Equalizer fs-50"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></span>
+					  </div>
+	
+					  <div class="py-30 bg-white text-dark">
+						<div class="fs-30">+{{$todayTotalPatients}}</div>
+						<span> Total Pioneer Patients</span>
+					  </div>
+					</div>
+				</div>
+				<div class="col-xl-3 col-12">
+					<div class="flexbox flex-justified text-center bg-white rounded10 overflow-hidden">
+					  <div class="no-shrink py-30">
+						<span class="icon-Like fs-50 text-info"><span class="path1"></span><span class="path2"></span></span>
+					  </div>
+	
+					  <div class="py-30 bg-primary">
+						<div class="fs-30">+{{$todayTotalEncounters}}</div>
+						<span>Total Encounters</span>
+					  </div>
+					</div>
+				</div>
+				<div class="col-xl-3 col-12">
+					<div class="flexbox flex-justified text-center bg-white rounded10 overflow-hidden">
+					  <div class="no-shrink py-30">
+						<span class="icon-Chart-line fs-50 text-success"><span class="path1"></span><span class="path2"></span></span>
+					  </div>
+	
+					  <div class="py-30 bg-success-light">
+						<div class="fs-30">+{{$todayTotalBirthEvents}}</div>
+						<span>Total Birth</span>
+					  </div>
+					</div>
+				</div>
+				<div class="col-xl-3 col-12">
+					<div class="flexbox flex-justified text-center bg-white rounded10 overflow-hidden">
+					  <div class="no-shrink py-30">
+						<span class="icon-Chart-line fs-50 text-success"><span class="path1"></span><span class="path2"></span></span>
+					  </div>
+	
+					  <div class="py-30 bg-secondary-light">
+						<div class="fs-30">-{{$todayTotalDeathEvents}}</div>
+						<span>Total Death</span>
 					  </div>
 					</div>
 				</div>
@@ -95,30 +156,38 @@
 				
 			</div>
 			<div class="row">
-				<div class="col-xl-6 col-12">
-					<div class="box">
-						<div class="box-body">
-							<p class="text-fade">Majority Report</p>
-							<!-- <h3 class="mt-0 mb-20">19 <small class="text-success"><i class="fa fa-arrow-up ms-15 me-5"></i> 2 New</small></h3> -->
-							<div id="charts_widget_2_chart"></div>
+				<div class="col-12">														
+					<div class="box no-shadow mb-0 bg-transparent">
+						<div class="box-header no-border px-0">
+							<h4 class="box-title"></h4>	
+							
 						</div>
 					</div>
 				</div>
 				<div class="col-xl-6 col-12">
 					<div class="box">
 						<div class="box-body">
-							<p class="text-fade">Majority Report</p>
+							<p class="text-fade text-primary">Birth Report Per Month in {{ date('Y') }}</p>
 							<!-- <h3 class="mt-0 mb-20">19 <small class="text-success"><i class="fa fa-arrow-up ms-15 me-5"></i> 2 New</small></h3> -->
-							<div id="charts_widget_2_chart"></div>
+							<canvas id="birthChart"></canvas>
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-6 col-12">
+					<div class="box">
+						<div class="box-body">
+							<p class="text-fade text-primary">Death Report Per Month in {{ date('Y') }}</p>
+							<!-- <h3 class="mt-0 mb-20">19 <small class="text-success"><i class="fa fa-arrow-up ms-15 me-5"></i> 2 New</small></h3> -->
+							<canvas id="deathChart"></canvas>
 						</div>
 					</div>
 				</div>
 				<div class="col-xl-12 col-12">
 					<div class="box">
 						<div class="box-body">
-							<p class="text-fade">Hours spent</p>
-							<h3 class="mt-0 mb-20">21 h 30 min <small class="text-danger"><i class="fa fa-arrow-down ms-25 me-5"></i> 15%</small></h3>
-							<div id="charts_widget_1_chart"></div>
+							<p class="text-fade text-primary">Birth VS Death Events in {{date('Y')}}</p>
+							{{-- <h3 class="mt-0 mb-20">21 h 30 min <small class="text-danger"><i class="fa fa-arrow-down ms-25 me-5"></i> 15%</small></h3> --}}
+							<canvas id="eventComparisonChart"></canvas>
 						</div>
 					</div>
 				</div>
@@ -400,6 +469,62 @@
   <!-- /.content-wrapper -->
 
 
+<script>
+	var ctx=document.getElementById('birthChart').getContext('2d');
+	var birthChart=new Chart(ctx,{
+type:'bar',
+data:{
+	labels:{!!json_encode($labels)!!},
+	datasets:{!!json_encode($datasets)!!}
+},
+	});
+</script>
+
+<script>
+	var ctx=document.getElementById('deathChart').getContext('2d');
+	var deathChart=new Chart(ctx,{
+type:'bar',
+data:{
+	labels:{!!json_encode($deathlabels)!!},
+	datasets:{!!json_encode($deathdatasets)!!}
+},
+	});
+</script>
+
+<script>
+    var ctx = document.getElementById('eventComparisonChart').getContext('2d');
+
+    var monthlyCounts = @json($monthlyCounts);
+    var months = @json($months);
+
+    var eventComparisonChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: months,
+            datasets: [
+                {
+                    label: 'Birth Events',
+                    data: monthlyCounts['Birth Events'],
+                    backgroundColor: 'rgba(75, 192, 192, 0.5)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Death Events',
+                    data: monthlyCounts['Death Events'],
+                    backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                    borderWidth: 1
+                }
+            ]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
 @endsection
  
   

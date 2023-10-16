@@ -85,7 +85,7 @@
 							<div class="form-group">
 								<label  class="form-label">Diagnosis Code* :</label>
 								
-								<input type="text" class="form-control"  name="diagnosisCode" value="{{$encounter->encounterDiagnosis->diagnosisCode}}">
+								<input type="text" class="form-control"  name="diagnosisCode" value="{{$encounter->encounterDiagno->diagnosisCode}}">
 
 								@error('nationality')
 								<span class="text-danger">{{ $message }}</span>
@@ -108,7 +108,7 @@
 									<label for="example-text-input" class="">Test Conducted<span class="text-danger">*</span></label>
 	
 									<div class="tags-default">
-                                        @foreach ($encounter->encounterDiagnosis->testConducted as $data)
+                                        @foreach ($encounter->encounterDiagno->testConducted as $data)
 										<input type="text" name="testConducted" value="{{$data}}" data-role="tagsinput" placeholder="Add Test" /> </div>
                                         @endforeach
 								</div>
@@ -120,7 +120,7 @@
 									<label for="example-text-input" class="">Test Diagnosed Positive<span class="text-danger">*</span></label>
 	
 									<div class="tags-default">
-                                        @foreach ($encounter->encounterDiagnosis->diagnosisDescription as $data)
+                                        @foreach ($encounter->encounterDiagno->diagnosisDescription as $data)
                                        
 										<input type="text" name="diagnosisDescription" value="{{$data}}" data-role="tagsinput" placeholder="Add Test" /> </div>
                                         @endforeach
@@ -132,7 +132,7 @@
 								<div class="form-group">
 									<label for="example-text-input" class="">Doctor's Prescription<span class="text-danger">*</span></label>
 	
-									<textarea rows="5" class="form-control" placeholder="Prescibe medication for your patient" name="doctor_prescription">{!!$encounter->encounterDiagnosis->doctor_prescription!!}</textarea>
+									<textarea rows="5" class="form-control" placeholder="Prescibe medication for your patient" name="doctor_prescription">{!!$encounter->encounterDiagno->doctor_prescription!!}</textarea>
 	
 								</div>
 	

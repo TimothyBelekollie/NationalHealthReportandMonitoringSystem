@@ -23,7 +23,13 @@ class ClerkPatientEncounterController extends Controller
              $hospital = $dataClerk->healthCenter;
 
            // Get the total number of patients for the hospital
-             $data['totalPatients'] = Encounter::where('health_center_id', $hospital->id)->get();
+            // $data['allPatients'] = Encounter::where('health_center_id', $hospital->id)->latest()->get();
+
+            $data['allPatients'] = Encounter::with('encounterDiagno')
+            ->where('health_center_id', $hospital->id)
+            ->latest()
+            ->get();
+
         return view('data_clerk.pages.encounters.index',$data);
     }
     public function add(){
