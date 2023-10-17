@@ -19,4 +19,9 @@
 		<script src="{{asset('assets/vendor_components/datatable/datatables.min.js')}}"></script>
 		<script src="{{asset('js/pages/advanced-form-element.js')}}"></script>
 	
+	{{-- report --}}
+	<script src="{{asset('assets/vendor_plugins/JqueryPrintArea/demo/jquery.PrintArea.js')}}"></script>
+	<script src="{{asset('js/pages/invoice.js')}}"></script>
+
+
 	

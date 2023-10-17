@@ -15,5 +15,8 @@
 <link rel="stylesheet" href="{{asset('css/horizontal-menu.css')}}"> 
 <link rel="stylesheet" href="{{asset('css/style.css')}}">
 <link rel="stylesheet" href="{{asset('css/skin_color.css')}}">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
    
 </head>

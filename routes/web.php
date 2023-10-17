@@ -59,7 +59,7 @@ Route::middleware([
 
 
 
-//SECTION OF  Health Minister
+//************************************SECTION OF  Health Minister************************************
 Route::middleware(['auth:sanctum','verified','role:health_minister'])->group(function (){
     Route::get('/health-minister/profile',[HealthMinisterProfileController::class,'index'])->name('minister.profile.index');
     Route::get('/health-minister/profile/edit',[HealthMinisterProfileController::class,'edit'])->name('minister.profile.edit');

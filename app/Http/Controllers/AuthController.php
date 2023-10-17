@@ -13,7 +13,11 @@ use App\Models\HealthCenter;
 use App\Models\Encounter;
 use App\Models\EncounterDiagnosis;
 use App\Models\BirthEvent;
+use App\Models\Subdivision;
+use App\Models\Division;
+
 use App\Models\DeathEvent;
+
 use Carbon\Carbon;
 
 class AuthController extends Controller
@@ -49,8 +53,222 @@ class AuthController extends Controller
             return view('ministry_of_health.dashboard');
         }
         elseif($role=="health_officer"){
+            $today = Carbon::now()->toDateString();
+            $authenticatedUser = Auth::user(); // Assuming the authenticated user has a relationship to Division
+            $division = $authenticatedUser->division; // Get the user's division
+            $healthCentersCount = 0;
+            // Start by counting health centers in the division's subdivisions
+            $subdivision = $division->subdivision;
+            
+            foreach ($subdivision as $subdivision) {
+                    $healthCentersCount += $subdivision->healthCenters()->count();
+                    //$todayhealthCentersCount += $subdivision->healthCenters()->whereDate('created_at', $today)->count();
+                }
+ //**************************Today Register Health Center****************************** */               
+                $todayhealthCentersCount = 0;
+                $subdivisions = $division->subdivision;
+                foreach ($subdivisions as $currentSubdivision) {
+                    if ($currentSubdivision) {
+                        $todayhealthCentersCount += $currentSubdivision->healthCenters()->whereDate('created_at', $today)->count();
+                    }
+                }
 
-            return view('health_officer.dashboard');
+
+//**********************************TOTAL PATIENTS PER DIVISION********************* */
+                $officer = Auth::user();
+                $division = $officer->division;
+                $subdivisions = $division->subdivisions;
+                $patientEncounters = 0;
+                $todaypatientEncounters = 0;
+                 
+                
+                foreach ($subdivisions as $subdivision) {
+                    $healthCenters = $subdivision->healthCenters;
+                    
+                    foreach ($healthCenters as $healthCenter) {
+                        $patientEncounters += $healthCenter->encounters()->count();
+                    }
+                }
+
+//**********************************TODAY TOTAL PATIENTS PER DIVISION********************* */
+                $todaypatientEncounters = 0; 
+                                
+                foreach ($subdivisions as $subdivision) {
+                    $healthCenters = $subdivision->healthCenters;
+                    
+                    foreach ($healthCenters as $healthCenter) {
+                        $todaypatientEncounters += $healthCenter->encounters()->whereDate('created_at', $today)->count();
+                    }
+                }
+        
+
+//**********************************TOTAL BIRTH EVENTS PER DIVISION********************* */
+
+            $birthEvents = 0;
+
+          foreach ($subdivisions as $subdivision) {
+            $healthCenters = $subdivision->healthCenters;
+            
+            foreach ($healthCenters as $healthCenter) {
+             $birthEvents += $healthCenter->birthEvents()->count();
+            }
+        }
+
+//**********************************TODAY TOTAL BIRTH EVENTS PER DIVISION********************* */
+$todaybirthEvents = 0;
+
+foreach ($subdivisions as $subdivision) {
+  $healthCenters = $subdivision->healthCenters;
+  
+  foreach ($healthCenters as $healthCenter) {
+      $todaybirthEvents += $healthCenter->birthEvents()->whereDate('created_at', $today)->count();
+  }
+}
+
+
+
+
+
+//**********************************TOTAL DEATH EVENTS PER DIVISION********************* */
+       
+$deathEvents = 0;
+
+foreach ($subdivisions as $subdivision) {
+  $healthCenters = $subdivision->healthCenters;
+  
+  foreach ($healthCenters as $healthCenter) {
+      $deathEvents += $healthCenter->deathEvents()->count();
+  }
+}
+//dd($deathEvents);
+
+//**********************************TODAY TOTAL DEATH EVENTS PER DIVISION********************* */
+$todaydeathEvents = 0;
+
+foreach ($subdivisions as $subdivision) {
+  $healthCenters = $subdivision->healthCenters;
+  
+  foreach ($healthCenters as $healthCenter) {
+      $todaydeathEvents += $healthCenter->deathEvents()->whereDate('created_at', $today)->count();
+  }
+}
+     
+
+//***********************************************************CARD DYNAMIC DATA END*************************************************** */
+
+
+
+//*********************************************************** Bar chart of Patients Encounters Per Month *************************************************** */
+$officer = Auth::user();
+$division = $officer->division;
+$subdivisions = $division->subdivisions;
+
+// Initialize an array to store encounter counts for each month
+$encounterCounts = array_fill(1, 12, 0);
+
+foreach ($subdivisions as $subdivision) {
+    $healthCenters = $subdivision->healthCenters;
+
+    foreach ($healthCenters as $healthCenter) {
+        $encounters = $healthCenter->encounters()
+            ->whereYear('created_at', Carbon::now()->year)
+            ->get();
+
+        // Iterate through encounters and add counts to corresponding months
+        foreach ($encounters as $encounter) {
+            $month = $encounter->created_at->month;
+            $encounterCounts[$month]++;
+        }
+    }
+}
+
+
+//*********************************************************** Bar chart of Patients BirthEvents Per Month *************************************************** */
+$birthEventsCounts = array_fill(1, 12, 0);
+
+foreach ($subdivisions as $subdivision) {
+    $healthCenters = $subdivision->healthCenters;
+
+    foreach ($healthCenters as $healthCenter) {
+        $birthEvents = $healthCenter->birthEvents()
+            ->whereYear('created_at', Carbon::now()->year)
+            ->get();
+
+        // Iterate through encounters and add counts to corresponding months
+        foreach ($birthEvents as $birthEvent) {
+            $month = $birthEvent->created_at->month;
+            $birthEventsCounts[$month]++;
+        }
+    }
+}
+
+
+//*********************************************************** Bar chart of Patients DeathEvents Per Month *************************************************** */
+$deathEventsCounts = array_fill(1, 12, 0);
+
+foreach ($subdivisions as $subdivision) {
+    $healthCenters = $subdivision->healthCenters;
+
+    foreach ($healthCenters as $healthCenter) {
+        $deathEvents = $healthCenter->deathEvents()
+            ->whereYear('created_at', Carbon::now()->year)
+            ->get();
+
+        // Iterate through encounters and add counts to corresponding months
+        foreach ($deathEvents as $deathEvent) {
+            $month = $deathEvent->created_at->month;
+            $deathEventsCounts[$month]++;
+        }
+    }
+}
+ 
+
+//*********************************************************** HealthCenters Per Subdivision *************************************************** */
+
+
+$officer = Auth::user();
+$division = $officer->division;
+$subdivisions = $division->subdivisions;
+
+// Initialize an array to store health center counts per subdivision
+$healthCenterCounts = [];
+
+foreach ($subdivisions as $subdivision) {
+    $healthCenterCounts[$subdivision->name] = $subdivision->healthCenters()->count();
+}
+
+
+//*********************************************************** Patient Encounters Per Subdivision *************************************************** */
+
+$officer = Auth::user();
+$division = $officer->division;
+$subdivisions = $division->subdivisions;
+
+// Initialize an array to store encounter counts per subdivision for each month
+$encounterCountsBySubdivision = [];
+
+foreach ($subdivisions as $subdivision) {
+    $subdivisionName = $subdivision->name;
+    
+    $encounterCountsBySubdivision[$subdivisionName] = [];
+
+    for ($month = 1; $month <= 12; $month++) {
+        $encounterCount = $subdivision->healthCenters->reduce(function ($carry, $healthCenter) use ($month) {
+            return $carry + $healthCenter->encounters()
+                ->whereYear('created_at', Carbon::now()->year)
+                ->whereMonth('created_at', $month)
+                ->count();
+        }, 0);
+
+        $encounterCountsBySubdivision[$subdivisionName][$month] = $encounterCount;
+    }
+}
+               
+
+            
+            
+
+            return view('health_officer.dashboard', compact('encounterCountsBySubdivision','healthCenterCounts','encounterCounts','birthEventsCounts','deathEventsCounts','healthCentersCount','todayhealthCentersCount','patientEncounters','todaypatientEncounters','birthEvents','todaybirthEvents','deathEvents','todaydeathEvents'));
 
         }
         elseif($role=="chief_doctor"){

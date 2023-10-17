@@ -14,9 +14,14 @@ class Division extends Model
     use HasFactory;
     protected $fillable=['name'];
 
-    public function subdiviion(): HasMany
+    public function subdivision(): HasMany
     {
-        return $this->hasMany(Subdiviion::class);
+        return $this->hasMany(Subdivision::class);
+    }
+
+    public function subdivisions()
+    {
+        return $this->hasMany(Subdivision::class);
     }
 
 }

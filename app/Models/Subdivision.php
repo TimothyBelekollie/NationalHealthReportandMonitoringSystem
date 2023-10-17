@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use App\Models\Division;
+use App\Models\HealthCenter;
 class Subdivision extends Model
 {
     use HasFactory;
@@ -26,5 +27,10 @@ class Subdivision extends Model
             return $this->belongsTo(Division::class);
         }
   
+
+        public function healthCenters()
+    {
+        return $this->hasMany(HealthCenter::class);
+    }
 
 }
