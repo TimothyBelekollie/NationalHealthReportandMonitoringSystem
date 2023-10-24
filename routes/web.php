@@ -13,6 +13,7 @@ use App\Http\Controllers\Clerk\ClerkDeathEventController;
 // Chief Doctor Controllers
 use App\Http\Controllers\ChiefDoctor\ChiefDoctorProfileController;
 use App\Http\Controllers\ChiefDoctor\DoctorDataClerkController;
+//Reports
 use App\Http\Controllers\ChiefDoctor\DoctorBirthReportController;
 use App\Http\Controllers\ChiefDoctor\DoctorDeathReportController;
 use App\Http\Controllers\ChiefDoctor\DoctorPatientReportController;
@@ -24,12 +25,22 @@ use App\Http\Controllers\HealthOfficer\OfficerDoctorRegistryController;
 use App\Http\Controllers\HealthOfficer\OfficerHealthCenterRegistryController;
 use App\Http\Controllers\HealthOfficer\OfficerDistrictRegistryController;
 
+//Reports
+use App\Http\Controllers\HealthOfficer\OfficerBirthReportController;
+use App\Http\Controllers\HealthOfficer\OfficerDeathReportController;
+use App\Http\Controllers\HealthOfficer\OfficerPatientReportController;
+
+
 
 //Health Minister Controllers
-
 use App\Http\Controllers\Minister\HealthMinisterProfileController;
 use App\Http\Controllers\Minister\MinisterDivisionRegistryController;
 use App\Http\Controllers\Minister\MinisterOfficerRegistryController;
+
+
+//Reports
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -77,7 +88,7 @@ Route::middleware(['auth:sanctum','verified','role:health_minister'])->group(fun
      Route::post('/health-minister/update-division/{id}',[MinisterDivisionRegistryController::class,'update'])->name('minister.update_division');
      Route::get('/health-minister/delete-division/{id}',[MinisterDivisionRegistryController::class,'destroy'])->name('minister.destroy_division');
 
-    //   // Add new health officer
+    // Add new health officer
       Route::get('/health-minister/all-officer',[MinisterOfficerRegistryController::class,'index'])->name('minister.index_officer');
       Route::get('/health-minister/add-officer',[MinisterOfficerRegistryController::class,'add'])->name('minister.add_officer');
       Route::post('/health-minister/store-officer',[MinisterOfficerRegistryController::class,'store'])->name('minister.store_officer');
@@ -85,10 +96,16 @@ Route::middleware(['auth:sanctum','verified','role:health_minister'])->group(fun
       Route::post('/health-minister/update-officer/{id}',[MinisterOfficerRegistryController::class,'update'])->name('minister.update_officer');
       Route::get('/health-minister/delete-officer/{id}',[MinisterOfficerRegistryController::class,'destroy'])->name('minister.destroy_officer');
 
+      
+
+
+      
+
 });
 
 
-// SECTION OF  Health Officer
+//************************************SECTION OF  Health Officer*************************************************************
+
 Route::middleware(['auth:sanctum','verified','role:health_officer'])->group(function (){
     Route::get('/health-officer/profile',[OfficerProfileController::class,'index'])->name('officer.profile.index');
     Route::get('/health-officer/profile/edit',[OfficerProfileController::class,'edit'])->name('officer.profile.edit');
@@ -124,12 +141,22 @@ Route::middleware(['auth:sanctum','verified','role:health_officer'])->group(func
        Route::get('/health-officer/delete-sub-division/{id}',[OfficerDistrictRegistryController::class,'destroy'])->name('officer.destroy_subdivision');
 
 
+        //Reports
+      //Birth Report
+        Route::get('/health-officer/birth-report',[OfficerBirthReportController::class,'birthDetail'])->name('officer.detail_birth');
+        //Death Report 
+        Route::get('/health-officer/death-report',[OfficerDeathReportController::class,'deathDetail'])->name('officer.detail_death');
+        //Patient Report
+        Route::get('/health-officer/patient-report',[OfficerPatientReportController::class,'patientDetail'])->name('officer.detail_patient');
+
+
 });
 
 
 
 
-// SECTION OF  CHIEF_DOCTOR
+//************************************SECTION OF  CHIEF_DOCTOR************************************************************
+
 Route::middleware(['auth:sanctum','verified','role:chief_doctor'])->group(function (){
     Route::get('/chief-doctor/profile',[ChiefDoctorProfileController::class,'index'])->name('doctor.profile.index');
     Route::get('/chief-doctor/profile/edit',[ChiefDoctorProfileController::class,'edit'])->name('doctor.profile.edit');
@@ -159,6 +186,7 @@ Route::middleware(['auth:sanctum','verified','role:chief_doctor'])->group(functi
 });
 
 
+//************************************ SECTION OF Data Clerk ************************************************************************
 Route::middleware(['auth:sanctum', 'verified','role:data_clerk'])->group(function () {
    
  

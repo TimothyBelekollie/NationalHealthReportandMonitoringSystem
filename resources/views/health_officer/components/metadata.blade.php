@@ -6,7 +6,7 @@
   <meta name="author" content="Timothy Belekollie">
   <link rel="icon" href="{{asset('images/favicon.ico')}}">
 
-  <title>Health Officer - Dashboard</title>
+  <title>National Health Monitoring and Reporting System | Health Officer - Dashboard</title>
   
 <!-- Vendors Style-->
 <link rel="stylesheet" href="{{asset('css/vendors_css.css')}}">

@@ -30,7 +30,7 @@
         <div class="row">
         
             <div class="col-md-4">
-                <form action="{{ route('doctor.detail_patient') }}" method="GET">
+                <form action="{{ route('officer.detail_patient') }}" method="GET">
                     <div class="form-group">
                         <label for="year">Select Year:</label>
                         <select id="year" name="year">
@@ -76,8 +76,8 @@
           <div class="col-md-12  text-center">
           
             <address class="text-center">
-              <strong class="text-blue fs-24 text-center">{{Auth::user()->healthCenter->name}}</strong><br>
-              <strong class="d-inline text-center">{{Auth::user()->healthCenter->subdivision->name}}, {{Auth::user()->healthCenter->subdivision->division->name}}, Republic of Liberia</strong><br>
+              <strong class="text-blue fs-24 text-center">{{Auth::user()->division->name}}</strong><br>
+              <strong class="d-inline text-center">Republic of Liberia</strong><br>
               <strong class="text-center">Phone:+250783472153 &nbsp;&nbsp;&nbsp;&nbsp; Email: timothy2@gmail.com</strong>  
             </address>
           </div>
@@ -89,7 +89,7 @@
        
         <div class="row">
                 <div class="col-md-6 text-center">
-                    <p class="text-fade text-primary text-center">Male to Female Patient Ratio Per Month</p>
+                    <p class="text-fade text-primary text-center">Patient Encounters Count Per Subdivision</p>
                     <div class="chart-container" >
                     <canvas id="patientChart"></canvas>
                 </div>
@@ -100,7 +100,7 @@
 
                     <div class="chart-container" style="height: 200px;">
 
-                    <canvas id="patientpieChart"></canvas>
+                    <canvas id="divisionEncounterRatioChart"></canvas>
                 </div>
                </div>
         </div>
@@ -122,20 +122,23 @@
               <tr>
                 {{-- <th>#</th> --}}
                 <th>Month</th>
+                <th>Subdivision</th>
                 <th>Male</th>
                 <th class="text-end">Female</th>
                 <th class="text-end">Subtotal</th>
                 {{-- <th class="text-end">Subtotal</th> --}}
               </tr>
-              @foreach ($monthlySummary as $monthData)
-              <tr>
-                  <td>{{ $monthData['Month'] }}</td>
-                  <td>{{ $monthData['Male'] }}</td>
-                  <td>{{ $monthData['Female'] }}</td>
-                  <td>{{ $monthData['Subtotal'] }}</td>
-              </tr>
+              @foreach ($tableData as $rowData)
+              @foreach ($rowData as $row)
+                  <tr>
+                      <td>{{ $row['month'] }}</td>
+                      <td>{{ $row['subdivision'] }}</td>
+                      <td>{{ $row['male'] }}</td>
+                      <td>{{ $row['female'] }}</td>
+                      <td>{{ $row['subtotal'] }}</td>
+                  </tr>
+              @endforeach
           @endforeach
-              
 
               </tbody>
             </table>
@@ -144,15 +147,15 @@
         </div>
         <div class="row">
           <div class="col-12 text-end">
-              {{-- <p class="lead"><b>Payment Due</b><span class="text-danger"> 14/08/2018 </span></p> --}}
+           
 
               <div>
-                  <p>Male Sub Total :  {{ $totalMale }}</p>
-                  <p>Female Sub Total  : {{ $totalFemale }}</p>
-                  {{-- <p>Shipping  :  $110.44</p> --}}
+                  <p>Male Sub Total :  {{ $maleSubtotal }}</p>
+                  <p>Female Sub Total  : {{ $femaleSubtotal }}</p>
+                 
               </div>
               <div class="total-payment">
-                  <h3><b>Total Patient :</b> {{$totalPatient}}</h3>
+                  <h3><b>Total Patient Encounters :</b> {{ $overallTotal }}</h3>
               </div>
 
           </div>
@@ -170,39 +173,7 @@
 </div>
 
 
-<script>
-	var ctx=document.getElementById('patientChart').getContext('2d');
-	var deathChart=new Chart(ctx,{
-type:'bar',
-data:{
-	labels:{!!json_encode($labels)!!},
-	datasets:{!!json_encode($datasets)!!}
-},
 
-
-
-	});
-
-
-
-</script>
-
-<script>
-	var ctx=document.getElementById('patientpieChart').getContext('2d');
-	var deathChart=new Chart(ctx,{
-type:'pie',
-data:{
-	labels:{!!json_encode($pielabels)!!},
-	datasets:{!!json_encode($piedatasets)!!}
-},
-
-
-
-	});
-
-
-
-</script>
 <script>
     document.getElementById('printReport').addEventListener('click', function () {
         // Get the HTML content of the report element
@@ -212,6 +183,78 @@ data:{
         window.print();
     });
 </script>
+
+
+
+
+
+{{-- <canvas id="encounterChart" width="400" height="200"></canvas> --}}
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  var labels = @json($labels);
+  var data = @json($data);
+
+  $(document).ready(function () {
+      var ctx = document.getElementById('patientChart').getContext('2d');
+      new Chart(ctx, {
+          type: 'bar',
+          data: {
+              labels: labels,
+              datasets: [{
+                  label: 'Patients Count',
+                  data: data,
+                  borderWidth: 1
+              }]
+          },
+          options: {
+              scales: {
+                  y: {
+                      beginAtZero: true
+                  }
+              }
+          }
+      });
+  });
+</script>
+
+
+
+<script>
+  var maleCount = @json($piemaleCount);
+  var femaleCount = @json($piefemaleCount);
+
+  $(document).ready(function () {
+      var ctx = document.getElementById('divisionEncounterRatioChart').getContext('2d');
+      new Chart(ctx, {
+          type: 'pie',
+          data: {
+              labels: ['Male', 'Female'],
+              datasets: [{
+                  data: [maleCount, femaleCount],
+                  backgroundColor: ['#3498db', '#e74c3c']
+              }]
+          },
+          options: {
+              responsive: true,
+              tooltips: {
+                  callbacks: {
+                      label: function (tooltipItem, data) {
+                          var dataset = data.datasets[tooltipItem.datasetIndex];
+                          var total = dataset.data.reduce(function (previousValue, currentValue, currentIndex, array) {
+                              return previousValue + currentValue;
+                          });
+                          var currentValue = dataset.data[tooltipItem.index];
+                          var percentage = Math.floor(((currentValue / total) * 100) + 0.5);
+                          return percentage + "%";
+                      }
+                  }
+              }
+          }
+      });
+  });
+</script>
+
 
 
 @endsection

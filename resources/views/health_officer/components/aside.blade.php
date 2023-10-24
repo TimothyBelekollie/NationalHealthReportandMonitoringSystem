@@ -31,12 +31,9 @@
 
 		{{-- Reports of different kinds --}}
 
-	  <li><a href="mailbox.html"><i class="icon-Incoming-mail"><span class="path1"></span><span class="path2"></span></i>Patient Report</a></li>
-	  <li><a href="mailbox.html"><i class="icon-Incoming-mail"><span class="path1"></span><span class="path2"></span></i>Birth Report</a></li>
-	  <li><a href="mailbox.html"><i class="icon-Incoming-mail"><span class="path1"></span><span class="path2"></span></i>Death Death Report</a></li>
-	 
-	
-	
+	  <li><a href="{{route('officer.detail_patient')}}"><i class="icon-Incoming-mail"><span class="path1"></span><span class="path2"></span></i>Patient Report</a></li>
+	  <li><a href="{{route('officer.detail_birth')}}"><i class="icon-Incoming-mail"><span class="path1"></span><span class="path2"></span></i>Birth Report</a></li>
+	  <li><a href="{{route('officer.detail_death')}}"><i class="icon-Incoming-mail"><span class="path1"></span><span class="path2"></span></i>Death Report</a></li>
 	  </li>
 	
 	</ul>

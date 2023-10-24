@@ -30,7 +30,7 @@
         <div class="row">
         
             <div class="col-md-4">
-                <form action="{{ route('doctor.detail_birth') }}" method="GET">
+                <form action="{{ route('officer.detail_birth') }}" method="GET">
                     <div class="form-group">
                         <label for="year">Select Year:</label>
                         <select id="year" name="year">
@@ -50,6 +50,7 @@
             
 
             </div>
+            
         <div class="row">
           <div class="col-12">
             <div class="bb-1 clearFix">

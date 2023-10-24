@@ -19,8 +19,6 @@
                   </div>
               </div>
 
-              
-              
           </div>
       </div>  
 
@@ -30,7 +28,7 @@
         <div class="row">
         
             <div class="col-md-4">
-                <form action="{{ route('doctor.detail_birth') }}" method="GET">
+                <form action="{{ route('officer.detail_birth') }}" method="GET">
                     <div class="form-group">
                         <label for="year">Select Year:</label>
                         <select id="year" name="year">
@@ -50,8 +48,9 @@
             
 
             </div>
+
         <div class="row">
-          <div class="col-12">
+<div class="col-12">
             <div class="bb-1 clearFix">
               {{-- <div class="text-end pb-15">
                   <button class="btn btn-success" type="button"> <span><i class="fa fa-print"></i> Save</span> </button>
@@ -76,8 +75,8 @@
           <div class="col-md-12  text-center">
           
             <address class="text-center">
-              <strong class="text-blue fs-24 text-center">{{Auth::user()->healthCenter->name}}</strong><br>
-              <strong class="d-inline text-center">{{Auth::user()->healthCenter->subdivision->name}}, {{Auth::user()->healthCenter->subdivision->division->name}}, Republic of Liberia</strong><br>
+              <strong class="text-blue fs-24 text-center">{{Auth::user()->division->name}}</strong><br>
+              <strong class="d-inline text-center">Republic of Liberia</strong><br>
               <strong class="text-center">Phone:+250783472153 &nbsp;&nbsp;&nbsp;&nbsp; Email: timothy2@gmail.com</strong>  
             </address>
           </div>
@@ -89,27 +88,23 @@
        
         <div class="row">
                 <div class="col-md-6 text-center">
-                    <p class="text-fade text-primary text-center">Male to Female Ratio Per Month</p>
+                    <p class="text-fade text-primary text-center">Birth Events Per Month</p>
                     <div class="chart-container" >
-                    <canvas id="birthChart"></canvas>
+                    <canvas id="birthEventsChart"></canvas>
                 </div>
                 </div>
-    <div class="col-md-2"></div>
-                <div class="col-md-4 text-center">
+   
+                <div class="col-md-6 text-center">
                     <p class="text-fade text-primary text-center">Birth Gender Annual Ratio </p>
 
-                    <div class="chart-container" style="height: 200px;">
+                    <div class="chart-container">
 
-                    <canvas id="birthpieChart"></canvas>
+                    <canvas id="genderBirthEventsChart"></canvas>
+
                 </div>
                </div>
         </div>
 
-
-
-
-        
-           
         <div class="row">
             <div class="col-md-12">
                 <p class="text-fade text-primary">Annual Birth Tabular Summary</p>
@@ -125,16 +120,17 @@
                 <th>Male</th>
                 <th class="text-end">Female</th>
                 <th class="text-end">Subtotal</th>
-                {{-- <th class="text-end">Subtotal</th> --}}
+               
               </tr>
-              @foreach ($monthlySummary as $monthData)
+              @for ($month = 0; $month < 12; $month++)
               <tr>
-                  <td>{{ $monthData['Month'] }}</td>
-                  <td>{{ $monthData['Male'] }}</td>
-                  <td>{{ $monthData['Female'] }}</td>
-                  <td>{{ $monthData['Subtotal'] }}</td>
+                  <td>{{ date('F', mktime(0, 0, 0, $month + 1, 1)) }}</td>
+                  <td>{{ $maleBirthEventCounts[$month] }}</td>
+                  <td>{{ $femaleBirthEventCounts[$month] }}</td>
+                  <td>{{ $maleBirthEventCounts[$month] + $femaleBirthEventCounts[$month] }}</td>
               </tr>
-          @endforeach
+              @endfor
+              <tr>
               
 
               </tbody>
@@ -142,18 +138,19 @@
           </div>
           <!-- /.col -->
         </div>
+
         <div class="row">
           <div class="col-12 text-end">
               {{-- <p class="lead"><b>Payment Due</b><span class="text-danger"> 14/08/2018 </span></p> --}}
 
-              <div>
-                  <p>Male Sub Total :  {{ $totalMale }}</p>
-                  <p>Female Sub Total  : {{ $totalFemale }}</p>
-                  {{-- <p>Shipping  :  $110.44</p> --}}
+               <div>
+                  <p>Male Sub Total :  {{ $maleTotal }}</p>
+                  <p>Female Sub Total  : {{ $femaleTotal }}</p>
+                  
               </div>
               <div class="total-payment">
-                  <h3><b>Total :</b> {{$totalChildren}}</h3>
-              </div>
+                  <h3><b>Total :</b> {{ $overallTotal }}</h3>
+              </div> 
 
           </div>
           <!-- /.col -->
@@ -170,39 +167,8 @@
 </div>
 
 
-<script>
-	var ctx=document.getElementById('birthChart').getContext('2d');
-	var birthChart=new Chart(ctx,{
-type:'bar',
-data:{
-	labels:{!!json_encode($labels)!!},
-	datasets:{!!json_encode($datasets)!!}
-},
 
 
-
-	});
-
-
-
-</script>
-
-<script>
-	var ctx=document.getElementById('birthpieChart').getContext('2d');
-	var birthChart=new Chart(ctx,{
-type:'pie',
-data:{
-	labels:{!!json_encode($pielabels)!!},
-	datasets:{!!json_encode($piedatasets)!!}
-},
-
-
-
-	});
-
-
-
-</script>
 <script>
     document.getElementById('printReport').addEventListener('click', function () {
         // Get the HTML content of the report element
@@ -211,7 +177,73 @@ data:{
         // Open the print dialog for the report content
         window.print();
     });
+  </script>
+
+ {{-- Birth Events Per Month  --}}
+<script>
+    var ctx = document.getElementById('birthEventsChart').getContext('2d');
+    var birthEventsChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+            datasets: [{
+                label: 'Birth Events per Month',
+                data: @json($birthEventCounts),
+                backgroundColor: 'rgba(54, 162, 235, 0.2)', // Blue fill color
+                borderColor: 'rgba(54, 162, 235, 1)', // Blue border color
+                borderWidth: 1,
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                }
+            }
+        }
+    });
 </script>
+
+{{-- Birth Event Per Division per Gender --}}
+
+
+
+{{-- <canvas id="genderBirthEventsChart"></canvas> --}}
+<script>
+    var ctx = document.getElementById('genderBirthEventsChart').getContext('2d');
+    var genderBirthEventsChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+            datasets: [
+                {
+                    label: 'Male Birth Events',
+                    data: @json($maleBirthEventCounts),
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)', // Blue fill color
+                    borderColor: 'rgba(54, 162, 235, 1)', // Blue border color
+                    borderWidth: 1,
+                },
+                {
+                    label: 'Female Birth Events',
+                    data: @json($femaleBirthEventCounts),
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)', // Red fill color
+                    borderColor: 'rgba(255, 99, 132, 1)', // Red border color
+                    borderWidth: 1,
+                },
+            ]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                }
+            }
+        }
+    });
+</script>
+
+
+
 
 
 @endsection
