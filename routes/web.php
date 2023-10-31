@@ -38,6 +38,7 @@ use App\Http\Controllers\HealthOfficer\OfficerPatientReportController;
 use App\Http\Controllers\Minister\HealthMinisterProfileController;
 use App\Http\Controllers\Minister\MinisterDivisionRegistryController;
 use App\Http\Controllers\Minister\MinisterOfficerRegistryController;
+use App\Http\Controllers\Minister\ContactController;
 
 
 //Reports
@@ -67,6 +68,7 @@ Route::get('/', function () {
 });
 
 Route::get('/contact',[FrontendController::class,'contactIndex'])->name('contact.index');
+Route::post('/contact/send',[ContactController::class,'store'])->name('contact.store');
 Route::get('/heath-centers',[FrontendController::class,'HealthIndex'])->name('health.index');
 Route::get('/heath-centers/show',[FrontendController::class,'HealthShow'])->name('health.show');
 Route::get('/patient-history',[FrontendController::class,'patientHistory'])->name('patient.index');

@@ -27,33 +27,57 @@
 					<div class="contact_from_box">
 						<div class="contact_title pb-4">
 							<h3>Get In Touch</h3>
+							@if(session()->has('message'))
+					  
+					  <div class="alert alert-success alert-dismissible fade show" role="alert">
+						<strong>Hello,</strong> {{session()->get('message')}}
+						{{-- <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> --}}
+					  </div>
+						@endif
 						</div>
-						<form action="https://formspree.io/f/myyleorq" method="POST" id="dreamit-form" >
+						<form action="{{route('contact.store')}}" method="POST" >
+							@csrf
 							<div class="row">
 								<div class="col-lg-6">
 									<div class="form_box mb-30">
 										<input type="text" name="name"  placeholder="Name">
+										@error('name')
+										<span class="text-danger">{{$message}}</span>
+									@enderror
 									</div>
+									
 								</div>
 								<div class="col-lg-6">
 									<div class="form_box mb-30">
 										<input type="email" name="email" placeholder="Email Address">
+										@error('email')
+										<span class="text-danger">{{$message}}</span>
+									@enderror
 									</div>
 								</div>
 								<div class="col-lg-6">
 									<div class="form_box mb-30">
 										<input type="text" name="phone" placeholder="Phone Number">
+										@error('phone')
+										<span class="text-danger">{{$message}}</span>
+									@enderror
 									</div>
 								</div>
 								<div class="col-lg-6">
 									<div class="form_box mb-30">
-										<input type="text" name="web" placeholder="Website">
+										<input type="text" name="websiteurl" placeholder="Websiteurl (Optional)">
+										@error('websiteurl')
+										<span class="text-danger">{{$message}}</span>
+									@enderror
 									</div>
 								</div>
 								
 								<div class="col-lg-12">
 									<div class="form_box mb-30">
 										<textarea name="message" id="message" cols="30" rows="10" placeholder="Your Message"></textarea>
+										@error('message')
+										<span class="text-danger">{{$message}}</span>
+									@enderror
 									</div>
 									<div class="quote_btn">
 										<button class="btn" type="submit">Send Message</button>
@@ -71,8 +95,8 @@
 								<i class="flaticon-time"></i>
 							</div>
 							<div class="cda-content-inner">
-								<h4>Company Location</h4>
-								<p>Durham Street Hialeah, <br>FL 33010, USA</p>
+								<h4>NHMARS Location</h4>
+								<p>3rd Street, <br>Monrovia, Liberia</p>
 							</div>
 						</div>
 						<div class="cda-single-content hr d-flex">
@@ -81,7 +105,7 @@
 							</div>
 							<div class="cda-content-inner">
 								<h4>Telephone Number</h4>
-								<p>+880 636 524 265,  <br>+880 636 524 265, </p>
+								<p>+231886011550,  <br>+231770772712, </p>
 							</div>
 						</div>
 						<div class="cda-single-content hr d-flex">
@@ -90,7 +114,7 @@
 							</div>
 							<div class="cda-content-inner">
 								<h4>Our Email Address</h4>
-								<p>yourinfo@gmail.com <br>yourmail@gmail.com</p>
+								<p>nhmars@gmail.com <br>nhmars.lr@gmail.com</p>
 							</div>
 						</div>
 						<div class="cda-single-content hr d-flex">
@@ -115,103 +139,7 @@
 	<!--==================================================-->
 	<!-----START FOOTER SECTION ----->
 	<!--===================================================-->
-	<div class="footer">
-		<div class="container">
-			<div class="row footer-hr">
-				<div class="col-md-6 col-lg-3">
-					<div class="widget">
-						<div class="about-company">
-							<div class="footer-logo">
-								<img src="assets/images/footer/logo2.png" alt="Footer-logo">
-							</div>
-							<p>We are the best world Information Technology Company. Providing the highest quality.</p>
-							<div class="footer-about-social-icon">
-								<ul>
-									<li>
-										<a href="#"><i class="fab fa-facebook-f"></i></a>
-									</li>
-									<li>
-										<a href="#"><i class="fab fa-twitter"></i></a>
-									</li>
-									<li>
-										<a href="#"><i class="fab fa-pinterest"></i></a>
-									</li>
-									<li>
-										<a href="#"><i class="fab fa-linkedin-in"></i></a>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-6 col-lg-3">
-					<div class="widget">
-						<div class="footer-quick-link">
-							<div class="footer-widget-title">
-								<h5>Quick Links</h5>
-							</div>
-							<div class="footer-quick-link-list">
-								<ul>
-									<li><a href="#">Customers Services</a></li>
-									<li><a href="#">IT Department</a></li>
-									<li><a href="#">About Our Company</a></li>
-									<li><a href="#">Business Growth</a></li>
-									<li><a href="#">Make An Appointment</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-6 col-lg-3">
-					<div class="widget">
-						<div class="footer-contact">
-							<div class="footer-widget-title">
-								<h5>Contacts</h5>
-							</div>
-							<p><b>Adress: </b>27 Division St, New York, NY 10002, USA</p>
-							<p><b>Phone: </b> +8 91230 456 789 <br>Fax: +8 91230 456 788</p>
-							<p><b>Email: </b> example@mail.com <br> Website: your website.com</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-6 col-lg-3">
-					<div class="widget">
-						<div class="footer-popular-post ">
-							<div class="footer-widget-title">
-								<h5>Popular Post</h5>
-							</div>
-							<div class="footer-popular-single-post d-flex">
-								<div class="single-post-img">
-									<a href="#">
-										<img src="assets/images/footer/add1.jpg" alt="footer-post">
-									</a>
-								</div>
-								<div class="popular-post-title">
-									<a href="#">
-										<h6>Plan Your Project with Your Software </h6>
-									</a>
-									<p>January 01, 2023</p>
-								</div>
-							</div>
-							<div class="footer-popular-single-post d-flex">
-								<div class="single-post-img">
-									<a href="#">
-										<img src="assets/images/footer/add2.jpg" alt="footer-post">
-									</a>
-								</div>
-								<div class="popular-post-title">
-									<a href="#">
-										<h6>You have a Great Business Idea? </h6>
-									</a>
-									<p>January 01, 2023</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+	
 	<!--==================================================-->
 	<!-----start footer copyright  SECTION ----->
 	<!--===================================================-->
