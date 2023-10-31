@@ -9,7 +9,7 @@
 				<li class="treeview">
 				  <a href="#">
 					<i class="icon-Layout-4-blocks"><span class="path1"></span><span class="path2"></span></i>
-					<span>Data Clerk</span>
+					<span>Employee Record</span>
 					<span class="pull-right-container">
 					  <i class="fa fa-angle-right pull-right"></i>
 					</span>
@@ -21,6 +21,21 @@
 					
 				  </ul>
 				</li>
+				<li class="treeview">
+					<a href="#">
+					  <i class="icon-Layout-4-blocks"><span class="path1"></span><span class="path2"></span></i>
+					  <span>Healthcenter Services</span>
+					  <span class="pull-right-container">
+						<i class="fa fa-angle-right pull-right"></i>
+					  </span>
+					</a>
+					<ul class="treeview-menu">
+					  <li><a href="{{route('service.index')}}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i> View Services</a></li>
+					  <li><a href="{{route('service.add')}}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i> Add  Service</a></li>
+					  
+					  
+					</ul>
+				  </li>
 
 				<li class="treeview">
 					<a href="{{route('dashboard')}}">

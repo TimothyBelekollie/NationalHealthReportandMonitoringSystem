@@ -15,7 +15,7 @@
 		<!-- Sidebar toggle button-->
 		<div class="app-menu">
 		  <ul class="header-megamenu nav">
-			  <li class="btn-group nav-item d-none d-xl-inline-block">
+			  {{-- <li class="btn-group nav-item d-none d-xl-inline-block">
 				  <a href="contact_app_chat.html" class="waves-effect waves-light nav-link svg-bt-icon" title="Chat">
 					  <i class="icon-Chat"><span class="path1"></span><span class="path2"></span></i>
 				  </a>
@@ -29,7 +29,7 @@
 				  <a href="extra_taskboard.html" class="waves-effect waves-light nav-link svg-bt-icon" title="Taskboard">
 					  <i class="icon-Clipboard-check"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>
 				  </a>
-			  </li>
+			  </li> --}}
 		  </ul> 
 		</div>
 
@@ -40,20 +40,7 @@
 					  <i class="icon-Expand-arrows"><span class="path1"></span><span class="path2"></span></i>
 				  </a>
 			  </li>	  
-			  <li class="btn-group d-lg-inline-flex d-none">
-				  <div class="app-menu">
-					  <div class="search-bx mx-5">
-						  <form>
-							  <div class="input-group">
-								<input type="search" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addon2">
-								<div class="input-group-append">
-								  <button class="btn" type="submit" id="button-addon3"><i class="ti-search"></i></button>
-								</div>
-							  </div>
-						  </form>
-					  </div>
-				  </div>
-			  </li>
+			 
 			<!-- Notifications -->
 			<li class="dropdown notifications-menu">
 			  <a href="#" class="waves-effect waves-light dropdown-toggle" data-bs-toggle="dropdown" title="Notifications">

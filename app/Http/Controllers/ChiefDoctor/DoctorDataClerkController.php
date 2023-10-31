@@ -30,6 +30,7 @@ class DoctorDataClerkController extends Controller
         $saveDataClerk->name=$request->name;
         $saveDataClerk->email=$request->email;
         $saveDataClerk->role_id=$request->role_id;
+        $saveDataClerk->usertype=$request->usertype;
         $saveDataClerk->health_center_id=$request->health_center_id;
         $saveDataClerk->password='$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi';
         $saveDataClerk->save();
@@ -53,6 +54,7 @@ class DoctorDataClerkController extends Controller
     $updateData->email = $validatedData['email'];
     $updateData->name = $validatedData['name'];
     $updateData->role_id = $validatedData['role_id'];
+    $saveDataClerk->usertype=$request->usertype;
     $updateData->health_center_id = $validatedData['health_center_id'];
     $updateData->save();
         

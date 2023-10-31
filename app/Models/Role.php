@@ -9,5 +9,5 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Role extends Model
 {
     use HasFactory;
-    protected $fillable=["name","description"];
+    protected $fillable=["name","description",'health_center_id'];
 }

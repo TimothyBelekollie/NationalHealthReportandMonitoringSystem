@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AppointmentController;
 //Data Clerk
 use App\Http\Controllers\Clerk\ProfileController as ClerkProfile;
 use App\Http\Controllers\Clerk\ClerkPatientController;
@@ -17,6 +18,7 @@ use App\Http\Controllers\ChiefDoctor\DoctorDataClerkController;
 use App\Http\Controllers\ChiefDoctor\DoctorBirthReportController;
 use App\Http\Controllers\ChiefDoctor\DoctorDeathReportController;
 use App\Http\Controllers\ChiefDoctor\DoctorPatientReportController;
+use App\Http\Controllers\ChiefDoctor\ServicesController;
 
 
 // Health Officer Controllers
@@ -42,6 +44,13 @@ use App\Http\Controllers\Minister\MinisterOfficerRegistryController;
 
 
 
+//------------------------------------frontend-----------------------------------------
+use App\Http\Controllers\frontend\FrontendController;
+
+
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -54,8 +63,13 @@ use App\Http\Controllers\Minister\MinisterOfficerRegistryController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('frontend.index');
 });
+
+Route::get('/contact',[FrontendController::class,'contactIndex'])->name('contact.index');
+Route::get('/heath-centers',[FrontendController::class,'HealthIndex'])->name('health.index');
+Route::get('/heath-centers/show',[FrontendController::class,'HealthShow'])->name('health.show');
+Route::get('/patient-history',[FrontendController::class,'patientHistory'])->name('patient.index');
 
 Route::middleware([
      'auth:sanctum',
@@ -149,6 +163,11 @@ Route::middleware(['auth:sanctum','verified','role:health_officer'])->group(func
         //Patient Report
         Route::get('/health-officer/patient-report',[OfficerPatientReportController::class,'patientDetail'])->name('officer.detail_patient');
 
+        
+
+       
+
+
 
 });
 
@@ -167,12 +186,12 @@ Route::middleware(['auth:sanctum','verified','role:chief_doctor'])->group(functi
      Route::post('/chief-doctor/password/update',[ChiefDoctorProfileController::class,'DoctorUpdatePassword'])->name('doctor.update.password');
 
      // Add new Data Clerk
-     Route::get('/chief-doctor/all-clerk',[DoctorDataClerkController::class,'Index'])->name('doctor.index_clerk');
-     Route::get('/chief-doctor/add-clerk',[DoctorDataClerkController::class,'Add'])->name('doctor.add_clerk');
-     Route::post('/chief-doctor/store-clerk',[DoctorDataClerkController::class,'Store'])->name('doctor.store_clerk');
-     Route::get('/chief-doctor/edit-clerk/{id}',[DoctorDataClerkController::class,'Edit'])->name('doctor.edit_clerk');
-     Route::post('/chief-doctor/update-clerk/{id}',[DoctorDataClerkController::class,'Update'])->name('doctor.update_clerk');
-     Route::get('/chief-doctor/delete-clerk/{id}',[DoctorDataClerkController::class,'Destroy'])->name('doctor.destroy_clerk');
+     Route::get('/chief-doctor/all-emp',[DoctorDataClerkController::class,'Index'])->name('doctor.index_clerk');
+     Route::get('/chief-doctor/add-emp',[DoctorDataClerkController::class,'Add'])->name('doctor.add_clerk');
+     Route::post('/chief-doctor/store-emp',[DoctorDataClerkController::class,'Store'])->name('doctor.store_clerk');
+     Route::get('/chief-doctor/edit-emp/{id}',[DoctorDataClerkController::class,'Edit'])->name('doctor.edit_clerk');
+     Route::post('/chief-doctor/update-emp/{id}',[DoctorDataClerkController::class,'Update'])->name('doctor.update_clerk');
+     Route::get('/chief-doctor/delete-emp/{id}',[DoctorDataClerkController::class,'Destroy'])->name('doctor.destroy_clerk');
 
      //Report
   //Birth Report
@@ -182,6 +201,20 @@ Route::middleware(['auth:sanctum','verified','role:chief_doctor'])->group(functi
      Route::get('/chief-doctor/death-report',[DoctorDeathReportController::class,'deathDetail'])->name('doctor.detail_death');
     //Patient Report
      Route::get('/chief-doctor/patient-report',[DoctorPatientReportController::class,'patientDetail'])->name('doctor.detail_patient');
+
+
+
+
+
+
+
+      //Services
+      Route::get('/chief-doctor/all-service',[ServicesController::class,'index'])->name('service.index');
+      Route::get('/chief-doctor/add-service',[ServicesController::class,'add'])->name('service.add');
+      Route::post('/chief-doctor/store-service',[ServicesController::class,'store'])->name('service.store');
+      Route::get('/chief-doctor/edit-service/{id}',[ServicesController::class,'edit'])->name('service.edit');
+      Route::post('/chief-doctor/update-service/{id}',[ServicesController::class,'update'])->name('service.update');
+      Route::get('/chief-doctor/destroy-service/{id}',[ServicesController::class,'destroy'])->name('service.destroy');
 
 });
 
@@ -231,6 +264,15 @@ Route::middleware(['auth:sanctum', 'verified','role:data_clerk'])->group(functio
       Route::get('/clerk/patients/death/edit/{id}',[ClerkDeathEventController::class,'edit'])->name('clerk.pat.death.edit');
       Route::post('/clerk/patients/death/update/{id}',[ClerkDeathEventController::class,'update'])->name('clerk.pat.death.update');
       Route::get('/clerk/patients/death/destroy/{id}',[ClerkDeathEventController::class,'destroy'])->name('clerk.pat.death.destroy');
+
+
+      //Appointment
+      Route::get('/clerk/appointment',[ClerkDeathEventController::class,'index'])->name('clerk.appointment.index');
+      Route::get('/clerk/appointment/add',[ClerkDeathEventController::class,'add'])->name('clerk.appointment.add');
+      Route::post('/clerk/appointment/store',[ClerkDeathEventController::class,'store'])->name('clerk.appointment.store');
+      Route::get('/clerk/appointment/edit/{id}',[ClerkDeathEventController::class,'edit'])->name('clerk.appointment.edit');
+      Route::post('/clerk/appointment/update/{id}',[ClerkDeathEventController::class,'update'])->name('clerk.appointment.update');
+      Route::get('/clerk/appointment/destroy/{id}',[AppointmentController::class,'destroy'])->name('clerk.appointment.destroy');
 
 });
 

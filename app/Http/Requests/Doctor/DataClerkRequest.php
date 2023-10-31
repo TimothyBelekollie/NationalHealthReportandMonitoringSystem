@@ -26,7 +26,8 @@ class DataClerkRequest extends FormRequest
             'name'=>'required',
             'email' => 'required|email|unique:users,email,' . $this->route('id'),
             'health_center_id'=>'required',
-            'role_id'=>'required'
+            'role_id'=>'required',
+            'usertype'=>'required'
         ]
         ;
     }
@@ -37,6 +38,7 @@ class DataClerkRequest extends FormRequest
         'email.required' => 'Email field is required',
         'health_center_id.required' => 'Health Center field is required',
         'role_id.required' => 'User Role field is required',
+        'usertype.required' => 'Employee Type field is required',
     ];
 }
 }

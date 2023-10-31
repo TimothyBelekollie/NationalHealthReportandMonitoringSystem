@@ -50,7 +50,68 @@ class AuthController extends Controller
     public function index(){
         $role=Auth::user()->role->name;
         if($role=="health_minister"){
-            return view('ministry_of_health.dashboard');
+
+            $today = Carbon::today();
+   // Retrieve divisions with their related data
+   $divisions = Division::with('subdivisions.healthCenters.encounters')->get();
+
+   // Calculate the overall total encounters for each division
+   $divisions->each(function ($division) use ($today) {
+       $totalEncounters = 0;
+
+       $division->subdivisions->each(function ($subdivision) use (&$totalEncounters,$today) {
+           $subdivision->healthCenters->each(function ($healthCenter) use (&$totalEncounters,$today) {
+           $totalEncounters += $healthCenter->encounters()->whereDate('created_at', $today)->count();
+           });
+       });
+
+       $division->totalEncounters = $totalEncounters;
+   });
+
+
+   //Birth Events
+
+    // Retrieve divisions with their related data
+    $birthdivisions = Division::with('subdivisions.healthCenters.birthEvents')->get();
+
+    // Calculate the overall total birth events for each division
+    $birthdivisions->each(function ($birthdivision) use ($today) {
+        $totalBirthEvents = 0;
+
+        $birthdivision->subdivisions->each(function ($subdivision) use (&$totalBirthEvents,$today) {
+            $subdivision->healthCenters->each(function ($healthCenter) use (&$totalBirthEvents,$today) {
+                $totalBirthEvents += $healthCenter->birthEvents()->whereDate('created_at', $today)->count();
+            });
+        });
+
+        $birthdivision->totalBirthEvents = $totalBirthEvents;
+    });
+
+   //dd($divisions);
+
+
+   // Retrieve divisions with their related data
+   $deathdivisions = Division::with('subdivisions.healthCenters.deathEvents')->get();
+
+   // Calculate the overall total death events for each division
+   $deathdivisions->each(function ($deathdivision) use ($today) {
+       $totalDeathEvents = 0;
+
+           $deathdivision->subdivisions->each(function ($subdivision) use (&$totalDeathEvents,$today) {
+           $subdivision->healthCenters->each(function ($healthCenter) use (&$totalDeathEvents,$today) {
+           $totalDeathEvents += $healthCenter->deathEvents()->whereDate('created_at', $today)->count();
+           });
+       });
+
+       $deathdivision->totalDeathEvents = $totalDeathEvents;
+   });
+
+
+
+
+
+
+            return view('ministry_of_health.dashboard',compact('divisions','birthdivisions','deathdivisions'));
         }
         elseif($role=="health_officer"){
             $today = Carbon::now()->toDateString();

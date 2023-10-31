@@ -7,7 +7,7 @@
 		<div class="content-header">
 			<div class="d-flex align-items-center">
 				<div class="me-auto">
-					<h3 class="page-title"> Data Clerk Tables</h3>
+					<h3 class="page-title"> {{Auth::user()->healthCenter->name}} Employee Tables</h3>
 					<div class="d-inline-block align-items-center">
 						<nav>
 							<ol class="breadcrumb">
@@ -49,10 +49,10 @@
 				<div class="box-header with-border">
                     <div class="row justify-content-end">
                         <div class="col-md-4">
-                        <h3 class="box-title">All Data Clerk Records</h3>
+                        <h3 class="box-title">All Employee Records</h3>
                        </div>
                        <div class="col-md-4 ms-auto">
-                        <a href="{{route('doctor.add_clerk')}}" class="btn btn-primary">Add Data Clerk</a>
+                        <a href="{{route('doctor.add_clerk')}}" class="btn btn-primary">Add Employee</a>
                        </div>
                     </div>
 				
