@@ -68,10 +68,13 @@ Route::get('/', function () {
 });
 
 Route::get('/contact',[FrontendController::class,'contactIndex'])->name('contact.index');
-Route::post('/contact/send',[ContactController::class,'store'])->name('contact.store');
+Route::post('/contact/send',[Contactcontroller::class,'store'])->name('contact.store');
 Route::get('/heath-centers',[FrontendController::class,'HealthIndex'])->name('health.index');
 Route::get('/heath-centers/show',[FrontendController::class,'HealthShow'])->name('health.show');
 Route::get('/patient-history',[FrontendController::class,'patientHistory'])->name('patient.index');
+
+
+
 
 Route::middleware([
      'auth:sanctum',
@@ -86,6 +89,7 @@ Route::middleware([
 
 
 
+      
 //************************************SECTION OF  Health Minister************************************
 Route::middleware(['auth:sanctum','verified','role:health_minister'])->group(function (){
     Route::get('/health-minister/profile',[HealthMinisterProfileController::class,'index'])->name('minister.profile.index');
@@ -114,8 +118,10 @@ Route::middleware(['auth:sanctum','verified','role:health_minister'])->group(fun
 
       
 
+//Visitors's Messages
+Route::get('/health-minister/visitormessages',[ContactController::class,'index'])->name('minister.contact.index');
+Route::get('/health-minister/visitormessages/destroy/{id}',[ContactController::class,'destroy'])->name('contact.destroy');
 
-      
 
 });
 

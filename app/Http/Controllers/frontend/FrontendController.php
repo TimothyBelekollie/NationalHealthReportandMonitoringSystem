@@ -11,6 +11,8 @@ class FrontendController extends Controller
     public function contactIndex(){
 return view('frontend.pages.contactus.index');
     }
+
+    
     public function HealthIndex(){
 
     }

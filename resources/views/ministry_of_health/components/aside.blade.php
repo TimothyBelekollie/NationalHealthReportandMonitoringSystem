@@ -17,6 +17,7 @@
 		  </ul>
 	  </li>
 	  <li><a href="mailbox.html"><i class="icon-Incoming-mail"><span class="path1"></span><span class="path2"></span></i>Patient</a></li>
+	  <li><a href="{{route('minister.contact.index')}}"><i class="icon-Incoming-mail"><span class="path1"></span><span class="path2"></span></i>Vistor's Messages</a></li>
 	  <li><a href="mailbox.html"><i class="icon-Incoming-mail"><span class="path1"></span><span class="path2"></span></i>Birth</a></li>
 	  <li><a href="mailbox.html"><i class="icon-Incoming-mail"><span class="path1"></span><span class="path2"></span></i>Death</a></li>
 	  {{-- <li><a href="#"><i span class="icon-Layout-grid"><span class="path1"></span><span class="path2"></span></i>Apps</a>

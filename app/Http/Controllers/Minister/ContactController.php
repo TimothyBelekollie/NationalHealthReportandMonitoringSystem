@@ -10,8 +10,8 @@ class ContactController extends Controller
 {
     //
     public function index(){
-        $allcontacts=Contact::latesst()->get();
-        return view('minister_of_health.contact.index',compact('allcontacts'));
+        $allcontacts=Contact::latest()->get();
+        return view('ministry_of_health.pages.contact.index',compact('allcontacts'));
     }
 
     public function store(Request $request){
@@ -34,5 +34,6 @@ class ContactController extends Controller
     public function destroy($id){
         $destroyContact=Contact::find($id);
         $destroyContact->delete();
+        return redirect()->back()->with('message','You have deleted a message successfully');
     }
 }

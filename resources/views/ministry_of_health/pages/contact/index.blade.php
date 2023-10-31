@@ -7,7 +7,7 @@
 		<div class="content-header">
 			<div class="d-flex align-items-center">
 				<div class="me-auto">
-					<h3 class="page-title">Visitors's Contact  Table</h3>
+					<h3 class="page-title">Visitors's Messages Table</h3>
 					<div class="d-inline-block align-items-center">
 						<nav>
 							<ol class="breadcrumb">
@@ -49,11 +49,11 @@
 				<div class="box-header with-border">
                     <div class="row justify-content-end">
                         <div class="col-md-4">
-                        <h3 class="box-title">Division Records</h3>
+                        <h3 class="box-title">Messages</h3>
                        </div>
-                       <div class="col-md-4 ms-auto">
+                       {{-- <div class="col-md-4 ms-auto">
                         <a href="{{route('minister.add_division')}}" class="btn btn-primary">Add Division</a>
-                       </div>
+                       </div> --}}
                     </div>
 				
 				</div>
@@ -86,7 +86,7 @@
 								<td>{{$con->websiteurl}}</td>
 								<td>{{$con->message}}</td>
 							
-								 <a href="">Detail</a> <a href="{{route('minister.contact',$con->id)}}">Delete</a></td>
+								<td><a href="">Detail</a> <a href="{{route('contact.destroy',$con->id)}}">Delete</a></td>
 							</tr>
 							@endforeach
 						</tbody>
