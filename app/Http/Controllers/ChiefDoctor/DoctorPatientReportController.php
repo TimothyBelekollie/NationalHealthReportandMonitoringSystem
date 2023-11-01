@@ -78,7 +78,7 @@ $piepatients = Encounter::where('encounters.health_center_id', $hospital->id)
             ->join('patients', 'encounters.patient_id', '=', 'patients.id')
             ->whereYear('encounters.created_at', $year)
             ->whereIn('patients.gender', ['Male','Female'])
-            ->select('patients.gender as gender', \DB::raw('COUNT(*) as count'))
+            ->select('patients.gender as gender', DB::raw('COUNT(*) as count'))
             ->groupBy('patients.gender')
             ->get();
 

@@ -82,7 +82,7 @@
                 <nav class="itsoft_menu">
                     <ul class="nav_scroll">
                         <li>
-                            <a href="#">Home</a>
+                            <a href="{{URL::TO('/')}}">Home</a>
                             
                         </li>
                         <li>
@@ -91,7 +91,7 @@
                         </li>
                         
                         <li>
-                            <a href="#">Patient's Report</a>
+                            <a href="{{route('frontend.patient.index')}}">Patient's Report</a>
                             
                         </li>
                         
@@ -121,7 +121,7 @@
                     
                     </li>
                     <li>
-                        <a href="#">Patient Report</a>
+                        <a href="{{route('frontend.patient.index')}}">Patient Report</a>
                     
                     </li>
                     

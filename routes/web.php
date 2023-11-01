@@ -71,7 +71,8 @@ Route::get('/contact',[FrontendController::class,'contactIndex'])->name('contact
 Route::post('/contact/send',[Contactcontroller::class,'store'])->name('contact.store');
 Route::get('/heath-centers',[FrontendController::class,'HealthIndex'])->name('health.index');
 Route::get('/heath-centers/show',[FrontendController::class,'HealthShow'])->name('health.show');
-Route::get('/patient-history',[FrontendController::class,'patientHistory'])->name('patient.index');
+Route::get('/patient-history',[FrontendController::class,'patientHistory'])->name('frontend.patient.index');
+Route::get('/patient-history/show',[FrontendController::class,'showPatient'])->name('frontend.patient.show');
 
 
 
