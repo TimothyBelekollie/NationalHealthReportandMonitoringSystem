@@ -29,6 +29,11 @@ return view('frontend.pages.contactus.index');
         $healthcenters=HealthCenter::all();
         return view('frontend.pages.healthcenters.index',compact('divisions','subdivisions','healthcenters'));
     }
+   public function HealthShow($id){
+    $healthCenter=HealthCenter::find($id);
+    return view('frontend.pages.healthcenters.show',compact('healthCenter'));
+
+   }
 
     public function patientHistory(){
 return view('frontend.pages.patientsrecord.index');

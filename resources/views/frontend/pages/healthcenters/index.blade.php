@@ -72,17 +72,17 @@
 									</a>
 									<div class="blog-meta-top">
 										<ul>
-											<li><a href="#">{{$health->subdivision->division->name}}</a></li>
-											<li><a href="#">{{$health->subdivision->name}}</a></li>
+											<li><a href="{{route('health.show',$health->id)}}">{{$health->subdivision->division->name}}</a></li>
+											<li><a href="{{route('health.show',$health->id)}}">{{$health->subdivision->name}}</a></li>
 										</ul>
 									</div>
 								</div>
 								<div class="blog-content">
 									<div class="blog-meta">
-										<span><a href="#">specialty</a></span> - <span>Bone Marrow</span>
+										<span><a href="{{route('health.show',$health->id)}}">specialty</a></span> - <span>Bone Marrow</span>
 									</div>
 									<div class="blog-content-text text-center">
-										<h5><a href="">
+										<h5><a href="{{route('health.show',$health->id)}}">
 											{{$health->name}}</a></h5>
 										{{-- <p>Meh synth Schlitz, tempor duis single-origin coffee ea next level ethnic fingerstache. Incididunt ander  </p> --}}
 									</div>
@@ -127,7 +127,7 @@
 					</div>
 				</div>
 				<div class="col-sm-12 col-md-6 col-lg-4">
-					<div class="widget-items mb-40">
+					{{-- <div class="widget-items mb-40">
 						<form action="#" method="get" >
 							<input type="text" class="src-input-box" placeholder="Search Here" name="s" value="" title="src-input-box">
 							<button class="src-icon" type="submit">
@@ -196,7 +196,7 @@
 							<a href="#">Responsive</a>
 							<a href="#">Technology</a>
 						</div>
-					</div>
+					</div> --}}
 					<div class="widget-items mb-40">
 						<div class="calender-area">
 							<div class="widget-title">
@@ -224,9 +224,13 @@
 					</div>
 					<div class="widget-items mb-40">
 						<div class="widget-title">
-							<h2>Archives</h2>
+							<h2>Now</h2>
 						</div>
-						<p class="hr-3">January 2023</p>
+						<?php
+$currentYear = date('Y');
+$currentMonth = date('F');
+?>
+						<p class="hr-3">{{ $currentMonth }} {{ $currentYear }}</p>
 					</div>
 				</div>
 			</div>
