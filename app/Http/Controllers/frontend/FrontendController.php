@@ -23,12 +23,17 @@ return view('frontend.pages.contactus.index');
     // public function HealthIndex(){
     //     return view('frontend.pages.healthcenters.index');
     // }
-    public function HealthIndex(){
+    public function HealthIndex(Request $request){
+      
         $divisions=Division::all();
         $subdivisions=Subdivision::all();
+        $division=$request->division;
+        $subdiv=$request->subdivision;
         $healthcenters=HealthCenter::all();
+
         return view('frontend.pages.healthcenters.index',compact('divisions','subdivisions','healthcenters'));
     }
+    
    public function HealthShow($id){
     $healthCenter=HealthCenter::find($id);
     return view('frontend.pages.healthcenters.show',compact('healthCenter'));

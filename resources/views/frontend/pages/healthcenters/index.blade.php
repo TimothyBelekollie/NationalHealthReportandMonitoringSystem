@@ -17,14 +17,14 @@
 			</div>
 		</div>
 	</div>
-	<form action="" method="POST">
+	<form action="" method="GET">
 		@csrf
     <div class="row widget-items mb-40">
         <div class="col-md-4">
             
                     <!-- <input type="text" class="src-input-box" placeholder="Search Here" name="s" value="" title="src-input-box"> -->
 
-                    <select class="form-select src-input-box" aria-label="Default select example" id="divisionSelect">
+                    <select class="form-select src-input-box" aria-label="Default select example" id="divisionSelect" name="division">
                         <option selected>Filter By Division</option>
                         @foreach ($divisions as $division)
                  <option value="{{$division->id}}">{{$division->name}}</option>
@@ -36,7 +36,7 @@
 
         <div class="col-md-4">
            
-            <select class="form-select src-input-box" aria-label="Default select example" id="subdivisionSelect">
+            <select class="form-select src-input-box" aria-label="Default select example" id="subdivisionSelect" name="subdivision">
                 {{-- <option selected>Filter By Subdivision</option> --}}
 				@foreach ($subdivisions as $sub)
                 <option value="{{$sub->id}}">{{$sub->name}}</option>
@@ -49,7 +49,7 @@
         <div class="col-md-4 mt-1">
             
                 <div class="nav-btn  d-sm-none d-md-none d-lg-inline-block">
-                    <a href="#">Filter</a>
+                    <button type="submit">Filter</button>
                 </div>	
            
         </div>

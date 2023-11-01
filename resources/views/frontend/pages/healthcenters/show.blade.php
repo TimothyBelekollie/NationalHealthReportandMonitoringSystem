@@ -7,11 +7,11 @@
 		<div class="container">
 			<div class="row">
 				<div class="breadcumb-content">
-					<h1>Redemption Hospital</h1>
+					<h1>{{$healthCenter->name}}</h1>
 					<ul>
-						<li><a href="index.html">Home</a></li>
+						<li><a href="{{URL::TO('/')}}">Home</a></li>
 						<li><i class="fa fa-angle-right"></i></li>
-						<li>Redemption Hospital</li>
+						<li>{{$healthCenter->name}}</li>
 					</ul>
 				</div>
 			</div>
@@ -37,7 +37,7 @@
 								<!-- <div class="get-pack"><a href="#">Download PDF</a></div> -->
 							</div>
 						</div>
-						<div class="single-pack d-flex">
+						{{-- <div class="single-pack d-flex">
 							<div class="pack-icon">
 								<i class="flaticon-web"></i>
 							</div>
@@ -45,7 +45,7 @@
 								<div class="pack-title"><h5>Bones</h5></div>
 								<!-- <div class="get-pack"><a href="#">Download Txt</a></div> -->
 							</div>
-						</div>
+						</div> --}}
 						<div class="call-do-thumb">
 							<img src="{{asset('frontend/assets/images/call-do-action/cdasmi.jpg')}}" alt="thumb">
 						</div>
@@ -57,16 +57,23 @@
 					<form class="appointment-form text-center pt-40 pb-50 mt-25"action="" method="POST">
 						<div class="appoinment-title">
 							<h3>Book an Appointment</h3>
+							@if(session()->has('message'))
+					  
+					  <div class="alert alert-success alert-dismissible fade show" role="alert">
+						<strong>Hello,</strong> {{session()->get('message')}}
+						{{-- <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> --}}
+					  </div>
+						@endif
 						</div>
 						<input class="input-box" name="name" type="text" placeholder="Your Name" required="">
 						<input class="input-box" name="email" type="email" placeholder="Your Email(Optional)" required="">
 						<input class="input-box" name="number" type="text" placeholder="Your Number" required="">
-						<select name="select" class="input-box">
+						{{-- <select name="select" class="input-box">
 							<option value="">Your Inquiry About</option>
 							<option value="">General Information Request</option>
 							<option value="">Partner Relation</option>
 							<option value="">Software Licensing</option>
-						</select>
+						</select> --}}
 						<textarea class="input-box" name="messagebox" id="apm-txt-box" cols="30" rows="5" placeholder=" Your Message" required=""></textarea>
 						<input type="submit" class="ap-submit-btn" value="Send Request">
 					</form>
@@ -80,7 +87,7 @@
 						<h1 class="overview-title">Description</h1>
 						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged</p>
 					</div>
-					<div class="row">
+					{{-- <div class="row">
 						<div class="col-lg-4">
 							<div class="pointment-single-feature">
 								<div class="ap-feature-icon">
@@ -169,7 +176,7 @@
 
 							<!-- <h1 class="overview-title pb-15">Our Expert Engineers</h1> -->
 						</div>
-					</div>
+					</div> --}}
 					
 				</div>
 			</div>
