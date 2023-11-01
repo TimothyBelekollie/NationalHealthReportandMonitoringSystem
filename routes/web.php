@@ -73,7 +73,8 @@ Route::get('/heath-centers',[FrontendController::class,'HealthIndex'])->name('he
 Route::get('/heath-centers/show',[FrontendController::class,'HealthShow'])->name('health.show');
 Route::get('/patient-history',[FrontendController::class,'patientHistory'])->name('frontend.patient.index');
 Route::get('/patient-history/show',[FrontendController::class,'showPatient'])->name('frontend.patient.show');
-
+Route::get('/api/subdivisions/{division}',[FrontendController::class,'index']);
+Route::get('/api/healthcenters/{division}/{subdivision}',[FrontendController::class,'divindex']);
 
 
 

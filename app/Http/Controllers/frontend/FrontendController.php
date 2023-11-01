@@ -5,6 +5,9 @@ namespace App\Http\Controllers\frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\models\Patient;
+use App\models\Division;
+use App\Models\HealthCenter;
+use App\models\Subdivision;
 use  Illuminate\Support\Facades\Auth;
 use  Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
@@ -17,11 +20,14 @@ return view('frontend.pages.contactus.index');
     }
 
     
+    // public function HealthIndex(){
+    //     return view('frontend.pages.healthcenters.index');
+    // }
     public function HealthIndex(){
-
-    }
-    public function HealthShow(){
-
+        $divisions=Division::all();
+        $subdivisions=Subdivision::all();
+        $healthcenters=HealthCenter::all();
+        return view('frontend.pages.healthcenters.index',compact('divisions','subdivisions','healthcenters'));
     }
 
     public function patientHistory(){
@@ -50,4 +56,6 @@ return view('frontend.pages.patientsrecord.index');
 
                 
             }
+
+            
 }

@@ -71,7 +71,7 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="logo"> 
-                    <a href="">
+                    <a href="{{URL::TO('/')}}">
                         <!-- <img src="assets/images/logo.png" alt="logo">
                         <img src="assets/images/footer/logo2.png" alt="logo"> -->
                         NHMARS
@@ -86,7 +86,7 @@
                             
                         </li>
                         <li>
-                            <a href="#">Healthcare Centers</a>
+                            <a href="{{route('health.index')}}">Healthcare Centers</a>
                             
                         </li>
                         
@@ -113,11 +113,11 @@
             <nav class="itsoft_menu">
                 <ul class="nav_scroll">
                     <li>
-                        <a href="#">Home</a>
+                        <a href="{{URL::TO('/')}}">Home</a>
                     
                     </li>
                     <li>
-                        <a href="#">Healthcare Center</a>
+                        <a href="{{route('health.index')}}">Healthcare Center</a>
                     
                     </li>
                     <li>
