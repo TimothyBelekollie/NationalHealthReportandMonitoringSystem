@@ -26,7 +26,7 @@
 				<div class="col-lg-4">
 					<div class="call-do-action">
 						<div class="top-link">
-							<a href="#">Specializations</a>
+							<a href="#">Specialization</a>
 						</div>
 						<div class="single-pack d-flex">
 							<div class="pack-icon">
@@ -54,7 +54,8 @@
 							<h3><i class="flaticon-process"></i> +231886011550</h3>
 						</div>
 					</div>
-					<form class="appointment-form text-center pt-40 pb-50 mt-25"action="" method="POST">
+					<form class="appointment-form text-center pt-40 pb-50 mt-25" action="{{route('send.appointment')}}" method="POST">
+						@csrf
 						<div class="appoinment-title">
 							<h3>Book an Appointment</h3>
 							@if(session()->has('message'))
@@ -65,16 +66,33 @@
 					  </div>
 						@endif
 						</div>
-						<input class="input-box" name="name" type="text" placeholder="Your Name" required="">
-						<input class="input-box" name="email" type="email" placeholder="Your Email(Optional)" required="">
-						<input class="input-box" name="number" type="text" placeholder="Your Number" required="">
+						<input class="input-box" name="name" type="text" placeholder="Your Name">
+						<span>
+						@error("name")
+						<p class="text-danger">{{$message}}	</p>
+						@enderror
+					    </span>
+						<input class="input-box" name="email" type="email" placeholder="Your Email">
+						@error("email")
+						<p class="text-danger">{{$message}}	</p>
+						@enderror
+						<input class="input-box" name="phone" type="text" placeholder="Your Number" >
+						@error("phone")
+						<p class="text-danger">{{$message}}	</p>
+						@enderror
+						
 						{{-- <select name="select" class="input-box">
 							<option value="">Your Inquiry About</option>
 							<option value="">General Information Request</option>
 							<option value="">Partner Relation</option>
 							<option value="">Software Licensing</option>
 						</select> --}}
-						<textarea class="input-box" name="messagebox" id="apm-txt-box" cols="30" rows="5" placeholder=" Your Message" required=""></textarea>
+						<textarea class="input-box" name="message" id="apm-txt-box" cols="30" rows="5" placeholder=" Your Message"></textarea>
+						@error("message")
+						<p class="text-danger">{{$message}}	</p>
+						@enderror
+						<input class="input-box" name="health_center_id" type="text" hidden value="{{$healthCenter->id}}" >
+
 						<input type="submit" class="ap-submit-btn" value="Send Request">
 					</form>
 					<div id="status"></div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\models\Patient;
+use App\models\Appointment;
 use App\models\Division;
 use App\Models\HealthCenter;
 use App\models\Subdivision;
@@ -33,12 +34,33 @@ return view('frontend.pages.contactus.index');
 
         return view('frontend.pages.healthcenters.index',compact('divisions','subdivisions','healthcenters'));
     }
-    
+
    public function HealthShow($id){
     $healthCenter=HealthCenter::find($id);
     return view('frontend.pages.healthcenters.show',compact('healthCenter'));
 
    }
+
+    //
+    public function Appoint(Request $request){
+        $validated=$request->validate([
+            'name'=>'required',
+            'email'=>'required',
+            'phone'=>'required',
+            'message'=>'required'
+        ]);
+
+        $saveAppointment=new Appointment();
+        $saveAppointment->name=$request->name;
+        $saveAppointment->email=$request->name;
+        $saveAppointment->phone=$request->phone;
+        $saveAppointment->message=$request->message;
+        $saveAppointment->health_center_id=$request->health_center_id;
+        //dd($saveAppointment);
+        $saveAppointment->save();
+        return redirect()->back()->with('message',"You Appointment has been booked successfully");
+        
+    }
 
     public function patientHistory(){
 return view('frontend.pages.patientsrecord.index');
