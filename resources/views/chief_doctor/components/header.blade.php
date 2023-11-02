@@ -123,6 +123,7 @@
             <ul class="dropdown-menu animated flipInX">
               <li class="user-body">
 				 <a class="dropdown-item" href="{{route('doctor.profile.index')}}"><i class="ti-user text-muted me-2"></i> Profile </a>
+				 <a class="dropdown-item" href="{{route('doctor.healthcenterprofile.edit')}}"><i class="ti-user text-muted me-2"></i> Healthcenter Profile </a>
 				 
 				 <a class="dropdown-item" href="{{route('doctor.change.password')}}"><i class="ti-settings text-muted me-2"></i> Change Password</a>
 				 <a class="dropdown-item" href="{{route('doctor.index_clerk')}}"><i class="ti-settings text-muted me-2"></i> Add Data Clerk</a>

@@ -21,6 +21,22 @@
 					
 				  </ul>
 				</li>
+
+				{{-- <li class="treeview">
+					<a href="#">
+					  <i class="icon-Layout-4-blocks"><span class="path1"></span><span class="path2"></span></i>
+					  <span>Employee Record</span>
+					  <span class="pull-right-container">
+						<i class="fa fa-angle-right pull-right"></i>
+					  </span>
+					</a>
+					<ul class="treeview-menu">
+					  <li><a href="{{route('doctor.index_clerk')}}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i> View Record</a></li>
+					  <li><a href="{{route('doctor.add_clerk')}}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i> Add  Record</a></li>
+					  
+					  
+					</ul>
+				  </li> --}}
 				<li class="treeview">
 					<a href="#">
 					  <i class="icon-Layout-4-blocks"><span class="path1"></span><span class="path2"></span></i>

@@ -14,6 +14,8 @@ use App\Http\Controllers\Clerk\ClerkDeathEventController;
 // Chief Doctor Controllers
 use App\Http\Controllers\ChiefDoctor\ChiefDoctorProfileController;
 use App\Http\Controllers\ChiefDoctor\DoctorDataClerkController;
+use App\Http\Controllers\ChiefDoctor\HealthCenterProfileController;
+
 //Reports
 use App\Http\Controllers\ChiefDoctor\DoctorBirthReportController;
 use App\Http\Controllers\ChiefDoctor\DoctorDeathReportController;
@@ -202,6 +204,10 @@ Route::middleware(['auth:sanctum','verified','role:chief_doctor'])->group(functi
      Route::get('/chief-doctor/edit-emp/{id}',[DoctorDataClerkController::class,'Edit'])->name('doctor.edit_clerk');
      Route::post('/chief-doctor/update-emp/{id}',[DoctorDataClerkController::class,'Update'])->name('doctor.update_clerk');
      Route::get('/chief-doctor/delete-emp/{id}',[DoctorDataClerkController::class,'Destroy'])->name('doctor.destroy_clerk');
+
+
+     Route::get('/chief-doctor/health-center-profile',[HealthCenterProfileController::class,'edit'])->name('doctor.healthcenterprofile.edit');
+     Route::post('/chief-doctor/health-center-profile/update',[HealthCenterProfileController::class,'update'])->name('doctor.healthcenterprofile.update');
 
      //Report
   //Birth Report

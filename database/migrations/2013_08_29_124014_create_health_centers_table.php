@@ -15,6 +15,13 @@ return new class extends Migration
             $table->id();
             $table->string("name")->unique();
             $table->string("description")->nullable();
+           
+            $table->string("contactOne")->nullable();
+            $table->string("contactTwo")->nullable();
+            $table->string("emailOne")->nullable();
+            $table->string("emailTwo")->nullable();
+            $table->string("prifileImage")->nullable();
+       
             $table->unsignedBigInteger('subdivision_id')->nullable();
             $table->foreign('subdivision_id')->references('id')->on('subdivisions')->onDelete('cascade');
             $table->unsignedBigInteger('health_center_type_id')->nullable();

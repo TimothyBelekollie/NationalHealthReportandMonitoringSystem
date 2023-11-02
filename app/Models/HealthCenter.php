@@ -14,7 +14,7 @@ class HealthCenter extends Model
 {
     use HasFactory;
 
-    protected $fillable=["name","description","subdivision_id","health_center_type_id","profileImage","contactOne","contactTwo","specialization"];
+    protected $fillable=["name","description","subdivision_id","health_center_type_id","profileImage","contactOne","contactTwo","specialization","emailOne","emailTwo"];
 
 
     public function patients(): HasMany
