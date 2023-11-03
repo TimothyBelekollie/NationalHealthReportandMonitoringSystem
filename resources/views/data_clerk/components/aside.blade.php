@@ -6,6 +6,7 @@
 			  <!-- sidebar menu-->
 			  <ul class="sidebar-menu" data-widget="tree">	
 				<li class="header">Data Clerk Dashboard</li>
+				@if (Auth::user()->usertype=="Doctor")
 				<li class="treeview">
 				  <a href="#">
 					<i class="icon-Layout-4-blocks"><span class="path1"></span><span class="path2"></span></i>
@@ -21,7 +22,8 @@
 					
 				  </ul>
 				</li>
-
+				@endif	
+				@if (Auth::user()->usertype=="Doctor")
                 <li class="treeview">
                     <a href="#">
                       <i class="icon-Layout-4-blocks"><span class="path1"></span><span class="path2"></span></i>
@@ -35,6 +37,7 @@
                       <li><a href="{{route('clerk.pat.death.add')}}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Add Death Record</a></li>
                     </ul>
                   </li>
+				  @endif	
 				<li class="treeview">
 				  <a href="#">
 					<i span class="icon-Layout-grid"><span class="path1"></span><span class="path2"></span></i>
@@ -49,7 +52,7 @@
 				  </ul>
 				</li>	
 				
-				
+				@if (Auth::user()->usertype=="Doctor")
 				<li class="treeview">
 					<a href="#">
 					  <i span class="icon-Layout-grid"><span class="path1"></span><span class="path2"></span></i>
@@ -63,6 +66,9 @@
 					  <li><a href="{{route('clerk.pat.encounter.add')}}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Add Encounters</a></li>
 					</ul>
 				  </li>	
+				  @endif	
+@if (Auth::user()->usertype=='Receptionist')
+	
 
 				  <li class="treeview">
 					<a href="#">
@@ -77,7 +83,7 @@
 					 
 					</ul>
 				  </li>	
-							 
+				  @endif				 
 				 	     
 			  </ul>
 		  </div>

@@ -82,9 +82,9 @@
 								<td>{{$data->email}}</td>
 								<td>{{$data->phone}}</td>
 								<td>@if ($data->user_id)
-									{{$data->user->name}}
+									<span class="text-success">{{$data->user->name}}</span>
 								@else
-									NOt Assign Yet
+								<span class="text-danger">	NOT Assign Yet</span>
 								@endif</td>
 								<td>{{$data->message}}</td>
 								

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('health_centers', function (Blueprint $table) {
             $table->id();
             $table->string("name")->unique();
-            $table->string("description")->nullable();
+            $table->longText("description")->nullable();
            
             $table->string("contactOne")->nullable();
             $table->string("contactTwo")->nullable();
