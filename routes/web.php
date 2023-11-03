@@ -9,6 +9,7 @@ use App\Http\Controllers\Clerk\ClerkPatientController;
 use App\Http\Controllers\Clerk\ClerkPatientEncounterController;
 use App\Http\Controllers\Clerk\ClerkBirthEventController;
 use App\Http\Controllers\Clerk\ClerkDeathEventController;
+use App\Http\Controllers\Clerk\PatientAppointmentController;
 
 
 // Chief Doctor Controllers
@@ -283,12 +284,12 @@ Route::middleware(['auth:sanctum', 'verified','role:data_clerk'])->group(functio
 
 
       //Appointment
-      Route::get('/clerk/appointment',[ClerkDeathEventController::class,'index'])->name('clerk.appointment.index');
-      Route::get('/clerk/appointment/add',[ClerkDeathEventController::class,'add'])->name('clerk.appointment.add');
-      Route::post('/clerk/appointment/store',[ClerkDeathEventController::class,'store'])->name('clerk.appointment.store');
-      Route::get('/clerk/appointment/edit/{id}',[ClerkDeathEventController::class,'edit'])->name('clerk.appointment.edit');
-      Route::post('/clerk/appointment/update/{id}',[ClerkDeathEventController::class,'update'])->name('clerk.appointment.update');
-      Route::get('/clerk/appointment/destroy/{id}',[AppointmentController::class,'destroy'])->name('clerk.appointment.destroy');
+      Route::get('/clerk/appointment',[PatientAppointmentController::class,'index'])->name('clerk.appointment.index');
+      Route::get('/clerk/appointment/add',[PatientAppointmentController::class,'add'])->name('clerk.appointment.add');
+      Route::post('/clerk/appointment/store',[PatientAppointmentController::class,'store'])->name('clerk.appointment.store');
+      Route::get('/clerk/appointment/edit/{id}',[PatientAppointmentController::class,'edit'])->name('clerk.appointment.edit');
+      Route::post('/clerk/appointment/update/{id}',[PatientAppointmentController::class,'update'])->name('clerk.appointment.update');
+      Route::get('/clerk/appointment/destroy/{id}',[PatientAppointmentController::class,'destroy'])->name('clerk.appointment.destroy');
 
 });
 

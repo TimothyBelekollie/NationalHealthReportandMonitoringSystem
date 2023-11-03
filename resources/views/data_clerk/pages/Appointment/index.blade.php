@@ -50,9 +50,9 @@
                         <div class="col-md-4">
                         <h3 class="box-title">All Patient Appointments</h3>
                        </div>
-                       <div class="col-md-4 ms-auto">
+                       {{-- <div class="col-md-4 ms-auto">
                         <a href="{{route('clerk.pat.encounter.add')}}" class="btn btn-primary">Add Patient Encounter</a>
-                       </div>
+                       </div> --}}
                     </div>
 				
 				</div>
@@ -63,56 +63,48 @@
 						<thead>
 							<tr>
 								<th>No.</th>
-								<th>Patient Name</th>
-								<th>Encounter Center</th>
-								<th>Diagnosis Code</th>
-								<th>Test Conducted</th>
-								<th>Test Positive</th>
-								<th>Prescribe Treatment</th>
-
-								
-								
+								<th>Name</th>
+								<th>Email</th>
+								<th>Phone</th>
+								<th>Has Been Asign To</th>
+								<th>Message</th>
 								
 								<th>Action</th>
 							</tr>
 						</thead>
 						<tbody>
-							@foreach ($allPatients as $key=> $data)
+							@foreach ($appointments as $key=> $data)
 								
 						
 							<tr>
 								<td>{{$key+1}}</td>
-								<td>{{$data->patient->name}}</td>
-								<td>{{$data->healthCenter->name}}</td>
-								<td>{{$data->encounterDiagno->diagnosisCode}}</td>
-								<td>
-									@foreach ($data->encounterDiagno->testConducted as $value)
-									{{ $value }}<br>
-								    @endforeach 
+								<td>{{$data->name}}</td>
+								<td>{{$data->email}}</td>
+								<td>{{$data->phone}}</td>
+								<td>@if ($data->user_id)
+									{{$data->user->name}}
+								@else
+									NOt Assign Yet
+								@endif</td>
+								<td>{{$data->message}}</td>
 								
 								
-							    </td>
-								 <td>
-									@foreach ($data->encounterDiagno->diagnosisDescription as $value)
-									{{ $value }}<br>
-								    @endforeach 
 								
-								</td> 
-								<td>{{$data->encounterDiagno->doctor_prescription}}</td>
 								
-								<td><a href="{{route('clerk.pat.encounter.edit',$data->id)}}">Edit</a> <a href="">Detail</a> <a href="{{route('clerk.pat.encounter.destroy',$data->id)}}">Delete</a></td>
+								<td><a href="{{route('clerk.appointment.edit',$data->id)}}">Asign</a> <a href="">Detail</a> <a href="{{route('clerk.appointment.destroy',$data->id)}}">Delete</a></td>
 							</tr>
 							@endforeach
 						</tbody>
 						<tfoot>
 							<tr>
 								<th>No.</th>
-								<th>Patient Name</th>
-								<th>Encounter Center</th>
-								<th>Diagnosis Code</th>
-								<th>Test Conducted</th>
-								<th>Test Positive</th>
-								<th>Prescribe Treatment</th>
+								<th> Name</th>
+								<th>Email</th>
+								<th>Phone </th>
+								<th>Has Been Asign To </th>
+								<th>Message</th>
+							
+							
 								<th>Action</th>
 								
 							</tr>
