@@ -24,7 +24,7 @@
             
                     <!-- <input type="text" class="src-input-box" placeholder="Search Here" name="s" value="" title="src-input-box"> -->
 
-                    <select class="form-select src-input-box" aria-label="Default select example" id="divisionSelect" name="division">
+                    <select class="form-select src-input-box" aria-label="Default select example" id="divisionSelect" name="division_id">
                         <option selected>Filter By Division</option>
                         @foreach ($divisions as $division)
                  <option value="{{$division->id}}">{{$division->name}}</option>
@@ -36,7 +36,7 @@
 
         <div class="col-md-4">
            
-            <select class="form-select src-input-box" aria-label="Default select example" id="subdivisionSelect" name="subdivision">
+            <select class="form-select src-input-box" aria-label="Default select example" id="subdivisionSelect" name="subdivision_id">
                 {{-- <option selected>Filter By Subdivision</option> --}}
 				@foreach ($subdivisions as $sub)
                 <option value="{{$sub->id}}">{{$sub->name}}</option>
@@ -68,7 +68,12 @@
 							<div class="blog-single-items">
 								<div class="blog-thumb">
 									<a href="#">
-										<img src="{{asset('frontend/assets/images/blog/bg1.jpg')}}" alt="Blog img">
+										@if ($health->profileImage)
+										<img src="{{asset('Upload/healthCenter/'.$health->profileImage)}}" alt="Blog img">	
+										@else
+										<img src="{{asset('frontend/assets/images/blog/bg1.jpg')}}" alt="Blog img">	
+										@endif
+										
 									</a>
 									<div class="blog-meta-top">
 										<ul>
@@ -79,7 +84,7 @@
 								</div>
 								<div class="blog-content">
 									<div class="blog-meta">
-										<span><a href="{{route('health.show',$health->id)}}">specialty</a></span> - <span>Bone Marrow</span>
+										<span><a href="{{route('health.show',$health->id)}}">Interested:</span> - <span>Read More</span></a>
 									</div>
 									<div class="blog-content-text text-center">
 										<h5><a href="{{route('health.show',$health->id)}}">

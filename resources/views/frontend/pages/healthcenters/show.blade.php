@@ -81,6 +81,14 @@
 						<p class="text-danger">{{$message}}	</p>
 						@enderror
 						
+						<input class="input-box" name="specialization" type="text" placeholder="Specialization" >
+						@error("specialization")
+						<p class="text-danger">{{$message}}	</p>
+						@enderror
+						<input class="input-box" name="date" type="date" placeholder="Appointment Date" >
+						@error("date")
+						<p class="text-danger">{{$message}}	</p>
+						@enderror
 						{{-- <select name="select" class="input-box">
 							<option value="">Your Inquiry About</option>
 							<option value="">General Information Request</option>

@@ -83,6 +83,24 @@
 					 
 					</ul>
 				  </li>	
+				  @endif	
+
+				  @if (Auth::user()->usertype=='Doctor')
+	
+
+				  <li class="treeview">
+					<a href="#">
+					  <i span class="icon-Layout-grid"><span class="path1"></span><span class="path2"></span></i>
+					  <span>Medical Appointments</span>
+					  <span class="pull-right-container">
+						<i class="fa fa-angle-right pull-right"></i>
+					  </span>
+					</a>
+					<ul class="treeview-menu">
+					  <li><a href="{{route('clerk.doc.appointment.index')}}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>View Appointments</a></li>
+					 
+					</ul>
+				  </li>	
 				  @endif				 
 				 	     
 			  </ul>

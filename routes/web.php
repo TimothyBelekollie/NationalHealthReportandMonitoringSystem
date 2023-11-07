@@ -291,6 +291,13 @@ Route::middleware(['auth:sanctum', 'verified','role:data_clerk'])->group(functio
       Route::post('/clerk/appointment/update/{id}',[PatientAppointmentController::class,'update'])->name('clerk.appointment.update');
       Route::get('/clerk/appointment/destroy/{id}',[PatientAppointmentController::class,'destroy'])->name('clerk.appointment.destroy');
 
+      //data clerk viewing asigned appointment by the Receptionist
+      Route::get('/clerk/doctor/appointment',[PatientAppointmentController::class,'Doindex'])->name('clerk.doc.appointment.index');
+      Route::get('/clerk/doctor/appointment/add',[PatientAppointmentController::class,'Doadd'])->name('clerk.doc.appointment.add');
+      Route::post('/clerk/doctor/appointment/store',[PatientAppointmentController::class,'Dostore'])->name('clerk.doc.appointment.store');
+      Route::get('/clerk/doctor/appointment/edit/{id}',[PatientAppointmentController::class,'Doedit'])->name('clerk.doc.appointment.edit');
+      Route::post('/clerk/doctor/appointment/update/{id}',[PatientAppointmentController::class,'Doupdate'])->name('clerk.doc.appointment.update');
+      Route::get('/clerk/doctor/appointment/destroy/{id}',[PatientAppointmentController::class,'Dodestroy'])->name('clerk.doc.appointment.destroy');
 });
 
 

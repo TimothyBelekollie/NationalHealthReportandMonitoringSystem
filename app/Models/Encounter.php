@@ -10,6 +10,7 @@ use App\Models\EncounterDiagnosis;
 class Encounter extends Model
 {
     use HasFactory;
+    protected $table = 'secondencounters';
     protected $fillable=['encounterDate','health_center_id','patient_id'];
     
     

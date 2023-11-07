@@ -18,7 +18,10 @@ return new class extends Migration
             $table->string("email")->nullable();
             $table->string("specialization")->nullable();
             $table->string("message")->nullable();
+            $table->string("status")->nullable();
+            $table->string("date")->nullable();
             $table->unsignedBigInteger('health_center_id');
+            $table->unsignedBigInteger('user_id')->nullable();
 
             $table->foreign('health_center_id')->references('id')->on('health_centers');
             $table->timestamps();

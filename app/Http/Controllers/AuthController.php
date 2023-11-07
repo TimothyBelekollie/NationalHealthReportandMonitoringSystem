@@ -519,9 +519,9 @@ $datasets=[
             elseif($role=="data_clerk"){
                   // Get the currently logged-in data clerk
    
-                  $chiefDoctor = Auth::user();
+                  $Doctor = Auth::user();
                 // Get the hospital assigned to the data clerk
-                  $hospital = $chiefDoctor->healthCenter;
+                  $hospital = $Doctor->healthCenter;
 
                 // Get the total number of patients for the hospital
                   $data['totalPatients'] = Patient::where('health_center_id', $hospital->id)->count();
@@ -537,8 +537,8 @@ $datasets=[
                   $data['todayTotalDeathEvents']=DeathEvent::where('health_center_id',$hospital->id)->where('created_at',today())->count();
                  
                  
-                  $chiefDoctor = Auth::user();
-                  $healthCenter = $chiefDoctor->healthCenter;
+                  $Doctor = Auth::user();
+                  $healthCenter = $Doctor->healthCenter;
                   
                   $uniqueDiseases = [];
                   

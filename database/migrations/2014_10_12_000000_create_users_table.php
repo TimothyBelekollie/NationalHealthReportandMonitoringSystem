@@ -27,8 +27,6 @@ return new class extends Migration
             
             $table->unsignedBigInteger('division_id')->nullable();
             $table->foreign('division_id')->references('id')->on('divisions')->onDelete('cascade');
-
-           
             $table->unsignedBigInteger('subdivision_id')->nullable();
             $table->foreign('subdivision_id')->references('id')->on('subdivisions')->onDelete('cascade');
 

@@ -28,14 +28,29 @@ return view('frontend.pages.contactus.index');
       
         $divisions=Division::all();
         $subdivisions=Subdivision::all();
-        $division=$request->division;
-        $subdiv=$request->subdivision;
-        $healthcenters=HealthCenter::all();
+        $division=$request->division_id;
+        $subdivision=$request->subdivision_id;
+
+        // $healthcenters=HealthCenter::all();
+        $query = HealthCenter::query();
+
+    if ($request->has('division_id') && $request->division_id != 'Filter By Division') {
+        $query->whereHas('subdivision', function ($subQuery) use ($request) {
+            $subQuery->where('division_id', $request->division_id);
+        });
+    }
+
+    if ($request->has('subdivision_id') && $request->subdivision_id != 'Filter By Subdivision') {
+        $query->where('subdivision_id', $request->subdivision_id);
+    }
+
+    $healthcenters = $query->get();
 
         return view('frontend.pages.healthcenters.index',compact('divisions','subdivisions','healthcenters'));
     }
 
-   public function HealthShow($id){
+   public function HealthShow(Request $request, $id){
+    
     $healthCenter=HealthCenter::find($id);
     return view('frontend.pages.healthcenters.show',compact('healthCenter'));
 
@@ -47,7 +62,9 @@ return view('frontend.pages.contactus.index');
             'name'=>'required',
             'email'=>'required',
             'phone'=>'required',
-            'message'=>'required'
+            'message'=>'required',
+            'specialization'=>'required',
+            'date'=>'required'
         ]);
 
         $saveAppointment=new Appointment();
@@ -55,6 +72,8 @@ return view('frontend.pages.contactus.index');
         $saveAppointment->email=$request->name;
         $saveAppointment->phone=$request->phone;
         $saveAppointment->message=$request->message;
+        $saveAppointment->date=$request->date;
+        $saveAppointment->specialization=$request->specialization;
         $saveAppointment->health_center_id=$request->health_center_id;
         //dd($saveAppointment);
         $saveAppointment->save();
