@@ -12,7 +12,7 @@ class Subdivision extends Model
 {
     use HasFactory;
 
-    protected $fillable=['name','division_id'];
+    protected $fillable=['name','division_id','id'];
 
 
    

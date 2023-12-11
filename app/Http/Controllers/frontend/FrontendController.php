@@ -44,7 +44,7 @@ return view('frontend.pages.contactus.index');
         $query->where('subdivision_id', $request->subdivision_id);
     }
 
-    $healthcenters = $query->get();
+    $healthcenters = $query->paginate(10);
 
         return view('frontend.pages.healthcenters.index',compact('divisions','subdivisions','healthcenters'));
     }

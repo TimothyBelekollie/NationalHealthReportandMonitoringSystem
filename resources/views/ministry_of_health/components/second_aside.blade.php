@@ -1,4 +1,4 @@
-<aside class="control-sidebar">
+{{-- <aside class="control-sidebar">
 	  
 	<div class="rpanel-title"><span class="pull-right btn btn-circle btn-danger"><i class="ion ion-close text-white" data-toggle="control-sidebar"></i></span> </div>  <!-- Create the tabs -->
     <ul class="nav nav-tabs control-sidebar-tabs">
@@ -258,4 +258,4 @@
       </div>
       <!-- /.tab-pane -->
     </div>
-  </aside>
+  </aside> --}}

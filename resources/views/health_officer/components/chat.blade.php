@@ -1,4 +1,4 @@
-		
+{{-- 		
 	<div id="chat-box-body">
 		<div id="chat-circle" class="waves-effect waves-circle btn btn-circle btn-lg btn-warning l-h-70">
             <div id="chat-overlay"></div>
@@ -107,4 +107,4 @@
             </div>
 		</div>
 	</div>
-	
+	 --}}

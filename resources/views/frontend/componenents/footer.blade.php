@@ -68,34 +68,17 @@
                 <div class="widget">
                     <div class="footer-popular-post ">
                         <div class="footer-widget-title">
-                            <h5>Popular Post</h5>
+                            <h5>Admin</h5>
                         </div>
                         <div class="footer-popular-single-post d-flex">
                             <div class="single-post-img">
-                                <a href="#">
-                                    <img src="{{asset('frontend/assets/images/about/footer2.jpg')}}" alt="">
+                                <a href="{{route('login')}}">
+                                   Login
                                 </a>
                             </div>
-                            <div class="popular-post-title">
-                                <a href="#">
-                                    <h6>Plan Your Project with Your Software </h6>
-                                </a>
-                                <p>January 01, 2023</p>
-                            </div>
+                           
                         </div>
-                        <div class="footer-popular-single-post d-flex">
-                            <div class="single-post-img">
-                                <a href="#">
-                                    <img src="{{asset('frontend/assets/images/about/footer.jpg')}}" alt="">
-                                </a>
-                            </div>
-                            <div class="popular-post-title">
-                                <a href="#">
-                                    <h6>You have a Great Business Idea? </h6>
-                                </a>
-                                <p>January 01, 2023</p>
-                            </div>
-                        </div>
+                       
                     </div>
                 </div>
             </div>

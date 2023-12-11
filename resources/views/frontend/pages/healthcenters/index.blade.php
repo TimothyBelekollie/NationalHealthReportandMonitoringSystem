@@ -125,9 +125,7 @@
 						<!--Pagination-->
 
 						<div class="pagination pt-30 pb-70 pl-10">
-							<a href="#" class="active">1</a>
-							<a href="#">2</a>
-							<a href="#"><i class="fas fa-angle-double-right"></i></a>
+							{{ $healthcenters->links('vendor.pagination.custom') }}
 						</div>
 					</div>
 				</div>

@@ -78,7 +78,7 @@
 								<td>{{$key+1}}</td>
 								<td>{{$div->name}}</td>
 							
-								<td><a href="{{route('minister.edit_division', $div->id)}}">Edit</a> <a href="">Detail</a> <a href="{{route('minister.destroy_division',$div->id)}}">Delete</a></td>
+								<td><a href="{{route('minister.edit_division', $div->id)}}" class="btn btn-primary">Edit</a> <a href="{{route('minister.destroy_division',$div->id)}}" class="btn btn-danger">Delete</a></td>
 							</tr>
 							@endforeach
 						</tbody>

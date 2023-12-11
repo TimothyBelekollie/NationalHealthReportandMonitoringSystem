@@ -88,7 +88,7 @@
 								<td>{{$user->role->name}}</td>
 								
 								<td>{{ \Carbon\Carbon::parse($user->created_at)->diffForHumans()}}</td>
-								<td><a href="{{route('doctor.edit_clerk', $user->id)}}">Edit</a> <a href="">Detail</a> <a href="{{route('doctor.destroy_clerk',$user->id)}}">Delete</a></td>
+								<td><a href="{{route('doctor.edit_clerk', $user->id)}}" class="btn btn-primary">Edit</a>  <a href="{{route('doctor.destroy_clerk',$user->id)}}" class="btn btn-danger">Delete</a></td>
 							</tr>
 							@endforeach
 						</tbody>

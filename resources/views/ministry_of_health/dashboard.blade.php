@@ -53,7 +53,7 @@
 										{{-- <span class="badge badge-primary me-5"><i class="fa fa-lock"></i></span>
 										<span class="badge badge-primary"><i class="fa fa-clock-o"></i></span> --}}
 									</div>
-									<div class="dropdown">
+									{{-- <div class="dropdown">
 										<a data-bs-toggle="dropdown" href="#" class="px-10 pt-5"><i class="ti-more-alt"></i></a>
 										<div class="dropdown-menu dropdown-menu-end">
 										  <a class="dropdown-item" href="#"><i class="ti-import"></i> Import</a>
@@ -62,7 +62,7 @@
 										  <div class="dropdown-divider"></div>
 										  <a class="dropdown-item" href="#"><i class="ti-settings"></i> Settings</a>
 										</div>
-									</div>						
+									</div>						 --}}
 								</div>
 								<h4 class="mt-25 mb-5">Over all Total</h4>
 								<p class="text-fade mb-0 fs-12">
@@ -98,7 +98,7 @@
 										<span class="badge badge-success me-15">{{$division->name}}</span>
 										
 									</div>
-									<div class="dropdown">
+									{{-- <div class="dropdown">
 										<a data-bs-toggle="dropdown" href="#" class="px-10 pt-5"><i class="ti-more-alt"></i></a>
 										<div class="dropdown-menu dropdown-menu-end">
 										  <a class="dropdown-item" href="#"><i class="ti-import"></i> Import</a>
@@ -107,7 +107,7 @@
 										  <div class="dropdown-divider"></div>
 										  <a class="dropdown-item" href="#"><i class="ti-settings"></i> Settings</a>
 										</div>
-									</div>						
+									</div>						 --}}
 								</div>
 								<h4 class="mt-25 mb-5">Over all Total</h4>
 								<p class="text-fade mb-0 fs-12">{{ $division->totalBirthEvents }}</p>
@@ -146,13 +146,13 @@
 									</div>
 									<div class="dropdown">
 										<a data-bs-toggle="dropdown" href="#" class="px-10 pt-5"><i class="ti-more-alt"></i></a>
-										<div class="dropdown-menu dropdown-menu-end">
+										{{-- <div class="dropdown-menu dropdown-menu-end">
 										  <a class="dropdown-item" href="#"><i class="ti-import"></i> Import</a>
 										  <a class="dropdown-item" href="#"><i class="ti-export"></i> Export</a>
 										  <a class="dropdown-item" href="#"><i class="ti-printer"></i> Print</a>
 										  <div class="dropdown-divider"></div>
 										  <a class="dropdown-item" href="#"><i class="ti-settings"></i> Settings</a>
-										</div>
+										</div> --}}
 									</div>						
 								</div>
 								<h4 class="mt-25 mb-5">Over all Total</h4>

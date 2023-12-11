@@ -24,7 +24,7 @@
                   <div class="box bg-transparent no-shadow">
                       <div class="box-body p-xl-0 text-center">							
                           <h3 class="px-30 mb-20">Have New<br>Doctor to register?</h3>
-                          <button type="button" class="waves-effect waves-light w-p100 btn btn-primary"><i class="fa fa-plus me-15"></i> Register New Doctor</button>
+                          <a href="{{route('officer.add_doctor')}}"  class="waves-effect waves-light w-p100 btn btn-primary"><i class="fa fa-plus me-15"></i> Register New Doctor</a>
                       </div>
                   </div>
               </div>
@@ -111,7 +111,7 @@
                                       </div>
                                   </div>						
                               </div>
-                              <h4 class="mt-25 mb-5">{{$birthEvents->count()}}</h4>
+                              <h4 class="mt-25 mb-5">{{$birthEvents}}</h4>
                               {{-- <p class="text-fade mb-0 fs-12">15 days Left</p> --}}
                           </div>	
                       </div>					
@@ -137,7 +137,7 @@
                                       </div>
                                   </div>						
                               </div>
-                              <h4 class="mt-25 mb-5">{{$deathEvents->count()}}</h4>
+                              <h4 class="mt-25 mb-5">{{$deathEvents}}</h4>
                              
                           </div>	
                       </div>					

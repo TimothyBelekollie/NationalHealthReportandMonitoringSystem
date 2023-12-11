@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\HealthCenter;
 use App\Models\HealthCenterType;
+use  Illuminate\Support\Facades\Auth;
 use App\Models\Subdivision;
 use App\Http\Requests\Officer\HealthCenterRequest;
 
@@ -16,13 +17,18 @@ class OfficerHealthCenterRegistryController extends Controller
 
     public function index(){
         $allHealthCenter=HealthCenter::latest()->get();
+// // Assuming you have a HealthOfficer model with a subdivisions relationship
+// $healthOfficer = Auth::user(); // Assuming the logged-in user is a health officer
+// $subdivisions = $healthOfficer->subdivisions;
+
+//$healthCenters = HealthCenter::whereIn('subdivision_id', $subdivisions->pluck('id'))->latest()->get();
         return view('health_officer.pages.healthCenters.index',compact('allHealthCenter'));
     }
 
     public function add(){
         $data['healthcentertypes']=HealthCenterType::latest()->get();
-        $data['subdivisions']=Subdivision::latest()->get();
-
+        $data['subdivisions']=Subdivision::latest()->where('division_id',Auth::user()->division->id)->get();
+        
         return view('health_officer.pages.healthCenters.add',$data);
 
     }

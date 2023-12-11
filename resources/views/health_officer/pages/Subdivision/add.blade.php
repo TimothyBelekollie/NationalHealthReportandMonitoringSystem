@@ -64,10 +64,10 @@
 									<label  class="form-label">Division* :</label>
 									
 									 <select class="form-select"  name="division_id">
-										<option value="" disabled selected>Select Division </option>									
-										@foreach ($divisionsData as $data)	
-                                    <option value="{{$data->id}}">{{$data->name}}</option>
-                                        @endforeach
+										<option value="" disabled>Select Division </option>									
+										{{-- @foreach ($divisionsData as $data)	 --}}
+                                    <option value="{{Auth::user()->division->id}}" selected>{{Auth::user()->division->name}}</option>
+                                        {{-- @endforeach --}}
 									</select> 
                                     @error('division_id')
                                     <span class="text-danger">{{$message}}</span>

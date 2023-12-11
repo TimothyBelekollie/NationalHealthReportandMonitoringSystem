@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Division;
 use App\Models\Subdivision;
+use  Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Officer\SubdivisionRequest;
 
 
@@ -13,16 +14,16 @@ class OfficerDistrictRegistryController extends Controller
 {
    
     public function index(){
-        $data['subdivisions']=Subdivision::latest()->get();
+        $data['subdivisions']=Subdivision::latest()->where('division_id',Auth::user()->division->id)->get();
       
         return view('health_officer.pages.Subdivision.index',$data);
     }
 
     public function add(){
-        $data['divisionsData']=Division::latest()->get();
+        // $data['divisionsData']=Division::latest()->get();
        
 
-        return view('health_officer.pages.Subdivision.add',$data);
+        return view('health_officer.pages.Subdivision.add');
 
     }
 
