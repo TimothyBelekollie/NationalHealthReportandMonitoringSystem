@@ -86,7 +86,7 @@
 								<td>{{$con->websiteurl}}</td>
 								<td>{{$con->message}}</td>
 							
-								<td><a href="">Detail</a> <a href="{{route('contact.destroy',$con->id)}}">Delete</a></td>
+								<td><a class="btn btn-danger" href="{{route('contact.destroy',$con->id)}}">Delete</a></td>
 							</tr>
 							@endforeach
 						</tbody>

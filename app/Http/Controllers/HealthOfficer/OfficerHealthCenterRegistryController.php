@@ -16,12 +16,15 @@ class OfficerHealthCenterRegistryController extends Controller
     //
 
     public function index(){
-        $allHealthCenter=HealthCenter::latest()->get();
-// // Assuming you have a HealthOfficer model with a subdivisions relationship
-// $healthOfficer = Auth::user(); // Assuming the logged-in user is a health officer
-// $subdivisions = $healthOfficer->subdivisions;
+  //      $allHealthCenter=HealthCenter::latest()->get();
 
-//$healthCenters = HealthCenter::whereIn('subdivision_id', $subdivisions->pluck('id'))->latest()->get();
+
+        // Get the authenticated user's division
+     $divisionId = Auth::user()->division->id;
+   // Retrieve health centers based on the user's division
+    $allHealthCenter = HealthCenter::whereHas('subdivision', function ($query) use ($divisionId) {
+    $query->where('division_id', $divisionId);
+})->latest()->get();
         return view('health_officer.pages.healthCenters.index',compact('allHealthCenter'));
     }
 

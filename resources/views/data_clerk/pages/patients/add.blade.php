@@ -150,7 +150,7 @@
 								<div class="form-group">
 									<label  class="form-label">Sub Division*:</label>
 									<select class="form-select" name="subdivision_id">
-										<option value="">Select City</option>
+										<option value="">Select Sub Division</option>
                                         @foreach ( $subdivisions as $subdivision)
 										<option value="{{$subdivision->id}}">{{$subdivision->name}}</option>
                                         @endforeach

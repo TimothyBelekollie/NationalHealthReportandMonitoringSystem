@@ -82,9 +82,12 @@
 								<td>{{$patient->name}}</td>
 								<td>{{$patient->healthCenter->name}}</td>
 								<td>{{$patient->nationality}}</td>
-								<td>{{$patient->address->community}}</td>
+								<td>
+									{{$patient->address->community}}
+								
+								</td>
 								<td>{{$patient->gender}}</td>
-								<td><a href="{{route('clerk.patient.edit', $patient->id)}}">Edit</a> <a href="">Detail</a> <a href="{{route('clerk.patient.destroy',$patient->id)}}">Delete</a></td>
+								<td><a href="{{route('clerk.patient.edit', $patient->id)}}" class="btn btn-primary">Edit</a> <a href="{{route('clerk.patient.destroy',$patient->id)}}" class="btn btn-danger">Delete</a></td>
 							</tr>
 							@endforeach
 						</tbody>

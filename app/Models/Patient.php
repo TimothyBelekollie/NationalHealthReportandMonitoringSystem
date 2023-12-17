@@ -30,6 +30,7 @@ class Patient extends Model
     {
         return $this->hasOne(Address::class);
     }
+    
     public function encounters(): HasMany
     {
         return $this->hasMany(Encounter::class);

@@ -49,16 +49,7 @@
                                       <span class="badge badge-primary me-15">Total Health Centers</span>
                                    
                                   </div>
-                                  <div class="dropdown">
-                                      <a data-bs-toggle="dropdown" href="#" class="px-10 pt-5"><i class="ti-more-alt"></i></a>
-                                      <div class="dropdown-menu dropdown-menu-end">
-                                        <a class="dropdown-item" href="#"><i class="ti-import"></i> Import</a>
-                                        <a class="dropdown-item" href="#"><i class="ti-export"></i> Export</a>
-                                        <a class="dropdown-item" href="#"><i class="ti-printer"></i> Print</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#"><i class="ti-settings"></i> Settings</a>
-                                      </div>
-                                  </div>						
+                                  					
                               </div>
                               <h4 class="mt-25 mb-5">{{$healthCentersCount}}</h4>
                              
@@ -74,16 +65,7 @@
                                   <div class="d-flex">									
                                       <span class="badge badge-primary me-15">Total Encounter</span>
                                   </div>
-                                  <div class="dropdown">
-                                      <a data-bs-toggle="dropdown" href="#" class="px-10 pt-5"><i class="ti-more-alt"></i></a>
-                                      <div class="dropdown-menu dropdown-menu-end">
-                                        <a class="dropdown-item" href="#"><i class="ti-import"></i> Import</a>
-                                        <a class="dropdown-item" href="#"><i class="ti-export"></i> Export</a>
-                                        <a class="dropdown-item" href="#"><i class="ti-printer"></i> Print</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#"><i class="ti-settings"></i> Settings</a>
-                                      </div>
-                                  </div>						
+                                 					
                               </div>
                               <h4 class="mt-25 mb-5">{{$patientEncounters}}</h4>
                               {{-- <p class="text-fade mb-0 fs-12">1 Days Left</p> --}}
@@ -100,16 +82,7 @@
                                       <span class="badge badge-success me-15">Total Birth</span>
                                       {{-- <span class="badge badge-primary me-5"><i class="fa fa-lock"></i></span> --}}
                                   </div>
-                                  <div class="dropdown">
-                                      <a data-bs-toggle="dropdown" href="#" class="px-10 pt-5"><i class="ti-more-alt"></i></a>
-                                      <div class="dropdown-menu dropdown-menu-end">
-                                        <a class="dropdown-item" href="#"><i class="ti-import"></i> Import</a>
-                                        <a class="dropdown-item" href="#"><i class="ti-export"></i> Export</a>
-                                        <a class="dropdown-item" href="#"><i class="ti-printer"></i> Print</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#"><i class="ti-settings"></i> Settings</a>
-                                      </div>
-                                  </div>						
+                                					
                               </div>
                               <h4 class="mt-25 mb-5">{{$birthEvents}}</h4>
                               {{-- <p class="text-fade mb-0 fs-12">15 days Left</p> --}}
@@ -126,16 +99,7 @@
                                       <span class="badge badge-dark me-15">Total Death</span>
                                       
                                   </div>
-                                  <div class="dropdown">
-                                      <a data-bs-toggle="dropdown" href="#" class="px-10 pt-5"><i class="ti-more-alt"></i></a>
-                                      <div class="dropdown-menu dropdown-menu-end">
-                                        <a class="dropdown-item" href="#"><i class="ti-import"></i> Import</a>
-                                        <a class="dropdown-item" href="#"><i class="ti-export"></i> Export</a>
-                                        <a class="dropdown-item" href="#"><i class="ti-printer"></i> Print</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#"><i class="ti-settings"></i> Settings</a>
-                                      </div>
-                                  </div>						
+                                 					
                               </div>
                               <h4 class="mt-25 mb-5">{{$deathEvents}}</h4>
                              
@@ -169,16 +133,7 @@
                             {{-- <span class="badge badge-primary me-5"><i class="fa fa-lock"></i></span>
                             <span class="badge badge-primary"><i class="fa fa-clock-o"></i></span> --}}
                         </div>
-                        <div class="dropdown">
-                            <a data-bs-toggle="dropdown" href="#" class="px-10 pt-5"><i class="ti-more-alt"></i></a>
-                            <div class="dropdown-menu dropdown-menu-end">
-                              <a class="dropdown-item" href="#"><i class="ti-import"></i> Import</a>
-                              <a class="dropdown-item" href="#"><i class="ti-export"></i> Export</a>
-                              <a class="dropdown-item" href="#"><i class="ti-printer"></i> Print</a>
-                              <div class="dropdown-divider"></div>
-                              <a class="dropdown-item" href="#"><i class="ti-settings"></i> Settings</a>
-                            </div>
-                        </div>						
+                       					
                     </div>
                     <h4 class="mt-25 mb-5">{{$todayhealthCentersCount}}</h4>
                    
@@ -194,16 +149,7 @@
                         <div class="d-flex">									
                             <span class="badge badge-primary me-15">Total Encounter</span>
                         </div>
-                        <div class="dropdown">
-                            <a data-bs-toggle="dropdown" href="#" class="px-10 pt-5"><i class="ti-more-alt"></i></a>
-                            <div class="dropdown-menu dropdown-menu-end">
-                              <a class="dropdown-item" href="#"><i class="ti-import"></i> Import</a>
-                              <a class="dropdown-item" href="#"><i class="ti-export"></i> Export</a>
-                              <a class="dropdown-item" href="#"><i class="ti-printer"></i> Print</a>
-                              <div class="dropdown-divider"></div>
-                              <a class="dropdown-item" href="#"><i class="ti-settings"></i> Settings</a>
-                            </div>
-                        </div>						
+                       					
                     </div>
                     <h4 class="mt-25 mb-5">{{$todaypatientEncounters}}</h4>
                     {{-- <p class="text-fade mb-0 fs-12">1 Days Left</p> --}}
@@ -220,16 +166,7 @@
                             <span class="badge badge-success me-15">Total Birth</span>
                             {{-- <span class="badge badge-primary me-5"><i class="fa fa-lock"></i></span> --}}
                         </div>
-                        <div class="dropdown">
-                            <a data-bs-toggle="dropdown" href="#" class="px-10 pt-5"><i class="ti-more-alt"></i></a>
-                            <div class="dropdown-menu dropdown-menu-end">
-                              <a class="dropdown-item" href="#"><i class="ti-import"></i> Import</a>
-                              <a class="dropdown-item" href="#"><i class="ti-export"></i> Export</a>
-                              <a class="dropdown-item" href="#"><i class="ti-printer"></i> Print</a>
-                              <div class="dropdown-divider"></div>
-                              <a class="dropdown-item" href="#"><i class="ti-settings"></i> Settings</a>
-                            </div>
-                        </div>						
+                      						
                     </div>
                     <h4 class="mt-25 mb-5">{{$todaybirthEvents}}</h4>
                     {{-- <p class="text-fade mb-0 fs-12">15 days Left</p> --}}
@@ -246,16 +183,7 @@
                             <span class="badge badge-dark me-15">Total Death</span>
                             
                         </div>
-                        <div class="dropdown">
-                            <a data-bs-toggle="dropdown" href="#" class="px-10 pt-5"><i class="ti-more-alt"></i></a>
-                            <div class="dropdown-menu dropdown-menu-end">
-                              <a class="dropdown-item" href="#"><i class="ti-import"></i> Import</a>
-                              <a class="dropdown-item" href="#"><i class="ti-export"></i> Export</a>
-                              <a class="dropdown-item" href="#"><i class="ti-printer"></i> Print</a>
-                              <div class="dropdown-divider"></div>
-                              <a class="dropdown-item" href="#"><i class="ti-settings"></i> Settings</a>
-                            </div>
-                        </div>						
+                       					
                     </div>
                     <h4 class="mt-25 mb-5">{{$todaydeathEvents}}</h4>
                    
@@ -310,7 +238,7 @@
                   <div class="box no-shadow mb-0 bg-transparent">
                       <div class="box-header no-border px-0">
                           <h4 class="box-title">Performance & Statistics</h4>	
-                          <ul class="box-controls pull-right d-md-flex d-none">
+                          {{-- <ul class="box-controls pull-right d-md-flex d-none">
                             <li>
                               <button class="btn btn-primary-light px-10">View All</button>
                             </li>
@@ -323,7 +251,7 @@
                                 <a class="dropdown-item" href="#">Last month</a>
                               </div>
                             </li>
-                          </ul>
+                          </ul> --}}
                       </div>
                   </div>
               </div>

@@ -27,10 +27,10 @@ $currentYear = Carbon::now()->year;
 // Use the selected year if provided, or use the current year as the default
 $year = $selectedYear ?? $currentYear;
 
-$monthlyData = Encounter::where('encounters.health_center_id', $hospital->id)
-                ->selectRaw('MONTH(encounters.created_at) as month, patients.gender as gender, COUNT(*) as count')
-                ->join('patients', 'encounters.patient_id', '=', 'patients.id')
-                ->whereYear('encounters.created_at', $year)
+$monthlyData = Encounter::where('secondencounters.health_center_id', $hospital->id)
+                ->selectRaw('MONTH(secondencounters.created_at) as month, patients.gender as gender, COUNT(*) as count')
+                ->join('patients', 'secondencounters.patient_id', '=', 'patients.id')
+                ->whereYear('secondencounters.created_at', $year)
                 ->whereIn('patients.gender', ['Male', 'Female'])
                 ->groupBy('month', 'patients.gender')
                 ->orderBy('month')
@@ -74,9 +74,9 @@ $totalPatient = $totalMale + $totalFemale;
 
 
 
-$piepatients = Encounter::where('encounters.health_center_id', $hospital->id)
-            ->join('patients', 'encounters.patient_id', '=', 'patients.id')
-            ->whereYear('encounters.created_at', $year)
+$piepatients = Encounter::where('secondencounters.health_center_id', $hospital->id)
+            ->join('patients', 'secondencounters.patient_id', '=', 'patients.id')
+            ->whereYear('secondencounters.created_at', $year)
             ->whereIn('patients.gender', ['Male','Female'])
             ->select('patients.gender as gender', DB::raw('COUNT(*) as count'))
             ->groupBy('patients.gender')
@@ -100,10 +100,10 @@ $piedatasets = [
 
 
 
-$patients = Encounter::where('encounters.health_center_id', $hospital->id)
-->selectRaw('MONTH(encounters.created_at) as month, patients.gender as gender, COUNT(*) as count')
-->join('patients', 'encounters.patient_id', '=', 'patients.id')
-->whereYear('encounters.created_at', $year)
+$patients = Encounter::where('secondencounters.health_center_id', $hospital->id)
+->selectRaw('MONTH(secondencounters.created_at) as month, patients.gender as gender, COUNT(*) as count')
+->join('patients', 'secondencounters.patient_id', '=', 'patients.id')
+->whereYear('secondencounters.created_at', $year)
 ->whereIn('patients.gender', ['Male', 'Female'])
 ->groupBy('month', 'patients.gender')
 ->orderBy('month')

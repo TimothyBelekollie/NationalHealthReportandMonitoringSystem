@@ -18,7 +18,7 @@
 	  </li>
 
 	  
-	  <li><a href="#"><i class="icon-Layout-4-blocks"><span class="path1"></span><span class="path2"></span></i>Subdivision Registry(District)</a>
+	  <li><a href="#"><i class="ti-pencil-alt"><span class="path1"></span><span class="path2"></span></i>Subdivision Registry(District)</a>
 		<ul> 
 			<li><a href="{{route('officer.add_subdivision')}}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Add New District</a></li>
 			<li><a href="{{route('officer.index_subdivision')}}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>View All District</a></li>
@@ -31,9 +31,9 @@
 
 		{{-- Reports of different kinds --}}
 
-	  <li><a href="{{route('officer.detail_patient')}}"><i class="icon-Incoming-mail"><span class="path1"></span><span class="path2"></span></i>Patient Report</a></li>
-	  <li><a href="{{route('officer.detail_birth')}}"><i class="icon-Incoming-mail"><span class="path1"></span><span class="path2"></span></i>Birth Report</a></li>
-	  <li><a href="{{route('officer.detail_death')}}"><i class="icon-Incoming-mail"><span class="path1"></span><span class="path2"></span></i>Death Report</a></li>
+	  <li><a href="{{route('officer.detail_patient')}}"><i class="ti-folder"><span class="path1"></span><span class="path2"></span></i>Patient Report</a></li>
+	  <li><a href="{{route('officer.detail_birth')}}"><i class="ti-stats-up"><span class="path1"></span><span class="path2"></span></i>Birth Report</a></li>
+	  <li><a href="{{route('officer.detail_death')}}"><i class="ti-stats-down"><span class="path1"></span><span class="path2"></span></i>Death Report</a></li>
 	  </li>
 	
 	</ul>

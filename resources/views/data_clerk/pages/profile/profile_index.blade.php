@@ -58,7 +58,7 @@
 					</li>
 					<li class="be-1 bs-1 border-light">
 					  <span class="text-muted">County</span><br>
-					  <span class="fs-16">{{Auth::user()->division->name}}</span>
+					  <span class="fs-16">{{Auth::user()->healthCenter->subdivision->division->name}}</span>
 					</li>
 					<li>
 						<span class="text-muted">Contact</span><br>

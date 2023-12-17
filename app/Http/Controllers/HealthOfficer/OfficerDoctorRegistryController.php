@@ -8,21 +8,38 @@ use App\Models\User;
 use App\Models\Role;
 use App\Models\HealthCenter;
 use App\Http\Requests\Officer\DoctorCreationRequest;
+use  Illuminate\Support\Facades\Auth;
 class OfficerDoctorRegistryController extends Controller
 {
     public function index(){
 
+        // $usersWithRole = User::whereHas('role', function ($query) {
+        //     $query->where('name', 'chief_doctor');
+        // })->latest()->get();
+
+
+       // Get the authenticated user's division
+        $divisionId = Auth::user()->division->id;
+        //Retrieve users with the "chief_doctor" role assigned to health centers
         $usersWithRole = User::whereHas('role', function ($query) {
             $query->where('name', 'chief_doctor');
+        })->whereHas('healthCenter.subdivision.division', function ($query) use ($divisionId) {
+            $query->where('id', $divisionId);
         })->latest()->get();
-      
+
         return view('health_officer.pages.chiefDoctor.index', compact('usersWithRole'));
     }
 
     public function Add(){
         
         $roles=Role::all()->where('name','chief_doctor');
-        $healthCenter=HealthCenter::latest()->get();
+        //$healthCenter=HealthCenter::latest()->get();
+
+
+        $divisionId = Auth::user()->division->id;
+        $healthCenter = HealthCenter::whereHas('subdivision', function ($query) use ($divisionId) {
+            $query->where('division_id', $divisionId);
+        })->latest()->get();
         return view('health_officer.pages.chiefDoctor.add',compact('roles','healthCenter'));
     }
 

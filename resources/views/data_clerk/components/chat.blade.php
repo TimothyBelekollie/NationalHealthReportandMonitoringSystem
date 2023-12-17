@@ -1,4 +1,4 @@
-<div id="chat-box-body">
+{{-- <div id="chat-box-body">
     <div id="chat-circle" class="waves-effect waves-circle btn btn-circle btn-lg btn-warning l-h-70">
         <div id="chat-overlay"></div>
         <span class="icon-Group-chat fs-30"><span class="path1"></span><span class="path2"></span></span>
@@ -105,4 +105,4 @@
             </form>      
         </div>
     </div>
-</div>
+</div> --}}
