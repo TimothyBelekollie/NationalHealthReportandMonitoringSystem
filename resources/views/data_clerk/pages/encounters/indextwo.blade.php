@@ -51,11 +51,9 @@
                         <div class="col-md-4">
                         <h3 class="box-title">All Patient Encounter Records</h3>
                        </div>
-                       <div class="col-md-4 ms-auto">
-						
-                        <a href="{{route('clerk.pat.encounter.addtwo')}}" class="btn btn-primary">Add Patient Encounter</a>
-						
-                       </div>
+                       {{-- <div class="col-md-4 ms-auto">
+                        <a href="{{route('clerk.pat.encounter.add')}}" class="btn btn-primary">Add Patient Encounter</a>
+                       </div> --}}
                     </div>
 				
 				</div>
@@ -70,9 +68,9 @@
 								<th>Encounter Center</th>
 								<th>Assigned Doctor</th>
 								<th>Diagnosis Code</th>
-								{{-- <th>Test Conducted</th>
-								<th>Test Positive</th>
-								<th>Prescribe Treatment</th> --}}
+								<th>Test Conducted</th>
+								<th>Test Result</th>
+								<th>Prescribe Treatment</th>
 
 								
 								
@@ -90,22 +88,27 @@
 								<td>{{$data->healthCenter->name}}</td>
 								<td>{{$data->doctor->name}}</td>
 								<td>{{ $data->encounterDiagno->diagnosisCode ?? 'N/A' }}</td>
-								{{-- <td>
-									@foreach ($data->encounterDiagno->testConducted as $value)
-									{{ $value }}<br>
-								    @endforeach 
+								<td>
+                                    @if($data->encounterDiagno && $data->encounterDiagno->testConducted)
+                                        @foreach ($data->encounterDiagno->testConducted as $value)
+                                            {{ $value }}<br>
+                                        @endforeach 
+                                    @else
+                                        N/A
+                                    @endif
+                                </td>
+                                <td>
+                                    @if ($data->encounterDiagno && $data->encounterDiagno->diagnosisDescription)
+                                        @foreach ($data->encounterDiagno->diagnosisDescription as $value)
+                                            {{ $value ?? "N/A" }}<br>
+                                        @endforeach
+                                    @else
+                                        N/A
+                                    @endif
+                                </td>
+								<td>{{$data->encounterDiagno->doctor_prescription?? "N/A"}}</td>
 								
-								
-							     </td> --}}
-								 {{-- <td>
-									@foreach ($data->encounterDiagno->diagnosisDescription as $value)
-									{{ $value }}<br>
-								    @endforeach 
-								
-								</td>  --}}
-								{{-- <td>{{$data->encounterDiagno->doctor_prescription}}</td> --}}
-								
-								<td><a href="{{route('clerk.pat.encounter.destroy',$data->id)}}" class="btn btn-danger">Delete</a></td>
+								<td><a href="{{route('clerk.pat.encounter.edit',$data->id)}}" class="btn btn-primary">Edit/Access</a><a href="{{route('clerk.pat.encounter.destroy',$data->id)}}" class="btn btn-danger">Delete</a></td>
 							</tr>
 							@endforeach
 						</tbody>
@@ -116,9 +119,9 @@
 								<th>Encounter Center</th>
 								<th>Assigned Doctor</th>
 								<th>Diagnosis Code</th>
-								{{-- <th>Test Conducted</th>
+								<th>Test Conducted</th>
 								<th>Test Positive</th>
-								<th>Prescribe Treatment</th> --}}
+								<th>Prescribe Treatment</th>
 								<th>Action</th>
 								
 							</tr>

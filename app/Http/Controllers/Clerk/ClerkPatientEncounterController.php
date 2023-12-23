@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Encounter;
 use App\Models\Patient;
+use App\Models\User;
 use App\Models\EncounterDiagnosis;
 use Illuminate\Support\Facades\Auth;
 use App\Models\HealthCenter;
@@ -31,17 +32,89 @@ class ClerkPatientEncounterController extends Controller
             ->get();
 
         return view('data_clerk.pages.encounters.index',$data);
+
+
     }
-    public function add(){
+
+    public function indexTwo(){
+        //$data['allData']=Encounter::latest()->get();
+
+           // Get the currently logged-in data clerk
+   
+             $dataClerk = Auth::user();
+           // Get the hospital assigned to the data clerk
+             $hospital = $dataClerk->healthCenter;
+
+           // Get the total number of patients for the hospital
+            // $data['allPatients'] = Encounter::where('health_center_id', $hospital->id)->latest()->get();
+
+            $data['allPatients'] = Encounter::with('encounterDiagno')
+            ->where('health_center_id', $hospital->id)
+            ->latest()
+            ->get();
+
+        return view('data_clerk.pages.encounters.indextwo',$data);
+
+        
+    }
+     public function add(){
         $data['patients']=Patient::latest()->get();
         return view('data_clerk.pages.encounters.add',$data);
         
+     }
+     public function addTwo(){
+        $data['patients']=Patient::latest()->get();
+        $data['data_clerks']=User::latest()->where('health_center_id',Auth::user()->health_center_id)->where('usertype','Doctor')->get();
+        return view('data_clerk.pages.encounters.addtwo',$data);
+        
+     }
+
+
+     public function storeRep(Request $request){
+        $patient_id=$request->patient_id;
+        $patient = Patient::findOrFail($patient_id);
+       // Use the current timestamp as part of the diagnosis code
+       $timestamp = now()->format('YmdHis');
+       $diagnosisCode = strtoupper(substr($patient->name, 0, 3)) . '_' . $timestamp . '_' . uniqid();
+        
+       
+              
+
+
+
+
+               $encouter = Encounter::create([
+                'encounterDate' => $request->input('encounterDate'),
+                'health_center_id' => $request->input('health_center_id'),
+                'patient_id' => $request->input('patient_id'),
+                'user_id' => $request->input('user_id')
+             
+               
+                  ]);
+    
+    
+    
+        // // // Create a new address record associated with the patient
+        $diagnosis = EncounterDiagnosis::create([
+             'diagnosisCode'=>$diagnosisCode,
+             'encounter_id' => $encouter->id,
+        ]);
+
+        return redirect()->route('clerk.pat.encounter.index')->with('message',' You have successfully assign patient encounter');
+        
     }
 
-    public function store(Request $request){
-        //dd($request->all());
-       // $validatedData=$request->validated();
-               // Create a new patient record
+       public function store(Request $request){
+        $patient_id=$request->patient_id;
+        $patient = Patient::findOrFail($patient_id);
+       // Use the current timestamp as part of the diagnosis code
+       $timestamp = now()->format('YmdHis');
+       $diagnosisCode = strtoupper(substr($patient->name, 0, 3)) . '_' . $timestamp . '_' . uniqid();
+
+       
+              
+
+
               
                $encouter = Encounter::create([
                 'encounterDate' => $request->input('encounterDate'),
@@ -54,7 +127,7 @@ class ClerkPatientEncounterController extends Controller
     
         // // Create a new address record associated with the patient
         $diagnosis = EncounterDiagnosis::create([
-            'diagnosisCode' => $request->input('diagnosisCode'),
+            'diagnosisCode' =>  $diagnosisCode,
             'testConducted' => explode(',', $request->input('testConducted')), // Convert to an array
             'diagnosisDescription' =>explode(',',$request->input('diagnosisDescription')), // Use the correct field name
             'encounter_id' => $encouter->id,
@@ -85,7 +158,7 @@ class ClerkPatientEncounterController extends Controller
     {
         // Retrieve the existing record by its ID
         $encounter = Encounter::findOrFail($id);
-    
+
         // Update the fields with the new values from the form
         $encounter->encounterDate = $request->input('encounterDate');
         $encounter->health_center_id = $request->input('health_center_id');
@@ -95,14 +168,15 @@ class ClerkPatientEncounterController extends Controller
         // Similarly, update the associated diagnosis record if needed
         $diagnosis = EncounterDiagnosis::where('encounter_id', $encounter->id)->first();
         if ($diagnosis) {
-            $diagnosis->diagnosisCode = $request->input('diagnosisCode');
+            
             $diagnosis->testConducted = explode(',', $request->input('testConducted'));
             $diagnosis->diagnosisDescription = explode(',', $request->input('diagnosisDescription'));
             $diagnosis->doctor_prescription = $request->input('doctor_prescription');
+            $diagnosis->user_id=Auth::user()->id;
             $diagnosis->save();
         }
         $encounter->save();
-        return redirect()->route('clerk.pat.encounter.index')->with('message', 'Record updated successfully');
+        return redirect()->route('clerk.pat.encounter.indextwo')->with('message', 'Record updated successfully');
     }
     
 

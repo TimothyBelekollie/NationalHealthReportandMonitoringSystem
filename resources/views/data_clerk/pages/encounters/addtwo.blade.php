@@ -1,6 +1,7 @@
 @extends('data_clerk.master')
 @section('data_clerk')
   <!-- Content Wrapper. Contains page content -->
+
   <div class="content-wrapper">
 	  <div class="container-full">
 		<!-- Content Header (Page header) -->
@@ -28,12 +29,12 @@
 		 <!-- Step wizard -->
 		  <div class="box">
 			<div class="box-header with-border">
-			  <h4 class="box-title">Update Patient Encounter Record</h4>
+			  <h4 class="box-title">Patient Encounter Record Keeping</h4>
 				
 			</div>
 			<!-- /.box-header -->
 			<div class="box-body wizard-content">
-				<form action="{{route('clerk.pat.encounter.update', $encounter->id)}}" class="tab-wizard wizard-circle" method="POST">
+				<form action="{{route('clerk.pat.encounter.storeRep')}}" class="tab-wizard wizard-circle" method="POST">
                     @csrf
 					<!-- Step 1 -->
 					<h6>Patient's Information</h6>
@@ -42,7 +43,7 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="firstName5" class="form-label">Encounter Date* :</label>
-									<input type="date" class="form-control"  name="encounterDate" value="{{ date('Y-m-d', strtotime($encounter->encounterDate)) }}">
+									<input type="date" class="form-control"  name="encounterDate">
                                     @error('name')
                              <span class="text-danger">{{ $message }}</span>
                                     @enderror
@@ -65,14 +66,14 @@
 						</div>
 						<div class="row">
 							
-							<div class="col-md-12">
+							<div class="col-md-6">
 								<div class="form-group">
 									<label  class="form-label">Patient Name* :</label>
 									
 									 <select class="form-select"  name="patient_id">
 										<option value="" selected>Select Patient </option>
 										@foreach($patients as $patient)
-                                    <option value="{{ $patient->id }}" {{$encounter->patient_id==$patient->id ? 'selected':''}}>{{ $patient->name }} - {{$patient->unique_patient_identifier}}</option>
+                                    <option value="{{ $patient->id }}">{{ $patient->name }} - {{$patient->unique_patient_identifier}}</option>
                                         @endforeach
 									</select> 
                                     @error('nationality')
@@ -81,18 +82,23 @@
 								</div>
 							
 						</div>
-						{{-- <div class="col-md-6">
-							<div class="form-group">
-								<label  class="form-label">Diagnosis Code* :</label>
-								
-								<input type="text" class="form-control"  name="diagnosisCode" value="{{$encounter->encounterDiagno->diagnosisCode}}">
-
-								@error('nationality')
-								<span class="text-danger">{{ $message }}</span>
-								@enderror
-							</div>
-						
-					</div> --}}
+					
+					<div class="col-md-6">
+            
+                            <div class="form-group">
+                                <label  class="form-label">Assign Doctor *:</label>
+                                <select class="form-select"  name="user_id">
+                                    <option value="">Select Doctor</option>
+                                    @foreach ($data_clerks as $doctor)
+                                    <option value="{{$doctor->id}}">{{$doctor->name}}- {{$doctor->doctorSpecialization}}</option>
+                                    @endforeach
+                                </select>
+                                @error('user_id')
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                       
+					</div>
 
 						
 					</div>
@@ -101,55 +107,42 @@
 					</section>
 					
 				
-					<section>
+					{{-- <section>
 						<div class="row">
 							<div class=" col-md-6">
 								<div class="form-group">
-									<label for="example-text-input" class="">Test to Conduct<span class="text-danger">*</span></label>
+									<label for="example-text-input" class="">Test Conducted<span class="text-danger">*</span></label>
 	
 									<div class="tags-default">
-										
-											@if($encounter->encounterDiagno && $encounter->encounterDiagno->testConducted)
-												@foreach ($encounter->encounterDiagno->testConducted as $data)
-													<input type="text" name="testConducted" value="{{ $data ?? 'N/A' }}" data-role="tagsinput" placeholder="Add Test" />
-												@endforeach
-											@else
-												<input type="text" name="testConducted" value="N/A" data-role="tagsinput" placeholder="Add Test" />
-											@endif
-										
+										<input type="text" name="testConducted" value="Malaria,Diarrhea" data-role="tagsinput" placeholder="Add Test" /> </div>
+	
 								</div>
 	
 							  </div>
-							</div>
 
 							  <div class=" col-md-6">
 								<div class="form-group">
-									<label for="example-text-input" class="">Test Result<span class="text-danger">*</span></label>
+									<label for="example-text-input" class="">Test Diagnosed Positive<span class="text-danger">*</span></label>
 	
 									<div class="tags-default">
-                                        @if($encounter->encounterDiagno && $encounter->encounterDiagno->diagnosisDescription)
-								@foreach ($encounter->encounterDiagno->diagnosisDescription as $data)
-									<input type="text" name="diagnosisDescription" value="{{ $data ?? 'N/A' }}" data-role="tagsinput" placeholder="Add Diagnosis" />
-								@endforeach
-							@else
-								<input type="text" name="diagnosisDescription" value="N/A" data-role="tagsinput" placeholder="Add Diagnosis" />
-							@endif
-									</div>
+										<input type="text" name="diagnosisDescription" value="Malaria,Diarrhea" data-role="tagsinput" placeholder="Add Test" /> </div>
+	
+								</div>
 	
 							  </div>
-							</div>
+
 							  <div class=" col-md-12">
 								<div class="form-group">
 									<label for="example-text-input" class="">Doctor's Prescription<span class="text-danger">*</span></label>
 	
-									<textarea rows="5" class="form-control" placeholder="Prescibe medication for your patient" name="doctor_prescription">{!!$encounter->encounterDiagno->doctor_prescription??"N/A"!!}</textarea>
+									<textarea rows="5" class="form-control" placeholder="Prescibe medication for your patient" name="doctor_prescription"></textarea>
 	
 								</div>
 	
 							  </div>
 						
 						</div>
-					</section>
+					</section> --}}
 				
                     <section>
 						<div class="row">

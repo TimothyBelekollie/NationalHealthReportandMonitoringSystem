@@ -69,6 +69,7 @@
 								<th>Health Center</th>
 								
 								<th>Role</th>
+								<th>Unique Type</th>
 								<th>Date Added</th>
 					
 								<th>Action</th>
@@ -86,6 +87,7 @@
 								<td>{{$user->healthCenter->name}}</td>
 								
 								<td>{{$user->role->name}}</td>
+								<td>{{$user->usertype}}</td>
 								
 								<td>{{ \Carbon\Carbon::parse($user->created_at)->diffForHumans()}}</td>
 								<td><a href="{{route('doctor.edit_clerk', $user->id)}}" class="btn btn-primary">Edit</a>  <a href="{{route('doctor.destroy_clerk',$user->id)}}" class="btn btn-danger">Delete</a></td>
@@ -100,6 +102,7 @@
 								<th>Health Center</th>
 								
 								<th>Role</th>
+								<th>Unique Type</th>
 								<th>Date Added</th>
 								
 								<th>Action</th>

@@ -258,8 +258,12 @@ Route::middleware(['auth:sanctum', 'verified','role:data_clerk'])->group(functio
 
      // Encounters and Encounter Diagnosis
      Route::get('/clerk/patients/encounter',[ClerkPatientEncounterController::class,'index'])->name('clerk.pat.encounter.index');
+     Route::get('/clerk/patients/encounter-doc',[ClerkPatientEncounterController::class,'indexTwo'])->name('clerk.pat.encounter.indextwo');
      Route::get('/clerk/patients/encounter/add',[ClerkPatientEncounterController::class,'add'])->name('clerk.pat.encounter.add');
+     Route::get('/clerk/patients/encounter/add-rep',[ClerkPatientEncounterController::class,'addTwo'])->name('clerk.pat.encounter.addtwo');
+     Route::post('/clerk/patients/encounter/storerep',[ClerkPatientEncounterController::class,'storeRep'])->name('clerk.pat.encounter.storeRep');
      Route::post('/clerk/patients/encounter/store',[ClerkPatientEncounterController::class,'store'])->name('clerk.pat.encounter.store');
+     Route::post('/clerk/patients/encounter/store-rep',[ClerkPatientEncounterController::class,'storeRep'])->name('clerk.pat.encounter.store-rep');
      Route::get('/clerk/patients/encounter/edit/{id}',[ClerkPatientEncounterController::class,'edit'])->name('clerk.pat.encounter.edit');
      Route::post('/clerk/patients/encounter/update/{id}',[ClerkPatientEncounterController::class,'update'])->name('clerk.pat.encounter.update');
      Route::get('/clerk/patients/encounter/destroy/{id}',[ClerkPatientEncounterController::class,'destroy'])->name('clerk.pat.encounter.destroy');

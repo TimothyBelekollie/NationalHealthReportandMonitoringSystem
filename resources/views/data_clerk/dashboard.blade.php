@@ -17,7 +17,7 @@
 									<h2>Hello {{Auth::user()->name}}, Welcome Back!</h2>
 									<p class="text-dark mb-0 fs-16">
 										
-                                        This is the {{Auth::user()->healthCenter->name}} Data Clerk Dashboard. Data can overwhelming but take your time.
+                                        This is the {{Auth::user()->healthCenter->name}} Data Clerk Dashboard. Don't forget you are working as <span class="text-danger">{{Auth::user()->usertype}}</span>.
 									</p>
 								</div>
 							</div>
