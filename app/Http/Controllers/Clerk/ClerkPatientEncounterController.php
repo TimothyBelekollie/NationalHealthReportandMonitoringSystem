@@ -147,10 +147,11 @@ class ClerkPatientEncounterController extends Controller
     
         // You can similarly retrieve the associated diagnosis record if needed
         $diagnosis = EncounterDiagnosis::where('encounter_id', $encounter->id)->first();
+        $labTechnicians=User::where('usertype','Laboratory-Technician')->where('health_center_id',Auth::user()->health_center_id)->get();
         $patients=Patient::latest()->get();
     
         // Return a view with the data for editing
-        return view('data_clerk.pages.encounters.edit', compact('encounter','diagnosis','patients'));
+        return view('data_clerk.pages.encounters.edit', compact('labTechnicians','encounter','diagnosis','patients'));
     }
 
     
@@ -172,7 +173,7 @@ class ClerkPatientEncounterController extends Controller
             $diagnosis->testConducted = explode(',', $request->input('testConducted'));
             $diagnosis->diagnosisDescription = explode(',', $request->input('diagnosisDescription'));
             $diagnosis->doctor_prescription = $request->input('doctor_prescription');
-            $diagnosis->user_id=Auth::user()->id;
+            $diagnosis->user_id=$request->input('user_id');
             $diagnosis->save();
         }
         $encounter->save();

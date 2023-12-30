@@ -52,7 +52,7 @@
 				  </ul>
 				</li>	
 				
-				@if (Auth::user()->usertype=="Doctor"|| Auth::user()->usertype=="Receptionist")
+				@if (Auth::user()->usertype=="Doctor"|| Auth::user()->usertype=="Receptionist"|| Auth::user()->usertype=="Laboratory-Technician")
 				<li class="treeview">
 					<a href="#">
 					  <i span class="icon-Layout-grid"><span class="path1"></span><span class="path2"></span></i>
@@ -62,8 +62,13 @@
 					  </span>
 					</a>
 					<ul class="treeview-menu">
-						@if (Auth::user()->usertype=="Doctor")	
+
+					  @if (Auth::user()->usertype=="Doctor")	
 					  <li><a href="{{route('clerk.pat.encounter.indextwo')}}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>View Encounters</a></li>
+					  @endif
+                     {{-- This is for Lab Technician --}}
+					  @if (Auth::user()->usertype=="Laboratory-Technician")
+					  <li><a href="{{route('clerk-technician.pat.encounter.index')}}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>View  Encounters LT</a></li>
 					  @endif
 
 					  @if (Auth::user()->usertype=="Receptionist")	

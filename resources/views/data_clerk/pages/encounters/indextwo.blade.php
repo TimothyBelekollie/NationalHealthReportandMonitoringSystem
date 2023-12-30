@@ -67,6 +67,7 @@
 								<th>Patient Name</th>
 								<th>Encounter Center</th>
 								<th>Assigned Doctor</th>
+								<th>Assigned Lab Technician</th>
 								<th>Diagnosis Code</th>
 								<th>Test Conducted</th>
 								<th>Test Result</th>
@@ -87,6 +88,7 @@
 								<td>{{$data->patient->name}}</td>
 								<td>{{$data->healthCenter->name}}</td>
 								<td>{{$data->doctor->name}}</td>
+								<td>{{$data->encounterDiagno->user->name}}</td>
 								<td>{{ $data->encounterDiagno->diagnosisCode ?? 'N/A' }}</td>
 								<td>
                                     @if($data->encounterDiagno && $data->encounterDiagno->testConducted)
@@ -118,6 +120,7 @@
 								<th>Patient Name</th>
 								<th>Encounter Center</th>
 								<th>Assigned Doctor</th>
+								<th>Assigned Lab Technician</th>
 								<th>Diagnosis Code</th>
 								<th>Test Conducted</th>
 								<th>Test Positive</th>

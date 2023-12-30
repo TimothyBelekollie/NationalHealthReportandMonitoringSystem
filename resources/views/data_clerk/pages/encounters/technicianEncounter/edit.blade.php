@@ -65,7 +65,7 @@
 						</div>
 						<div class="row">
 							
-							<div class="col-md-6">
+							<div class="col-md-12">
 								<div class="form-group">
 									<label  class="form-label">Patient Name* :</label>
 									
@@ -81,23 +81,6 @@
 								</div>
 							
 						</div>
-						<div class="col-md-6">
-							<div class="form-group">
-								<label  class="form-label">Assign Lab Technician Name* :</label>
-								
-								 <select class="form-select"  name="user_id">
-									<option value="">Select Lab Technician </option>
-									@foreach($labTechnicians as $technician)
-								<option value="{{ $technician->id}}"{{$encounter->encounterDiagno->user->id==$technician->id?'selected':''}}>{{$technician->name}}</option>
-									@endforeach
-								</select> 
-								@error('user_id')
-								<span class="text-danger">{{ $message }}</span>
-								@enderror
-							</div>
-						
-					</div>
-
 						{{-- <div class="col-md-6">
 							<div class="form-group">
 								<label  class="form-label">Diagnosis Code* :</label>

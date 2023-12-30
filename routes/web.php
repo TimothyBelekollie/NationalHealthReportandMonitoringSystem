@@ -10,6 +10,7 @@ use App\Http\Controllers\Clerk\ClerkPatientEncounterController;
 use App\Http\Controllers\Clerk\ClerkBirthEventController;
 use App\Http\Controllers\Clerk\ClerkDeathEventController;
 use App\Http\Controllers\Clerk\PatientAppointmentController;
+use App\Http\Controllers\Clerk\LabTechnicianEncounterController;
 
 
 // Chief Doctor Controllers
@@ -267,6 +268,12 @@ Route::middleware(['auth:sanctum', 'verified','role:data_clerk'])->group(functio
      Route::get('/clerk/patients/encounter/edit/{id}',[ClerkPatientEncounterController::class,'edit'])->name('clerk.pat.encounter.edit');
      Route::post('/clerk/patients/encounter/update/{id}',[ClerkPatientEncounterController::class,'update'])->name('clerk.pat.encounter.update');
      Route::get('/clerk/patients/encounter/destroy/{id}',[ClerkPatientEncounterController::class,'destroy'])->name('clerk.pat.encounter.destroy');
+
+
+// Encounter test conducted by lab technician 
+Route::get('/clerk-technician/patients/encounter',[LabTechnicianEncounterController::class,'index'])->name('clerk-technician.pat.encounter.index');
+Route::get('/clerk-technician/patients/encounter/edit/{id}',[LabTechnicianEncounterController::class,'edit'])->name('clerk-technician.pat.encounter.edit');
+Route::post('/clerk-technician/patients/encounter/update/{id}',[LabTechnicianEncounterController::class,'update'])->name('clerk-technician.pat.encounter.update');
 
 
 
