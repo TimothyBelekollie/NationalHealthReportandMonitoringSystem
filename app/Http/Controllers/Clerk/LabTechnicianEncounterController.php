@@ -91,7 +91,7 @@ class LabTechnicianEncounterController extends Controller
             $diagnosis->save();
         }
         $encounter->save();
-        return redirect()->route('clerk.pat.encounter.indextwo')->with('message', 'Record updated successfully');
+        return redirect()->route('clerk-technician.pat.encounter.index')->with('message', 'Record updated successfully');
     }
     
     

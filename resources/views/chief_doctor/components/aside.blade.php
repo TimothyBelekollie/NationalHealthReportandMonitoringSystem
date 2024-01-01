@@ -110,6 +110,20 @@
 					  
 					</ul>
 				  </li>	
+
+				  <li class="treeview">
+					<a href="#">
+					  <i span class="icon-Layout-grid"><span class="path1"></span><span class="path2"></span></i>
+					  <span>Desease Statistics</span>
+					  <span class="pull-right-container">
+						<i class="fa fa-angle-right pull-right"></i>
+					  </span>
+					</a>
+					<ul class="treeview-menu">
+					  <li><a href="{{route('doctor.uniquedeseases.index')}}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Details</a></li>
+					  
+					</ul>
+				  </li>	
 							 
 				 	     
 			  </ul>

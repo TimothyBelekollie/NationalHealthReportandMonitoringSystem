@@ -69,10 +69,10 @@
 								<div class="form-group">
 									<label  class="form-label">Patient Name* :</label>
 									
-									 <select class="form-select"  name="patient_id">
+									 <select class="form-select"  name="patient_id" disabled>
 										<option value="" selected>Select Patient </option>
 										@foreach($patients as $patient)
-                                    <option value="{{ $patient->id }}" {{$encounter->patient_id==$patient->id ? 'selected':''}}>{{ $patient->name }} - {{$patient->unique_patient_identifier}}</option>
+                                    <option value="{{ $patient->id }}" {{$encounter->patient_id==$patient->id ? 'selected':''}} >{{ $patient->name }} - {{$patient->unique_patient_identifier}}</option>
                                         @endforeach
 									</select> 
                                     @error('nationality')
@@ -111,10 +111,10 @@
 										
 											@if($encounter->encounterDiagno && $encounter->encounterDiagno->testConducted)
 												@foreach ($encounter->encounterDiagno->testConducted as $data)
-													<input type="text" name="testConducted" value="{{ $data ?? 'N/A' }}" data-role="tagsinput" placeholder="Add Test" />
+													<input type="text" name="testConducted" value="{{ $data ?? 'N/A' }}" data-role="tagsinput" placeholder="Add Test" disabled/>
 												@endforeach
 											@else
-												<input type="text" name="testConducted" value="N/A" data-role="tagsinput" placeholder="Add Test" />
+												<input type="text" name="testConducted" value="N/A" data-role="tagsinput" placeholder="Add Test" disabled/>
 											@endif
 										
 								</div>
@@ -129,7 +129,7 @@
 									<div class="tags-default">
                                         @if($encounter->encounterDiagno && $encounter->encounterDiagno->diagnosisDescription)
 								@foreach ($encounter->encounterDiagno->diagnosisDescription as $data)
-									<input type="text" name="diagnosisDescription" value="{{ $data ?? 'N/A' }}" data-role="tagsinput" placeholder="Add Diagnosis" />
+									<input type="text" name="diagnosisDescription" value="{{ $data ?? 'N/A' }}" data-role="tagsinput" placeholder="Add Diagnosis"  />
 								@endforeach
 							@else
 								<input type="text" name="diagnosisDescription" value="N/A" data-role="tagsinput" placeholder="Add Diagnosis" />
@@ -140,9 +140,9 @@
 							</div>
 							  <div class=" col-md-12">
 								<div class="form-group">
-									<label for="example-text-input" class="">Doctor's Prescription<span class="text-danger">*</span></label>
+									<label for="example-text-input" class="" style="display: none;">Doctor's Prescription<span class="text-danger">*</span></label>
 	
-									<textarea rows="5" class="form-control" placeholder="Prescibe medication for your patient" name="doctor_prescription">{!!$encounter->encounterDiagno->doctor_prescription??"N/A"!!}</textarea>
+									<textarea rows="5" class="form-control" placeholder="Prescibe medication for your patient" name="doctor_prescription" style="display:none">{!!$encounter->encounterDiagno->doctor_prescription??"N/A"!!}</textarea>
 	
 								</div>
 	

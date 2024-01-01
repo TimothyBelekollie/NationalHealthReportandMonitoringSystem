@@ -88,7 +88,7 @@
 								 <select class="form-select"  name="user_id">
 									<option value="">Select Lab Technician </option>
 									@foreach($labTechnicians as $technician)
-								<option value="{{ $technician->id}}"{{$encounter->encounterDiagno->user->id==$technician->id?'selected':''}}>{{$technician->name}}</option>
+								<option value="{{ $technician->id}}">{{$technician->name}}</option>
 									@endforeach
 								</select> 
 								@error('user_id')

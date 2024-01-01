@@ -88,8 +88,8 @@
 								<td>{{$data->patient->name}}</td>
 								<td>{{$data->healthCenter->name}}</td>
 								<td>{{$data->doctor->name}}</td>
-								<td>{{$data->encounterDiagno->user->name}}</td>
-								<td>{{ $data->encounterDiagno->diagnosisCode ?? 'N/A' }}</td>
+								<td>{{$data->encounterDiagno->user->name ?? 'N/A'}}</td>
+								<td>{{ $data->encounterDiagno->diagnosisCode ?? 'N/A'}}</td>
 								<td>
                                     @if($data->encounterDiagno && $data->encounterDiagno->testConducted)
                                         @foreach ($data->encounterDiagno->testConducted as $value)

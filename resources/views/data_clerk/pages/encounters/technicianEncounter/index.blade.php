@@ -108,7 +108,7 @@
                                 </td>
 								<td>{{$data->encounterDiagno->doctor_prescription?? "N/A"}}</td>
 								
-								<td><a href="{{route('clerk.pat.encounter.edit',$data->id)}}" class="btn btn-primary">Edit/Access</a><a href="{{route('clerk.pat.encounter.destroy',$data->id)}}" class="btn btn-danger">Delete</a></td>
+								<td><a href="{{route('clerk-technician.pat.encounter.edit',$data->id)}}" class="btn btn-primary">Edit/Access</a></td>
 							</tr>
 							@endforeach
 						</tbody>

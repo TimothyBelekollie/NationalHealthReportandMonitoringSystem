@@ -23,6 +23,8 @@ use App\Http\Controllers\ChiefDoctor\DoctorBirthReportController;
 use App\Http\Controllers\ChiefDoctor\DoctorDeathReportController;
 use App\Http\Controllers\ChiefDoctor\DoctorPatientReportController;
 use App\Http\Controllers\ChiefDoctor\ServicesController;
+//unique diseases
+use App\Http\Controllers\ChiefDoctor\ChiefDoctorUniqueDiseasesController;
 
 
 // Health Officer Controllers
@@ -35,6 +37,7 @@ use App\Http\Controllers\HealthOfficer\OfficerDistrictRegistryController;
 use App\Http\Controllers\HealthOfficer\OfficerBirthReportController;
 use App\Http\Controllers\HealthOfficer\OfficerDeathReportController;
 use App\Http\Controllers\HealthOfficer\OfficerPatientReportController;
+
 
 
 
@@ -220,8 +223,8 @@ Route::middleware(['auth:sanctum','verified','role:chief_doctor'])->group(functi
     //Patient Report
      Route::get('/chief-doctor/patient-report',[DoctorPatientReportController::class,'patientDetail'])->name('doctor.detail_patient');
 
-
-
+    //Unique Diseases
+    Route::get('/chief-doctor/unique-deseases',[ChiefDoctorUniqueDiseasesController::class,'index'])->name('doctor.uniquedeseases.index');
 
 
 

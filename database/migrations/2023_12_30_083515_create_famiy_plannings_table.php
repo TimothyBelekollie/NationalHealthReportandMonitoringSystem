@@ -13,6 +13,18 @@ return new class extends Migration
     {
         Schema::create('famiy_plannings', function (Blueprint $table) {
             $table->id();
+            Schema::create('patients', function (Blueprint $table) {
+                $table->id();
+                $table->string("name");
+                $table->string("dob");
+                $table->string("type");
+                $table->string("status")->default('first');
+                $table->string("address");
+                
+                $table->unsignedBigInteger('health_center_id')->nullable();
+                $table->foreign('health_center_id')->references('id')->on('health_centers');
+                $table->timestamps();
+            });
             $table->timestamps();
         });
     }
